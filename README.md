@@ -1,7 +1,14 @@
 
-<h1 align="center"> 💻Redes y Comunicaciones </h1>
+<h1 align="center"> 💻Redes y Comunicaciones 
+
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)
+[![GitHub stars](https://img.shields.io/github/stars/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/stargazers/)
+[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)
+</h1>
+
+
 <div align="center">
-<img src="https://media.giphy.com/media/hJ8ISu3zLrHws/giphy.gif"/>
+<img src="https://media.giphy.com/media/4VUiK7uleZ7BcP21Sx/giphy.gif"/>
  </div>
 <br>
 
@@ -18,3 +25,6 @@
 - [Practica 9 Capa de Red - IPv6](/Documentos/Practica9.md)
 - [Practica 10 Capa de Enlace - Parte I](/Documentos/Practica10.md)
 - [Practica 11 Capa de Enlace - Parte II](/Documentos/Practica11.md)
+
+
+---
