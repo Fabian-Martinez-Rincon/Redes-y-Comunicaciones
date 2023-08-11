@@ -74,8 +74,34 @@ Los protocolos pueden abordar diversos aspectos de la comunicación, como el for
 
 
 
-### **5)** ¿Por qué dos máquinas con distintos sistemas operativos pueden formar parte de una misma red
+### **5)** ¿Por qué dos máquinas con distintos sistemas operativos pueden formar parte de una misma red?
+
+Dos máquinas con diferentes sistemas operativos pueden formar parte de una misma red debido a que las redes de computadoras se basan en estándares y protocolos universales que permiten la comunicación entre dispositivos heterogéneos. Esto significa que, independientemente de las diferencias en los sistemas operativos, los dispositivos pueden interactuar y compartir recursos en la red gracias a los siguientes motivos:
+- **1)** **Estándares y Protocolos Universales:** Las redes utilizan protocolos de comunicación estándar, como el Protocolo de Internet (IP) y el Protocolo de Control de Transmisión (TCP), que están diseñados para ser independientes del sistema operativo. Esto permite que los dispositivos con diferentes sistemas operativos puedan entenderse entre sí.
+- **2)** **Capa de Red y Capa de Transporte:** Los protocolos en las capas de red y transporte, como el IP y el TCP, actúan como intermediarios para el intercambio de datos entre dispositivos. Estos protocolos se centran en la forma en que los datos se empaquetan, se direccionan y se entregan, lo que no depende directamente del sistema operativo.
+- **3)** **Protocolos de Aplicación:** Los protocolos de nivel de aplicación, como el Protocolo de Transferencia de Hipertexto (HTTP) o el Protocolo de Correo Electrónico (SMTP), también son independientes del sistema operativo subyacente. Estos protocolos definen cómo las aplicaciones se comunican y cómo se presentan los datos a los usuarios.
+- **4)** **Interoperabilidad:** Los fabricantes de sistemas operativos y proveedores de hardware están interesados en garantizar la interoperabilidad, lo que significa que sus productos pueden funcionar juntos en una red. Esto impulsa la adopción de estándares abiertos y la implementación coherente de protocolos.
+- **5)** **Cumplimiento de Normas y Estándares:** Tanto los sistemas operativos como las aplicaciones deben cumplir con ciertos estándares y especificaciones para ser parte de la infraestructura de Internet. Esto asegura que, incluso si los sistemas operativos son diferentes, sigan ciertas reglas comunes para interactuar en la red.
+
 ### **6)** ¿Cuáles son las 2 categorías en las que pueden clasificarse a los sistemas finales o End Systems? Dé un ejemplo del rol de cada uno en alguna aplicación distribuida que corra sobre Internet
+
+Los sistemas finales, también conocidos como sistemas terminales o end systems, son los dispositivos que se encuentran en los extremos de una red de comunicación. Estos sistemas se pueden clasificar en dos categorías principales: sistemas cliente y sistemas servidor.
+
+#### 1) **Sistemas Cliente:**
+Los sistemas cliente son aquellos que solicitan y utilizan los recursos o servicios proporcionados por otros sistemas en la red. Los sistemas cliente inician solicitudes de comunicación y reciben respuestas de los sistemas servidores. Estos sistemas tienden a ser más interactivos y están diseñados para satisfacer las necesidades de los usuarios.
+
+**Ejemplo en una aplicación distribuida:** Navegador web (cliente) y servidor web (servidor).
+
+**Rol en la aplicación:** Imagina que estás utilizando un navegador web (cliente) para acceder a un sitio web. El navegador envía una solicitud al servidor web (servidor) para obtener la página solicitada. El servidor procesa la solicitud y envía la página web de regreso al navegador, que luego la muestra al usuario. En este caso, el navegador es el sistema cliente que solicita el recurso (la página web) al servidor, que es el sistema servidor que proporciona el recurso solicitado.
+
+#### 2) **Sistemas Servidor:**
+Los sistemas servidores son aquellos que proporcionan recursos, servicios o información a los sistemas clientes. Estos sistemas están diseñados para escuchar y responder a las solicitudes de los sistemas clientes. Los sistemas servidores a menudo operan de manera más continua y están optimizados para entregar contenido o servicios eficientemente.
+
+**Ejemplo en una aplicación distribuida:** Servidor de correo electrónico (servidor) y aplicación de correo electrónico (cliente).
+
+**Rol en la aplicación:** Cuando envías un correo electrónico desde una aplicación de correo electrónico (cliente), tu aplicación se conecta al servidor de correo electrónico (servidor) para enviar el correo. El servidor de correo electrónico almacena y entrega el mensaje a su destinatario. En este caso, el cliente (aplicación de correo electrónico) interactúa con el servidor de correo electrónico para enviar y recibir mensajes.
+
+
 ### **7)** ¿Cuál es la diferencia entre una red conmutada de paquetes de una red conmutada de circuitos
 ### **8)** Analice qué tipo de red es una red de telefonía y qué tipo de red es Internet
 ### **9)** Describa brevemente las distintas alternativas que conoce para acceder a Internet en su hogar
