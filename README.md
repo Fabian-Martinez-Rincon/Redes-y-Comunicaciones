@@ -17,6 +17,7 @@
 <p><img width="250" align='right' src="https://media.giphy.com/media/4YZNYcTybcYTnROykG/giphy.gif"></p>
 
 - [Libro](https://drive.google.com/file/d/1w921vXwh6biZZB5UO2xDTcf8YuaSn4nQ/view)
+- [Drive Dios](https://drive.google.com/drive/folders/1PpIuw0DNzg91yChKWdSRtn9jRsmsN1nJ)
 - [Practica 1 Introducción](/Documentos/Practica1.md)
 - [Practica 2 Capa de Aplicación - HTTP](/Documentos/Practica2.md)
 - [Practica 3 Capa de Aplicación - DNS](/Documentos/Practica3.md)
@@ -28,6 +29,14 @@
 - [Practica 9 Capa de Red - IPv6](/Documentos/Practica9.md)
 - [Practica 10 Capa de Enlace - Parte I](/Documentos/Practica10.md)
 - [Practica 11 Capa de Enlace - Parte II](/Documentos/Practica11.md)
+
+
+
+
+
+<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
+
+
 
 <details><summary>🎥 Clases Teoricas Grabadas</summary>
 
@@ -44,9 +53,3 @@
 - [Capa de enlace- 1/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/85f68a320bfb3f9801a19eb5c92d05bcaa7ec28b-1654120460566)
 - [Capa de enlace - 8/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/d229a2a23736ed64601f03de677f06ac557f8239-1654724694422)
 </details>
-
-
-
-
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
