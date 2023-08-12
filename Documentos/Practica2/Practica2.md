@@ -1,20 +1,19 @@
 <h1 align="center"> Práctica 2 Capa de Aplicación - HTTP</h1>
 
-### Requerimientos
-
-> Para realizar esta práctica deberá descargar la máquina virtual provista. Puede ver la URL de descarga en el sitio de la cátedra en https://catedras.info.unlp.edu.ar/.
-
-> Una vez descargado el archivo, haciendo doble click en el mismo debería abrirse un cuadro de diálogo
-que permita configurar algunos parámetros del sistema. Se pueden aceptar los valores por defecto
-haciendo simplemente click en Importar.
-
-> Se recomienda hacer un snapshot de la VM antes de empezar a usarla, para poder volver atrás en caso
-de que algo deje de funcionar.
-
-Los datos de acceso a la máquina virtual son:
-- Usuario: redes
-- Contraseña: redes
-- Contraseña root: redes
+- [2. ¿Cuál es la función de la capa de aplicación?]()
+- [3. Si dos procesos deben comunicarse]()
+- [4. Explique brevemente cómo es el modelo Cliente/Servidor.]()
+- [5. Describa la funcionalidad de la entidad genérica “Agente de usuario” o “User agent”.]()
+- [6. ¿Qué son y en qué se diferencian HTML y HTTP?]()
+- [7. Utilizando la VM, abra una terminal. Investigue sobre el comando curl]()
+- [8. Ejecute el comando curl sin ningún parámetro adicional y acceda a www.redes.unlp.edu.ar.]()
+- [9. Ejecute a continuación los siguientes comandos]()
+- [10. Ejecute una vez más el comando curl www.redes.unlp.edu.ar ]()
+- [11. Utilizando la VM, realice las siguientes pruebas]()
+- [12. En base a lo obtenido en el ejercicio anterior, responda]()
+- [13. La página www.redes.unlp.edu.ar/http/idioma.php tiene soporte para visualizarse en inglés y en español.]()
+- [14. En el siguiente ejercicio veremos la diferencia entre los métodos POST y GET.]()
+- []()
 
 ### Introducción
 
