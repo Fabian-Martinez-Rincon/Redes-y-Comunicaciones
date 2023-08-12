@@ -8,13 +8,11 @@
 
 
 <div align="center">
-<img src="https://media.giphy.com/media/4VUiK7uleZ7BcP21Sx/giphy.gif"/>
+<img src="https://media.giphy.com/media/mChiNhFgpudAQ3ppsL/giphy.gif"/>
  </div>
 <br>
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
-***🔨 Agarrando la pala***
 
 - [Libro](https://drive.google.com/file/d/1w921vXwh6biZZB5UO2xDTcf8YuaSn4nQ/view)
 - [Practica 1 Introducción](/Documentos/Practica1.md)
@@ -29,7 +27,7 @@
 - [Practica 10 Capa de Enlace - Parte I](/Documentos/Practica10.md)
 - [Practica 11 Capa de Enlace - Parte II](/Documentos/Practica11.md)
 
- ***🎥 Clases Teoricas Grabadas***
+<details><summary>🎥 Clases Teoricas Grabadas</summary>
 
 - [Presentación de la materia - 9/3](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/472904f53442431feff992fb77aa2b44dca73578-1646862489077)
 - [Conceptos introductorios y Capa de aplicación (Intro) - 16/3](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/e53200e0f691a70ceb98ef960773faa779a0f3c8-1647468073015)
@@ -43,9 +41,10 @@
 - [Capa de red - 11/5](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/6e47e71679494159e62cb18b4db65fa855f49503-1652306386693)
 - [Capa de enlace- 1/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/85f68a320bfb3f9801a19eb5c92d05bcaa7ec28b-1654120460566)
 - [Capa de enlace - 8/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/d229a2a23736ed64601f03de677f06ac557f8239-1654724694422)
+</details>
+
+
 
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
-### Parciales
 
