@@ -1,5 +1,5 @@
 
-<h1 align="center"> 💻Redes y Comunicaciones 
+<h1 align="center"> <img  src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=30&duration=1200&pause=1000&width=435&lines=Redes+Y+Comunicaciones"/>
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)
 [![GitHub stars](https://img.shields.io/github/stars/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/stargazers/)
