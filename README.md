@@ -5,15 +5,12 @@
 [![GitHub stars](https://img.shields.io/github/stars/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/stargazers/)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=30&duration=1200&pause=1000&width=435&lines=Redes+Y+Comunicaciones"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=1200&pause=1000&color=F78E23&center=true&width=435&lines=Redes y Comunicaciones"/>
 
-<a title="" href="https://cafecito.app/ei-materias"><img src="https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/c6e7f881-e53b-4335-9f82-fa563de1dd93" alt="" /></a>
+<a title="" href="https://cafecito.app/ei-materias"><img src="/Documentos/Cafecito.png" alt="" /></a>
 
 </div>
 
-
-
-<br>
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
