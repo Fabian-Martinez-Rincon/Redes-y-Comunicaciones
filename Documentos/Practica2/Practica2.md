@@ -116,6 +116,7 @@ Por ejemplo, puedes usar
 
 
 #### **8)** Ejecute el comando curl sin ningún parámetro adicional y acceda a www.redes.unlp.edu.ar. Luego res- ponda:
+
 **a)** ¿Cuántos requerimientos realizó y qué recibió? Pruebe redirigiendo la salida(>)del comando curl a un archivo con extensión html y abrirlo con un navegador.
 
 **b)** ¿Cómo funcionan los atributos href de los tags link e img en html?
@@ -131,10 +132,20 @@ Por ejemplo, puedes usar
 - ¿Qué diferencias nota entre cada uno?
 - ¿Qué ocurre si en el primer comando quita la redirección a /dev/null? ¿Por qué no es necesaria en el segundo comando?
 - ¿Cuántas cabeceras viajaron en el requerimiento? ¿Y en la respuesta?
-10. Ejecute una vez más el comando curl www.redes.unlp.edu.ar pero sólo muestre los encabezados y luego responda:
-a. ¿Es posible determinar qué servidor web se utiliza para servir la página?
-b. ¿Cuál es el código de respuesta que devolvió el servidor? ¿Qué otros códigos existen y qué significan? Investigue genéricamente los tipos de error 2XX, 3XX, 4XX y 5XX.
-c. ¿Cuándo fue la última vez que se modificó la página?
-d. Solicite la página nuevamente con curl usando GET, pero esta vez indique que quiere obtenerla sólo si la misma fue modificada en una fecha posterior a la que efectivamente fue modificada. ¿Cómo lo hace? ¿Qué resultado obtuvo? ¿Puede explicar por qué y para qué sirve?
-e. ¿Qué significa el encabezado ETag?
-f. Investigue el encabezado If-Modified-Since. ¿Para qué cree que pueden servir los tres encabezados anteriores?
+
+#### 10. Ejecute una vez más el comando curl www.redes.unlp.edu.ar pero sólo muestre los encabezados y luego responda:
+***a. ¿Es posible determinar qué servidor web se utiliza para servir la página?***
+
+***b. ¿Cuál es el código de respuesta que devolvió el servidor? ¿Qué otros códigos existen y qué significan? Investigue genéricamente los tipos de error 2XX, 3XX, 4XX y 5XX.***
+
+***c. ¿Cuándo fue la última vez que se modificó la página?***
+
+d. Solicite la página nuevamente con curl usando GET, pero esta vez indique que quiere obtenerla sólo si la misma fue modificada en una fecha posterior a la que efectivamente fue modificada. 
+- ¿Cómo lo hace? 
+- ¿Qué resultado obtuvo? 
+- ¿Puede explicar por qué y para qué sirve?
+
+***e. ¿Qué significa el encabezado ETag?***
+
+f. Investigue el encabezado If-Modified-Since. 
+- ¿Para qué cree que pueden servir los tres encabezados anteriores?
