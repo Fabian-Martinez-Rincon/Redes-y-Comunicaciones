@@ -17,6 +17,8 @@
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
+<p><img width="250" align='right' src="https://media.giphy.com/media/4YZNYcTybcYTnROykG/giphy.gif"></p>
+
 - [Libro](https://drive.google.com/file/d/1w921vXwh6biZZB5UO2xDTcf8YuaSn4nQ/view)
 - [Practica 1 Introducción](/Documentos/Practica1.md)
 - [Practica 2 Capa de Aplicación - HTTP](/Documentos/Practica2.md)
