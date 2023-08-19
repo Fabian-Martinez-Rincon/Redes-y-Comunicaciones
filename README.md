@@ -1,9 +1,11 @@
 
 <div align="center"> 
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)
-[![GitHub stars](https://img.shields.io/github/stars/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/stargazers/)
-[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)
+<img src='https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat'>
+<img src='https://img.shields.io/github/stars/Fabian-Martinez-Rincon/Redes-y-Comunicaciones'>
+<img src='https://img.shields.io/github/repo-size/Fabian-Martinez-Rincon/Redes-y-Comunicaciones'>
+
+
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=1200&pause=1000&color=F78E23&center=true&width=435&lines=Redes y Comunicaciones"/>
 
@@ -14,8 +16,8 @@
 
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
+<p><img width="250" align='right' src="https://media.giphy.com/media/6baW5lF9UxI6lfpc0c/giphy.gif"></p>
 
-<p><img width="250" align='right' src="https://media.giphy.com/media/8L18v7K36xCOvndOFT/giphy.gif"></p>
 
 - [📕 Libro](https://drive.google.com/file/d/1w921vXwh6biZZB5UO2xDTcf8YuaSn4nQ/view)
 - [📁 Drive Dios](https://drive.google.com/drive/folders/1PpIuw0DNzg91yChKWdSRtn9jRsmsN1nJ)
@@ -52,4 +54,3 @@
 - [Capa de enlace- 1/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/85f68a320bfb3f9801a19eb5c92d05bcaa7ec28b-1654120460566)
 - [Capa de enlace - 8/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/d229a2a23736ed64601f03de677f06ac557f8239-1654724694422)
 </details>
-
