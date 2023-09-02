@@ -9,7 +9,7 @@
 <div align="center"> 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=30&duration=1200&pause=1000&color=F78E23&center=true&width=435&lines=Redes y Comunicaciones"/>
 
-<a title="" href="https://cafecito.app/ei-materias"><img src="/Documentos/Cafecito.png" alt="" /></a>
+
 
 </div>
 
@@ -23,7 +23,7 @@
 - [📁 Drive Dios](https://drive.google.com/drive/folders/1PpIuw0DNzg91yChKWdSRtn9jRsmsN1nJ)
 - [Maquina que usa la catedra](https://archivos.linti.unlp.edu.ar/index.php/s/L1QqkFChXW2CCXQ)
 - [Practica 1 Introducción](https://fabian-martinez-rincon.github.io/Redes-y-Comunicaciones/Documentos/Practica1/Practica1Final.html)
-- [Practica 2 Capa de Aplicación - HTTP]()
+- [Practica 2 Capa de Aplicación - HTTP](/Documentos/Practica2/Practica2.html)
 
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
@@ -45,3 +45,14 @@
 - [Capa de enlace- 1/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/85f68a320bfb3f9801a19eb5c92d05bcaa7ec28b-1654120460566)
 - [Capa de enlace - 8/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/d229a2a23736ed64601f03de677f06ac557f8239-1654724694422)
 </details>
+
+
+#### 🎟️ Creditos
+
+Use información que fueron pasando gente de los siguientes githubs
+
+- [Tomatis](https://github.com/fotscode)
+- Vicens
+- [Torchia](https://github.com/LautaroTorchia)
+- Olmos
+- Manzin
