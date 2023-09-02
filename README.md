@@ -22,7 +22,7 @@
 - [📕 Libro](https://drive.google.com/file/d/1w921vXwh6biZZB5UO2xDTcf8YuaSn4nQ/view)
 - [📁 Drive Dios](https://drive.google.com/drive/folders/1PpIuw0DNzg91yChKWdSRtn9jRsmsN1nJ)
 - [Maquina que usa la catedra](https://archivos.linti.unlp.edu.ar/index.php/s/L1QqkFChXW2CCXQ)
-- [Practica 1 Introducción](/Documentos/Practica1/Practica1Final.md)
+- [Practica 1 Introducción](https://fabian-martinez-rincon.github.io/Redes-y-Comunicaciones/Documentos/Practica1/Practica1Final.html)
 - [Practica 2 Capa de Aplicación - HTTP]()
 
 
