@@ -46,13 +46,18 @@
 - [Capa de enlace - 8/6](https://bigbluebutton.linti.unlp.edu.ar/playback/presentation/2.3/d229a2a23736ed64601f03de677f06ac557f8239-1654724694422)
 </details>
 
+<details><summary>🎟️ Creditos</summary>
 
-#### 🎟️ Creditos
 
-Use información que fueron pasando gente de los siguientes githubs
-
+Use información que fueron pasando las siguientes personas, no encontre todos los githubs :(
+  
 - [Tomatis](https://github.com/fotscode)
 - Vicens
 - [Torchia](https://github.com/LautaroTorchia)
 - Olmos
 - Manzin
+
+</details>
+
+#### 
+
