@@ -1,8 +1,28 @@
 <div align='center'>
 
 # Practica 1 Introducción
-
 </div>
+
+<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
+
+- [El resto de las Practicas](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)
+- [Pregunta 1](#pregunta-1)
+- [Pregunta 2](#pregunta-2)
+- [Pregunta 3](#pregunta-3)
+- [Pregunta 4](#pregunta-4)
+- [Pregunta 5](#pregunta-5)
+- [Pregunta 6](#pregunta-6)
+- [Pregunta 7](#pregunta-7)
+- [Pregunta 8](#pregunta-8)
+- [Pregunta 9](#pregunta-9)
+- [Pregunta 10](#pregunta-10)
+- [Pregunta 11](#pregunta-11)
+- [Pregunta 12](#pregunta-12)
+- [Pregunta 13](#pregunta-13)
+- [Pregunta 14](#pregunta-14)
+
+<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
+
 
 ### Pregunta 1
 ¿Qué es una red? ¿Cuál es el principal objetivo para construir una red?

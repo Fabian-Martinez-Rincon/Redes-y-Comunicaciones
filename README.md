@@ -21,18 +21,9 @@
 
 - [📕 Libro](https://drive.google.com/file/d/1w921vXwh6biZZB5UO2xDTcf8YuaSn4nQ/view)
 - [📁 Drive Dios](https://drive.google.com/drive/folders/1PpIuw0DNzg91yChKWdSRtn9jRsmsN1nJ)
+- [Maquina que usa la catedra](https://archivos.linti.unlp.edu.ar/index.php/s/L1QqkFChXW2CCXQ)
 - [Practica 1 Introducción](/Documentos/Practica1/Practica1Final.md)
 - [Practica 2 Capa de Aplicación - HTTP]()
-- [Practica 3 Capa de Aplicación - DNS]()
-- [Practica 4 Capa de Aplicación - Correo electrónico]()
-- [Practica 5 Capa de Transporte - Parte I]()
-- [Practica 6 Capa de Transporte - Parte II]()
-- [Practica 7 Capa de Red - Direccionamiento]()
-- [Practica 8 Capa de Red - Ruteo]()
-- [Practica 9 Capa de Red - IPv6]()
-- [Practica 10 Capa de Enlace - Parte I]()
-- [Practica 11 Capa de Enlace - Parte II]()
-
 
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
