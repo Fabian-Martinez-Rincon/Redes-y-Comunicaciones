@@ -296,34 +296,388 @@ Content-Type: text/html
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-12">Pregunta 12</h4>
 
-<p>En HTTP/1.0, ¿cómo sabe el cliente que ya recibió todo el objeto solicitado completamente? ¿Y en HTTP/1.1?</p>
+<p>En HTTP/1.0,</p>
+<p>¿cómo sabe el cliente que ya recibió todo el objeto solicitado completamente?¿Y en HTTP/1.1?</p>
+<table><tbody><tr><td>HTTP/1.0</td><td>HTTP/1.1</td></tr>
+<tr><td>
+<p>el cliente generalmente sabe que ha recibido todo el objeto cuando el servidor cierra la conexión. También se puede utilizar el encabezado <code>Content-Length</code> si está presente.</p>
+</td><td>
+<p>el encabezado <code>Content-Length</code> o <code>Transfer-Encoding: chunked</code> se utilizan con más frecuencia para indicar cuándo se ha completado la transmisión del objeto, permitiendo que la conexión se mantenga abierta para solicitudes adicionales.</p>
+</td></tr>
+</tbody></table>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-13">Pregunta 13</h4>
 
+<p>Investigue los distintos tipos de códigos de retorno de un servidor web y su significado en la RFC.</p>
+<p>Los códigos de estado HTTP están definidos en varias RFC, incluida la RFC 2616 para HTTP/1.1. Estos códigos se agrupan en varias clases, indicadas por el primer dígito del código:</p>
+<ol>
+<li><strong>1xx</strong>: Respuestas Informativas</li>
+<li><strong>2xx</strong>: Éxito (por ejemplo, 200 OK, 201 Created)</li>
+<li><strong>3xx</strong>: Redirección (por ejemplo, 301 Moved Permanently, 302 Found)</li>
+<li><strong>4xx</strong>: Errores del Cliente (por ejemplo, 400 Bad Request, 404 Not Found)</li>
+<li><strong>5xx</strong>: Errores del Servidor (por ejemplo, 500 Internal Server Error, 503 Service Unavailable)</li>
+</ol>
+<p><em><strong>¿Qué parte se ve principalmente interesada de esta información, cliente o servidor?</strong></em></p>
+<p>Los códigos de estado son más útiles para el cliente, ya que informan al cliente sobre el resultado de su solicitud. Un navegador web o una aplicación cliente pueden usar estos códigos para decidir cómo continuar.</p>
+<p><em><strong>¿Es útil que esté detallado y clasificado en la RFC?.</strong></em></p>
+<p>Sí, es muy útil que los códigos de estado estén bien definidos y clasificados en la RFC. Proporciona un estándar que todos los desarrolladores y administradores de sistemas pueden seguir. Esto ayuda a garantizar una interpretación coherente y permite una mejor depuración y registro.</p>
+<p><em><strong>Dentro de la VM, ejecute los siguientes comandos y evalue el estado que recibe.</strong></em></p>
+<p><strong>Primer Comando</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-I</span> http://unlp.edu.ar
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell">HTTP/1.1 <span class="token number">301</span> Moved Permanently
+Server: nginx/1.18.0
+Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">17</span>:40:18 GMT
+Content-Type: text/html
+Content-Length: <span class="token number">169</span>
+Connection: keep-alive
+Location: https://unlp.edu.ar/
+</pre><ul>
+<li><code>HTTP/1.1 301 Moved Permanently</code>: Este es un código de estado HTTP que significa que el recurso que estás intentando acceder se ha trasladado de forma permanente a una nueva URL. La nueva URL se especifica en el campo <code>Location</code>.</li>
+<li><code>Server: nginx/1.18.0</code>: Indica que el servidor web que está sirviendo la página es Nginx versión 1.18.0.</li>
+<li><code>Date: Sun, 03 Sep 2023 17:40:18 GMT</code>: Fecha y hora en la que se produjo la respuesta.</li>
+<li><code>Content-Type: text/html</code>: Indica que el tipo de contenido es HTML.</li>
+<li><code>Content-Length: 169</code>: Longitud del contenido en bytes.</li>
+<li><code>Connection: keep-alive</code>: Sugiere que la conexión se mantenga abierta para futuras solicitudes.</li>
+<li><code>Location: https://unlp.edu.ar/</code>: La nueva URL a la que se ha trasladado el recurso.</li>
+</ul>
+<p>En resumen, si intentas acceder a <code>http://unlp.edu.ar</code>, serás redirigido de forma permanente a <code>https://unlp.edu.ar/</code>.</p>
+<p><strong>Segundo Comando</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-I</span> www.redes.unlp.edu.ar/restringido/index.php
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell">HTTP/1.1 <span class="token number">401</span> Unauthorized
+Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">17</span>:45:45 GMT
+Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+WWW-Authenticate: Basic <span class="token assign-left variable">realm</span><span class="token operator">=</span><span class="token string">"Authentication Required"</span>
+Last-Modified: Sun, <span class="token number">19</span> Mar <span class="token number">2023</span> <span class="token number">19</span>:04:46 GMT
+ETag: <span class="token string">"cb-5f7457bd64f80"</span>
+Accept-Ranges: bytes
+Content-Length: <span class="token number">203</span>
+Content-Type: text/html
+</pre><ul>
+<li><strong>HTTP/1.1 401 Unauthorized</strong>: Esto es un código de estado HTTP que indica que el servidor espera que el cliente proporcione credenciales, o que las credenciales proporcionadas no son válidas.</li>
+<li><strong>Date</strong>: La fecha y la hora en que se generó la respuesta.</li>
+<li><strong>Server</strong>: Indica el software utilizado por el servidor HTTP de origen, en este caso, Apache versión 2.4.56 en Unix.</li>
+<li><strong>WWW-Authenticate: Basic realm=“Authentication Required”</strong>: Este es un desafío enviado al agente del usuario (el navegador, en la mayoría de los casos) que solicita al usuario un nombre de usuario y una contraseña. El “realm” es una descripción del área protegida. Si el usuario agente desea enviar las credenciales de autenticación, deberá hacerlo en el encabezado de autenticación correspondiente.</li>
+<li><strong>Last-Modified</strong>: La última fecha en que se modificó el recurso solicitado.</li>
+<li><strong>ETag</strong>: Un identificador único para una versión específica del recurso.</li>
+<li><strong>Accept-Ranges</strong>: Indica si el servidor admite solicitudes de rango para el recurso.</li>
+<li><strong>Content-Length</strong>: La longitud del cuerpo de la respuesta en bytes.</li>
+<li><strong>Content-Type</strong>: El tipo de medio del recurso o datos.</li>
+</ul>
+<p>En resumen, parece que estás intentando acceder a un recurso que requiere autenticación. El servidor espera que el cliente (normalmente, tu navegador) proporcione un nombre de usuario y una contraseña válidos para acceder a ese recurso.</p>
+<p><strong>Tercer Comando</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-I</span> www.redes.unlp.edu.ar/noexiste
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell">HTTP/1.1 <span class="token number">404</span> Not Found
+Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">17</span>:51:18 GMT
+Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+Content-Type: text/html<span class="token punctuation">;</span> <span class="token assign-left variable">charset</span><span class="token operator">=</span>iso-8859-1
+</pre><ul>
+<li><strong>HTTP/1.1 404 Not Found</strong>: Este es el código de estado HTTP que indica que el recurso solicitado no pudo ser encontrado en el servidor.</li>
+<li><strong>Date</strong>: La fecha y la hora en que se generó la respuesta.</li>
+<li><strong>Server</strong>: Indica el software utilizado por el servidor HTTP de origen, en este caso, Apache versión 2.4.56 en Unix.</li>
+<li><strong>Content-Type</strong>: El tipo de medio del recurso o datos. Aquí, se indica que es un documento HTML con codificación de caracteres iso-8859-1.</li>
+</ul>
+<p>En resumen, el recurso que estás intentando acceder no existe en el servidor, y por eso recibes un <code>404 Not Found</code>. Este es uno de los códigos de estado más comunes y se utiliza para indicar que el servidor no puede encontrar el recurso especificado en la URL.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-14">Pregunta 14</h4>
 
+<p>Utilizando curl, acceda al sitio <a href="http://www.redes.unlp.edu.ar/restringido/index.php">www.redes.unlp.edu.ar/restringido/index.php</a> y siga las instrucciones y las pistas que vaya recibiendo hasta obtener la respuesta final. Será de utilidad para resolver este ejercicio poder analizar tanto el contenido de cada página como los encabezados</p>
+<p><strong>Paso 1</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> http://www.redes.unlp.edu.ar/restringido/index.php
+</pre><pre data-role="codeBlock" data-info="html" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Acceso restringido<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Para acceder al contenido es necesario autenticarse.
+Para obtener los datos de acceso seguir las instrucciones
+detalladas en www.redes.unlp.edu.ar/obtener-usuario.php<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre><p><strong>Paso 2</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> www.redes.unlp.edu.ar/obtener-usuario.php
+</pre><pre data-role="codeBlock" data-info="html" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Para obtener el usuario y la contraseña haga un requerimiento
+ a esta página seteando el encabezado 'Usuario-Redes' con el valor 'obtener'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre><p><strong>Paso 3</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-H</span> <span class="token string">"Usuario-Redes:obtener"</span> www.redes.unlp.edu.ar/obtener-usuario.php
+</pre><pre data-role="codeBlock" data-info="html" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Bien hecho! Los datos para ingresar son: 
+
+Usuario: redes
+Contraseña: RYC
+
+Ahora vuelva a acceder a la página inicial con los datos anteriores.
+PISTA: Investigue el uso del encabezado Authorization para el método Basic.
+El comando base64 puede ser de ayuda!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre><p><strong>Paso 4</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"redes:RYC"</span> <span class="token operator">|</span> base64
+<span class="token comment"># Devuelve: cmVkZXM6UllD</span>
+</pre><p><strong>Paso 5</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Basic cmVkZXM6UllD"</span> http://www.redes.unlp.edu.ar/restringido/index.php
+</pre><pre data-role="codeBlock" data-info="html" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Excelente!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>Para terminar el ejercicio deberás agregar en la entrega 
+los datos que se muestran en la siguiente página.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>ACLARACIÓN: la URL de la siguiente página está contenida en esta misma respuesta.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+</pre><p><strong>Paso 6</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-I</span> <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Basic cmVkZXM6UllD"</span> http://www.redes.unlp.edu.ar/restringido/index.php
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell">HTTP/1.1 <span class="token number">302</span> Found
+Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">18</span>:27:18 GMT
+Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+X-Powered-By: PHP/7.4.33
+Location: http://www.redes.unlp.edu.ar/restringido/the-end.php
+Content-Type: text/html<span class="token punctuation">;</span> <span class="token assign-left variable">charset</span><span class="token operator">=</span>UTF-8
+</pre><p><strong>Paso 7</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Basic cmVkZXM6UllD"</span> http://www.redes.unlp.edu.ar/restringido/the-end.php
+</pre><pre data-role="codeBlock" data-info="" class="language-"><code>¡Felicitaciones, llegaste al final del ejercicio! 
+
+Fecha: 2023-09-03 18:30:11
+</code></pre><p>Estuvo bastante entretenido el ejercicio 😄</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-15">Pregunta 15</h4>
 
+<p>Utilizando la VM, realice las siguientes pruebas:</p>
+<p><strong>a. Ejecute el comando ’curl <a href="http://www.redes.unlp.edu.ar/extras/prueba-http-1-0.txt%E2%80%99">www.redes.unlp.edu.ar/extras/prueba-http-1-0.txt’</a> y copie la salida completa (incluyendo los dos saltos de linea del final).</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-v</span> www.redes.unlp.edu.ar/extras/prueba-http-1-0.txt
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell">*   Trying <span class="token number">172.28</span>.0.50:80<span class="token punctuation">..</span>.
+* Connected to www.redes.unlp.edu.ar <span class="token punctuation">(</span><span class="token number">172.28</span>.0.50<span class="token punctuation">)</span> port <span class="token number">80</span> <span class="token punctuation">(</span><span class="token comment">#0)</span>
+<span class="token operator">&gt;</span> GET /extras/prueba-http-1-0.txt HTTP/1.1
+<span class="token operator">&gt;</span> Host: www.redes.unlp.edu.ar
+<span class="token operator">&gt;</span> User-Agent: curl/7.74.0
+<span class="token operator">&gt;</span> Accept: */*
+<span class="token operator">&gt;</span> 
+* Mark bundle as not supporting multiuse
+<span class="token operator">&lt;</span> HTTP/1.1 <span class="token number">200</span> OK
+<span class="token operator">&lt;</span> Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">18</span>:42:59 GMT
+<span class="token operator">&lt;</span> Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span> Last-Modified: Sun, <span class="token number">19</span> Mar <span class="token number">2023</span> <span class="token number">19</span>:04:46 GMT
+<span class="token operator">&lt;</span> ETag: <span class="token string">"60-5f7457bd64f80"</span>
+<span class="token operator">&lt;</span> Accept-Ranges: bytes
+<span class="token operator">&lt;</span> Content-Length: <span class="token number">96</span>
+<span class="token operator">&lt;</span> Content-Type: text/plain
+<span class="token operator">&lt;</span> 
+GET /http/HTTP-1.1/ HTTP/1.0
+User-Agent: curl/7.38.0
+Host: www.redes.unlp.edu.ar
+Accept: */*
+
+* Connection <span class="token comment">#0 to host www.redes.unlp.edu.ar left intact</span>
+</pre><ol>
+<li><code>HTTP/1.1 200 OK</code>: Indica que la solicitud fue exitosa.</li>
+<li><code>Server: Apache/2.4.56 (Unix)</code>: El servidor que sirve el recurso está utilizando Apache versión 2.4.56 en un sistema Unix.</li>
+<li><code>Last-Modified: Sun, 19 Mar 2023 19:04:46 GMT</code>: La última vez que se modificó el recurso fue el 19 de marzo de 2023.</li>
+<li><code>Content-Length: 96</code>: El tamaño del contenido es de 96 bytes.</li>
+<li><code>Content-Type: text/plain</code>: El tipo de contenido es texto sin formato.</li>
+</ol>
+<p>El cuerpo de la respuesta es un texto que parece una solicitud HTTP en sí misma:</p>
+<pre data-role="codeBlock" data-info="plaintext" class="language-plaintext">GET /http/HTTP-1.1/ HTTP/1.0
+User-Agent: curl/7.38.0
+Host: www.redes.unlp.edu.ar
+Accept: */*
+</pre><p>Este contenido es probablemente parte del ejercicio, pero es confuso ver una “solicitud HTTP” como contenido en una respuesta a una solicitud HTTP.</p>
+<p><strong>b. Desde la consola ejecute el comando telnet <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a> 80 y luego pegue el contenido que tiene almacenado en el portapapeles. ¿Qué ocurre luego de hacerlo?</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token variable"><span class="token variable">`</span>telnet www.redes.unlp.edu.ar <span class="token number">80</span><span class="token variable">`</span></span>
+</pre><p>Una vez que la conexión esté establecida, pegue el contenido que obtuvo de la URL <code>/extras/prueba-http-1-0.txt</code> y presione Enter dos veces para enviar la solicitud.</p>
+<p>Recuerde que <code>telnet</code> es muy sensible al formato, así que asegúrese de copiar y pegar la solicitud HTTP correctamente.</p>
+<pre data-role="codeBlock" data-info="html" class="language-html">Trying 172.28.0.50...
+Connected to www.redes.unlp.edu.ar.
+Escape character is '^]'.
+GET /http/HTTP-1.1/ HTTP/1.0
+User-Agent: curl/7.38.0
+Host: www.redes.unlp.edu.ar
+Accept: */*
+
+HTTP/1.1 200 OK
+Date: Sun, 03 Sep 2023 19:12:25 GMT
+Server: Apache/2.4.56 (Unix)
+Last-Modified: Sun, 19 Mar 2023 19:04:46 GMT
+ETag: "760-5f7457bd64f80"
+Accept-Ranges: bytes
+Content-Length: 1888
+Connection: close
+Content-Type: text/html
+
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Protocolo HTTP: versiones<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>description<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>author<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token comment">&lt;!-- Le styles --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../../bootstrap/css/bootstrap.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../../css/style.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../../bootstrap/css/bootstrap-responsive.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token comment">&lt;!-- HTML5 shim, for IE6-8 support of HTML5 elements --&gt;</span>
+    <span class="token comment">&lt;!--[if lt IE 9]&gt;
+      &lt;script src="./bootstrap/js/html5shiv.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrap<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>navbar navbar-inverse navbar-fixed-top<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>navbar-inner<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>brand<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../../index.html<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>icon-home icon-white<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>brand<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://catedras.info.unlp.edu.ar<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Redes y Comunicaciones<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>brand<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.info.unlp.edu.ar<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Facultad de Inform<span class="token entity named-entity" title="á">&amp;aacute;</span>tica<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>brand<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.unlp.edu.ar<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>UNLP<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>Ejemplo del protocolo HTTP 1.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+        Esta p<span class="token entity named-entity" title="á">&amp;aacute;</span>gina se visualiza utilizando HTTP 1.1. Utilizando el capturador
+        de paquetes analice cuantos flujos utiliza el navegador para visualizar la p&amp;
+        aacute;gina con sus im<span class="token entity named-entity" title="á">&amp;aacute;</span>genes en contraposici<span class="token entity named-entity" title="ó">&amp;oacute;</span>n con el protocolo 
+        HTTP/1.0.
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Imagen de ejemplo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>13532-tuxkiller03green.png<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>800px<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span> 
+    
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>footer<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>muted credit<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Redes y Comunicaciones<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span>
+Connection closed by foreign host.
+</pre><p>El uso del comando <code>telnet</code> muestra cómo establecer una conexión manual con un servidor web y enviar una solicitud HTTP. En este caso, la conexión fue exitosa, como lo indica la respuesta <code>HTTP/1.1 200 OK</code> del servidor. La conexión se cerró después de completar la transacción, lo cual es típico del protocolo HTTP/1.0. Esta forma de interactuar con servidores web es básica y generalmente se utiliza para fines de diagnóstico o educativos.</p>
+<p><strong>c. Repita el proceso anterior, pero copiando la salida del recurso /extras/prueba-http-1-1.txt. Verifique que debería poder pegar varias veces el mismo contenido sin tener que ejecutar telnet nuevamente.</strong></p>
+<p>Es lo mismo perono se cierra de forma inmediata * preguntar</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-16">Pregunta 16</h4>
 
+<p>En base a lo obtenido en el ejercicio anterior, responda:</p>
+<p><em><strong>¿Qué está haciendo al ejecutar el comando telnet? ¿Qué lo diferencia con curl?</strong></em></p>
+<table>
+<tbody><tr><td>Telnet</td><td>Curl</td></tr>
+<tr><td>
+<p>Cuando ejecutas el comando <code>telnet</code>, estás estableciendo una conexión de red cruda con el servidor en un puerto específico, en este caso, el puerto 80 para HTTP. Una vez que se establece la conexión, puedes enviar comandos de texto crudo y recibir respuestas del servidor. <code>telnet</code> es más bajo nivel y requiere que escribas manualmente las solicitudes HTTP.</p>
+</td><td>
+<p><code>curl</code>, por otro lado, es una herramienta de línea de comandos que transfiere datos con URL y entiende HTTP. Realiza automáticamente muchas de las cosas que tendrías que hacer manualmente con <code>telnet</code>, como enviar el método GET, establecer encabezados, y más.</p>
+</td></tr>
+</tbody></table>
+<p><em><strong>Observe la definición de método y recurso en la RFC. Luego responda, ¿Qué método HTTP utilizó?</strong></em></p>
+<p>En los ejemplos anteriores, se utilizó el método HTTP <code>GET</code>, que es el método más común para solicitar un recurso del servidor.</p>
+<p><em><strong>¿Qué recurso solicitó?</strong></em></p>
+<p>Se solicitó el recurso <code>/extras/prueba-http-1-0.txt</code> en el primer caso y <code>/extras/prueba-http-1-1.txt</code> en el segundo caso, ambos desde el dominio <code>www.redes.unlp.edu.ar</code>.</p>
+<p><em><strong>¿Qué diferencias notó entre los dos casos? ¿Puede explicar por qué?</strong></em></p>
+<p>Uno de los principales cambios entre HTTP/1.0 y HTTP/1.1 es la persistencia de la conexión. En HTTP/1.0, la conexión generalmente se cierra después de una sola solicitud/resistencia. En HTTP/1.1, la conexión puede ser “persistente”, permitiendo múltiples solicitudes y respuestas en la misma conexión. Esto a menudo hace que HTTP/1.1 sea más eficiente porque reutiliza la conexión existente, evitando el costo de tiempo y recursos para establecer una nueva conexión para cada solicitud.</p>
+<p><em><strong>¿Cuál de los dos casos le parece más eficiente? Piense en el ejercicio donde analizó la cantidad de requerimientos necesarios para obtener una página con estilos, javascripts e imágenes.</strong></em></p>
+<p>HTTP/1.1 generalmente es más eficiente debido a la persistencia de la conexión, lo cual es especialmente útil cuando se cargan páginas web con múltiples recursos como imágenes, hojas de estilo, y scripts de JavaScript.</p>
+<p><em><strong>El caso elegido, ¿puede traer asociado algún problema?</strong></em></p>
+<p>Si bien HTTP/1.1 es más eficiente en términos de recursos de red y tiempo debido a las conexiones persistentes, también podría llevar a problemas como el agotamiento de recursos si demasiadas conexiones se mantienen abiertas pero inactivas durante demasiado tiempo. Además, el uso de conexiones persistentes podría complicar el diseño del servidor, ya que necesita ser capaz de manejar múltiples solicitudes en una sola conexión de manera efectiva.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-17">Pregunta 17</h4>
 
+<p>En el siguiente ejercicio veremos la diferencia entre los métodos POST y GET. Para ello, será necesario utilizar la VM y la herramienta Wireshark. Antes de iniciar considere</p>
+<ul>
+<li>
+<p>Capture los paquetes utilizando la interfaz con IP 172.28.0.1. (Menú “Capture -&gt;Options”. Luego seleccione la interfaz correspondiente y presione Start).</p>
+</li>
+<li>
+<p>Para que el analizador de red sólo nos muestre los mensajes del protocolo http introduciremos la cadena ‘http’ (sin las comillas) en la ventana de especificación de filtros de visualización (display-filter). Si no hiciéramos esto veríamos todo el tráfico que es capaz de capturar nuestra placa de red. De los paquetes que son capturados, aquel que esté seleccionado será mostrado en forma detallada en la sección que está justo debajo. Como sólo estamos interesados en http ocultaremos toda la información que no es relevante para esta práctica (Información de trama, Ethernet, IP y TCP). Desplegar la información correspondiente al protocolo HTTP bajo la leyenda “Hypertext Transfer Protocol”.</p>
+</li>
+<li>
+<p>Para borrar la cache del navegador, deberá ir al menu “Herramientas-&gt;Borrar historial reciente”. Alternativamente puede utilizar Ctrl+F5 en el navegador para forzar la petición HTTP evitando el uso de caché del navegador.</p>
+</li>
+<li>
+<p>En caso de querer ver de forma simplificada el contenido de una comunicación http, utilice el botón derecho sobre un paquete HTTP perteneciente al flujo capturado y seleccione la opción Follow TCP Stream</p>
+</li>
+</ul>
+<p><strong>a. Abra un navegador e ingrese a la URL: <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a> e ingrese al link en la sección “Capa de Aplicación” llamado “Métodos HTTP”. En la página mostrada se visualizan dos nuevos links llamados: Método GET y Método POST. Ambos muestran un formulario como el siguiente:</strong></p>
+<p><em><strong>b. Analice el código HTML.</strong></em></p>
+<p><em><strong>c. Utilizando el analizador de paquetes Wireshark capture los paquetes enviados y recibidos al presionar el botón Enviar.</strong></em></p>
+<p><em><strong>d. ¿Qué diferencias detectó en los mensajes enviados por el cliente?</strong></em></p>
+<p><em><strong>e. ¿Observó alguna diferencia en el browser si se utiliza un mensaje u otro?</strong></em></p>
+<blockquote>
+<p>Este ejercicio me lo voy a guardar para hacer en clase</p>
+</blockquote>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-18">Pregunta 18</h4>
 
+<p>HTTP es un protocolo stateless, para sortear esta carencia muchos servicios se apoyan en el uso de Cookies.</p>
+<p><em><strong>¿En qué RFC se definió dicha funcionalidad?</strong></em></p>
+<p>Las cookies en HTTP están definidas en varias RFC (Request for Comments), pero la más actual y pertinente es la RFC 6265, que se titula “HTTP State Management Mechanism”. Esta RFC fue publicada en abril de 2011 y describe cómo los servidores web pueden establecer cookies y cómo se gestionan y almacenan en el navegador web.</p>
+<p><em><strong>Investigue cuál es el principal uso que se le da a Set-Cookie y Cookie en HTTP.</strong></em></p>
+<table><tbody><tr><td>Set-Cookie</td><td>Cookie</td></tr>
+<tr><td>
+<p>Cuando un servidor web responde a una solicitud HTTP, puede incluir un encabezado <code>Set-Cookie</code>. Este encabezado instruye al navegador para almacenar la cookie y el valor asignado.</p>
+</td><td>
+<p>Una vez que el navegador ha almacenado una cookie, la enviará de vuelta al servidor cada vez que realice una nueva solicitud al mismo dominio, usando el encabezado <code>Cookie</code>.</p>
+</td></tr>
+</tbody></table>
+<p>Set Cookie ejemplo:</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">Set-Cookie: <span class="token assign-left variable">sessionId</span><span class="token operator">=</span>abc123<span class="token punctuation">;</span> <span class="token assign-left variable">Path</span><span class="token operator">=</span>/<span class="token punctuation">;</span> <span class="token assign-left variable">Expires</span><span class="token operator">=</span>Wed, 09 Jun <span class="token number">2021</span> <span class="token number">10</span>:18:14 GMT
+</pre><p>Aquí, el servidor le está diciendo al navegador que guarde una cookie llamada <code>sessionId</code> con el valor <code>abc123</code>. También se establecen atributos adicionales como el “Path” y “Expires”.</p>
+<p>Cookie ejemplo:</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">Cookie: <span class="token assign-left variable">sessionId</span><span class="token operator">=</span>abc123
+</pre><p>El servidor puede entonces utilizar esta cookie para recuperar el estado del cliente, como la información de inicio de sesión, preferencias, etc.</p>
+<p><em><strong>¿Qué atributo de la RFC original fue en parte aprovechado para la implementación?</strong></em></p>
+<p>La implementación de cookies se basa en gran parte en el atributo “SetCookie” de la RFC original (RFC 2109), que se centraba en establecer cookies y manejar su formato. Sin embargo, la RFC 6265 se introdujo para corregir algunas deficiencias y ambigüedades en el enfoque anterior y para mejorar la seguridad y la privacidad en el uso de cookies</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-19">Pregunta 19</h4>
 
+<p><em><strong>¿Cuál es la diferencia entre un protocolo binario y uno basado en texto?</strong></em></p>
+<table>
+<tbody><tr><td>Protocolo Basado en Texto</td><td>Protocolo Binario</td></tr>
+<tr><td>
+<p><strong>Legible por Humanos</strong>: Los mensajes se codifican en un formato de texto que generalmente es legible para los humanos.</p>
+<p><strong>Menos Eficiente</strong>: Dado que los datos se transmiten como texto, suelen ser menos eficientes en términos de tamaño y velocidad en comparación con los protocolos binarios.</p>
+<p><strong>Fácil de Depurar</strong>: Los protocolos basados en texto son más fáciles de depurar y diagnosticar debido a su legibilidad.</p>
+<p><strong>Ejemplos</strong>: HTTP/1.0, HTTP/1.1, SMTP, FTP, etc.</p>
+</td><td>
+<p><strong>No Legible por Humanos</strong>: Los mensajes se codifican en un formato binario que no es legible para los humanos.</p>
+<p><strong>Más Eficiente</strong>: Generalmente más eficiente en términos de tamaño y velocidad, ya que los datos son más compactos.</p>
+<p><strong>Complejidad en Depuración</strong>: Puede ser más difícil de depurar y diagnosticar problemas debido a su falta de legibilidad.</p>
+<p><strong>Ejemplos</strong>: Protocol Buffers, HTTP/2, WebSockets en modo binario, etc.</p>
+</td></tr>
+</tbody></table>
+<p><em><strong>¿de que tipo de protocolo se trata HTTP/1.0, HTTP/1.1 y HTTP/2?</strong></em></p>
+<table>
+<tbody><tr><td>HTTP/1.0</td><td>HTTP/1.1</td><td>HTTP/2</td></tr><tr>
+</tr><tr><td>
+<p>Es un protocolo basado en texto. Fue uno de los primeros protocolos de la capa de aplicación diseñados para la World Wide Web.</p>
+</td><td>
+<p>También es un protocolo basado en texto y es una extensión de HTTP/1.0. Introduce varias mejoras como conexiones persistentes y chunked transfer encoding, pero sigue siendo fundamentalmente un protocolo basado en texto.</p>
+</td><td>
+<p>Este es un protocolo binario. Fue desarrollado para superar las deficiencias de rendimiento en HTTP/1.x al minimizar la latencia, permitiendo múltiples intercambios de mensajes simultáneos en la misma conexión.</p>
+</td></tr><tr>
+</tr></tbody></table>
+<p>En resumen, tanto HTTP/1.0 como HTTP/1.1 son protocolos basados en texto, mientras que HTTP/2 es un protocolo binario. HTTP/2 ofrece varias ventajas de rendimiento sobre sus predecesores, pero la adopción de un formato binario hace que no sea directamente legible por humanos como las versiones anteriores.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-20">Pregunta 20</h4>
 
+<p>Analice de que se tratan las siguientes características de HTTP/2: stream, frame, server-push</p>
+<ul>
+<li><strong>Stream</strong>: Permite múltiples interacciones cliente-servidor en una única conexión TCP, mejorando la eficiencia.</li>
+<li><strong>Frame</strong>: Son las unidades básicas de comunicación en HTTP/2 y ayudan en la multiplexación de los streams.</li>
+<li><strong>Server-Push</strong>: El servidor puede enviar recursos al cliente proactivamente, reduciendo la necesidad de múltiples solicitudes y mejorando la velocidad de carga.</li>
+</ul>
+<p>Estas características hacen que HTTP/2 sea más rápido y eficiente en comparación con sus predecesores.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h4 class="mume-header" id="pregunta-21">Pregunta 21</h4>
 
+<p>Responder las siguientes preguntas:</p>
+<p><em><strong>a. ¿Qué función cumple la cabecera Host en HTTP 1.1?</strong></em></p>
+<p>La cabecera “Host” es utilizada en HTTP/1.1 para especificar el dominio al cual se está enviando la petición. Esto permite que múltiples dominios puedan compartir una única dirección IP.</p>
+<p><em><strong>¿Existía en HTTP 1.0?</strong></em></p>
+<p>No era obligatorio en HTTP/1.0, pero en HTTP/1.1 se hizo obligatorio para resolver el problema de alojar múltiples sitios web en una única dirección IP.</p>
+<p><em><strong>¿Qué sucede en HTTP/2?</strong></em></p>
+<p>En HTTP/2, el concepto de la cabecera “Host” se mantiene para la compatibilidad, pero generalmente se entrega una vez al establecer la conexión y se reutiliza para solicitudes adicionales.</p>
+<p>b. ¿Cómo quedaría en HTTP/2 el siguiente pedido realizado en HTTP/1.1 si se está usando https?</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">GET /index.php HTTP/1.1
+Host: www.info.unlp.edu.ar
+</pre><p>En HTTP/2, la información de la solicitud se envía como un conjunto de “frames” dentro de un “stream”. Estos “frames” pueden contener la misma información que las cabeceras en HTTP/1.1 pero en un formato más eficiente.</p>
+<p>Si estuvieras haciendo la misma solicitud usando HTTP/2 sobre HTTPS, la petición <code>GET /index.php HTTP/1.1</code> se dividiría en un frame de cabecera en un stream específico. El “Host” se convertiría en una de las cabeceras en este frame y seguiría siendo <code>www.info.unlp.edu.ar</code>.</p>
+<p>No hay una forma textual simple de representar esto como en HTTP/1.1, ya que HTTP/2 utiliza un formato binario. Sin embargo, conceptualmente, la petición es similar pero más eficiente en cuanto a la utilización de la red.</p>
 
       </div>
       <div class="md-sidebar-toc">
