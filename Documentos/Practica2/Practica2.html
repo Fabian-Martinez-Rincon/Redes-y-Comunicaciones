@@ -19,9 +19,398 @@
     <body for="html-export">
       <div class="mume markdown-preview  ">
       <h1 align="center"> Práctica 2 Capa de Aplicación - HTTP</h1>
+<blockquote>
+<p>Aclaracion: El dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a> solo existe dentro de la VM provista por la cátedra, no es válido en Internet, lo que implica que todos los ejercicios de esta práctica y las siguientes en las que se utilice dicho domino solo podrán ser resueltos dentro dicha VM</p>
+</blockquote>
+<ul>
+<li><a href="https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones">El resto de las practicas</a></li>
+</ul>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<ul>
+<li><a href="#pregunta-2">2) ¿Cuál es la función de la capa de aplicación?</a></li>
+<li><a href="#pregunta-3">3) Si dos procesos deben comunicarse</a></li>
+<li><a href="#pregunta-4">4) Explique brevemente cómo es el modelo Cliente/Servidor</a></li>
+<li><a href="#pregunta-5">5) Describa la funcionalidad de la entidad genérica “Agente de usuario” o “User agent”</a></li>
+<li><a href="#pregunta-6">6) Observe el indice de la RFC2616, busque el apartado donde se describe el requerimiento y la respuesta.</a></li>
+<li><a href="#pregunta-7">7) Utilizando la VM, abra una terminal e investigue sobre el comando curl</a></li>
+<li><a href="#pregunta-8">8) Ejecute el comando curl sin ningún parámetro adicional y acceda a www.redes.unlp.edu.ar</a></li>
+<li><a href="#pregunta-9">9) Ejecute a continuación los siguientes comandos</a></li>
+<li><a href="#pregunta-10">10) Investigue cómo define las cabeceras la RFC</a></li>
+<li><a href="#pregunta-11">11) Utilizando curl, realice un requerimiento con el método HEAD al sitio www.redes.unlp.edu.ar e indique</a></li>
+<li><a href="#pregunta-12">12) En HTTP/1.0, ¿cómo sabe el cliente que ya recibió todo el objeto solicitado completamente?</a></li>
+<li><a href="#pregunta-13">13) Investigue los distintos tipos de códigos de retorno de un servidor web y su significado en la RFC</a></li>
+<li><a href="#pregunta-14">14) Utilizando curl, acceda al sitio www.redes.unlp.edu.ar/restringido/index.php </a></li>
+<li><a href="#pregunta-15">15) Utilizando la VM, realice las siguientes pruebas</a></li>
+<li><a href="#pregunta-16">16) En base a lo obtenido en el ejercicio anterior, responda</a></li>
+<li><a href="#pregunta-17">17) En el siguiente ejercicio veremos la diferencia entre los métodos POST y GET.</a></li>
+<li><a href="#pregunta-18">18) HTTP es un protocolo stateless, para sortear esta carencia muchos servicios</a></li>
+<li><a href="#pregunta-19">19) ¿Cuál es la diferencia entre un protocolo binario y uno basado en texto? </a></li>
+<li><a href="">20) nalice de que se tratan las siguientes características de HTTP/2:</a></li>
+<li><a href="#pregunta-21">21) Responder las siguientes preguntas</a></li>
+</ul>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-2">Pregunta 2</h4>
+
+<p><em><strong>¿Cuál es la función de la capa de aplicación?</strong></em></p>
+<p>La capa de aplicación es donde las aplicaciones de red y sus protocolos residen, es la capa que hace de interfaz entre los ususarios finales y el resto de la red.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-3">Pregunta 3</h4>
+
+<p>Si dos procesos deben comunicarse:</p>
+<p><em><strong>¿Cómo podrían hacerlo si están en diferentes máquinas?</strong></em></p>
+<p>Si están en diferentes máquinas, ambos procesos usan sockets que se asocia a un puerto, el cual sirve para enviar o recibir datos entre las máquinas correspondientes.</p>
+<p><em><strong>Y si están en la misma máquina, ¿qué alternativas existen?</strong></em></p>
+<p>Si están en la misma máquina, pueden usar los mecanismos provistos por sistema operativo basandose en su pid para identificarse</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-4">Pregunta 4</h4>
+
+<p><em><strong>Explique brevemente cómo es el modelo Cliente/Servidor</strong></em></p>
+<p>El modelo Cliente/Servidor tiene dos participantes. Un cliente hace peticiones a un servidor quien es el que va a responder a esas peticiones. Dichas peticiones pueden ser tanto de envío como de recpción de información. Generalmente si bien un servidor puede responder a multiples clientes, los clientes no interactuan entre sí.</p>
+<p><em><strong>De un ejemplo de un sistema Cliente/Servidor en la “vida cotidiana”</strong></em></p>
+<p>Un ejemplo de eso sería Netflix, al cual nuestro cliente web o browser le realizará peticiones como, el catálogo de películas, la imagen y el video de las películas, etc.</p>
+<p><em><strong>Un ejemplo de un sistema informático que siga el modelo Cliente/Servidor.</strong></em></p>
+<p>Si nos referimos a sistemas específicos, por ejemplo, el email sería un buen caso de estudio, ya que tenemos un servidor de mails que almacena la bandeja de los clientes y envía los mails a sus destinatarios.</p>
+<p>Otros ejemplos de modelos serían el peer to peer, en el cual tenemos dos usuarios en un mismo escalafón, comunicandosé y el bittorrent protocol, en el cual tendremos seeders(poseedores del archivo completo) y leechers(posdedores del archivo parcial), a los cuales nos conectaremos para poder descargar el archivo</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-5">Pregunta 5</h4>
+
+<p>Describa la funcionalidad de la entidad genérica <strong>Agente de usuario</strong> o <strong>User agent</strong></p>
+<p>Esta es una linea del header que indica el tipo de programa que hizo el pedido.<br>
+Por ejemplo: Mozilla/5.0. Esta línea nos sirve para poder diferenciar y enviar distinto contenido dependiendo de la aplicación, por ejemplo para distintos navegadores con distintas versiones o soporte de herramientas, con la misma URL.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-6">Pregunta 6</h4>
+
+<p>Observe el indice de la RFC2616, busque el apartado donde se describe el requerimiento y la respuesta.</p>
+<p><em><strong>¿Qué son y en qué se diferencian HTML y HTTP?</strong></em></p>
+<p><strong>HTML o HyperText Markup Language</strong> es un lenguaje de marcas usado para dar estructura a las páginas web.</p>
+<p><strong>HTTP o HyperText Tranfer Protocol</strong> es un protocolo de capa de aplicaion utilizado para comunicar dos programas, un cliente y un servidor; HTTP define los mensajes http de la comunicación y como se intercambian.</p>
+<p><em><strong>¿En que entidad ubicaría a HTML?</strong></em></p>
+<p>El ámbito de las tecnologías web o de redes, HTML generalmente se ubicaría en la capa de aplicación si hablamos del modelo OSI.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-7">Pregunta 7</h4>
+
+<p>Utilizando la VM, abra una terminal e investigue sobre el comando curl. Analice para qué sirven los siguientes parámetros (-I, -H, -X, -s)</p>
+<p><em><strong>Comando <code>curl</code></strong></em></p>
+<p><code>curl</code> es una herramienta de línea de comandos que permite hacer solicitudes a servidores usando diferentes protocolos, como HTTP, FTP y muchos más. Es muy útil para pruebas de APIs, descargas automatizadas de archivos y muchas otras tareas relacionadas con transferencia de datos a través de redes.</p>
+<p><em><strong>Parámetros de <code>curl</code></strong></em></p>
+<p><strong><code>-I</code></strong>: Este parámetro le dice a <code>curl</code> que realice una solicitud HTTP HEAD para obtener solamente los encabezados HTTP del recurso especificado. Es útil cuando quieres ver metadatos sobre un recurso web sin descargar todo el contenido.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-I</span> http://example.com
+</pre><p><strong><code>-H</code></strong>: Se utiliza para añadir un encabezado personalizado a la solicitud HTTP. Esto es útil, por ejemplo, cuando se necesita pasar un token de autenticación.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer YOUR_ACCESS_TOKEN"</span> http://example.com
+</pre><p><strong><code>-X</code></strong>: Con este parámetro puedes especificar un método de solicitud HTTP personalizado, como GET, POST, PUT, DELETE, etc.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST http://example.com
+</pre><p><strong><code>-s</code></strong>: Este es el modo “silencioso”. Al usar este parámetro, <code>curl</code> no muestra ningún mensaje de error ni información sobre el progreso de la transferencia, haciendo que la salida sea más limpia si todo va bien.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-s</span> http://example.com
+</pre><img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-8">Pregunta 8</h4>
+
+<p>Ejecute el comando curl sin ningún parámetro adicional y acceda a <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a>. Luego res- ponda:</p>
+<p>a. <em><strong>¿Cuántos requerimientos realizó y qué recibió?</strong></em><br>
+Pruebe redirigiendo la salida(&gt;)del comando curl a un archivo con extensión html y abrirlo con un navegador.</p>
+<p>Se realizará un solo requerimiento <code>HTTP GET</code> para descargar el HTML de la página. No se descargarán recursos adicionales como imágenes, CSS o archivos JavaScript. Al redirigir la salida a un archivo HTML y abrirlo con un navegador, verás solo el HTML sin los recursos adicionales.</p>
+<p>b. <em><strong>¿Cómo funcionan los atributos href de los tags link e img en html?</strong></em></p>
+<p>Crea un enlace a otras páginas de internet, archivos o ubicaciones dentro de la misma página, direcciones de correo, o cualquier otra URL</p>
+<p>c. <em><strong>Para visualizar la página completa con imágenes como en un navegador, ¿alcanza con realizar un único requerimiento?</strong></em></p>
+<p>No, un solo requerimiento con <code>curl</code> solo obtendrá el HTML principal de la página. No descargarás otros recursos como imágenes, CSS y archivos JavaScript.</p>
+<p><em><strong>¿Cuántos requerimientos serían necesarios para obtener una página que tiene dos CSS, dos Javascript y tres imágenes?</strong></em></p>
+<p>Para una página que tiene dos CSS, dos JavaScript y tres imágenes, necesitarías realizar 8 requerimientos en total: uno para el HTML principal, dos para los archivos CSS, dos para los archivos JavaScript y tres para las imágenes.</p>
+<p><em><strong>Diferencie como funcionaría un navegador respecto al comando curl ejecutado previamente</strong></em></p>
+<table><tbody><tr><td>Navegador</td><td>Curl</td></tr>
+<tr><td>
+<p>Un navegador web generalmente realiza todos estos requerimientos automáticamente para renderizar la página completa. Esto incluye descargar todos los recursos vinculados en el HTML como imágenes, archivos CSS, y archivos JavaScript.</p>
+</td><td>
+<p>Por otro lado, con <code>curl</code> tendrías que hacer cada uno de estos requerimientos manualmente si quisieras obtener todos los recursos para visualizar la página de manera completa fuera de un navegador.</p>
+</td></tr>
+</tbody></table>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-9">Pregunta 9</h4>
+
+<p>Ejecute a continuación los siguientes comandos:</p>
+<p><strong>Comando</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-v</span> <span class="token parameter variable">-s</span> www.redes.unlp.edu.ar <span class="token operator">&gt;</span> /dev/null
+</pre><p><strong>Salida</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">*   Trying <span class="token number">172.28</span>.0.50:80<span class="token punctuation">..</span>.
+* Connected to www.redes.unlp.edu.ar <span class="token punctuation">(</span><span class="token number">172.28</span>.0.50<span class="token punctuation">)</span> port <span class="token number">80</span> <span class="token punctuation">(</span><span class="token comment">#0)</span>
+<span class="token operator">&gt;</span> GET / HTTP/1.1
+<span class="token operator">&gt;</span> Host: www.redes.unlp.edu.ar
+<span class="token operator">&gt;</span> User-Agent: curl/7.74.0
+<span class="token operator">&gt;</span> Accept: */*
+<span class="token operator">&gt;</span> 
+* Mark bundle as not supporting multiuse
+<span class="token operator">&lt;</span> HTTP/1.1 <span class="token number">200</span> OK
+<span class="token operator">&lt;</span> Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">15</span>:20:27 GMT
+<span class="token operator">&lt;</span> Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span> Last-Modified: Sun, <span class="token number">19</span> Mar <span class="token number">2023</span> <span class="token number">19</span>:04:46 GMT
+<span class="token operator">&lt;</span> ETag: <span class="token string">"1322-5f7457bd64f80"</span>
+<span class="token operator">&lt;</span> Accept-Ranges: bytes
+<span class="token operator">&lt;</span> Content-Length: <span class="token number">4898</span>
+<span class="token operator">&lt;</span> Content-Type: text/html
+<span class="token operator">&lt;</span> 
+<span class="token punctuation">{</span> <span class="token punctuation">[</span><span class="token number">4898</span> bytes data<span class="token punctuation">]</span>
+* Connection <span class="token comment">#0 to host www.redes.unlp.edu.ar left intact</span>
+</pre><p><strong>Comando</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-I</span> <span class="token parameter variable">-v</span> <span class="token parameter variable">-s</span> www.redes.unlp.edu.ar
+</pre><p><strong>Salida</strong></p>
+<p>Quiero preguntar, porque es basicamente lo mismo pero con los datos duplicados abajo</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">*   Trying <span class="token number">172.28</span>.0.50:80<span class="token punctuation">..</span>.
+* Connected to www.redes.unlp.edu.ar <span class="token punctuation">(</span><span class="token number">172.28</span>.0.50<span class="token punctuation">)</span> port <span class="token number">80</span> <span class="token punctuation">(</span><span class="token comment">#0)</span>
+<span class="token operator">&gt;</span> HEAD / HTTP/1.1
+<span class="token operator">&gt;</span> Host: www.redes.unlp.edu.ar
+<span class="token operator">&gt;</span> User-Agent: curl/7.74.0
+<span class="token operator">&gt;</span> Accept: */*
+<span class="token operator">&gt;</span> 
+* Mark bundle as not supporting multiuse
+<span class="token operator">&lt;</span> HTTP/1.1 <span class="token number">200</span> OK
+HTTP/1.1 <span class="token number">200</span> OK
+<span class="token operator">&lt;</span> Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">15</span>:23:45 GMT
+Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">15</span>:23:45 GMT
+<span class="token operator">&lt;</span> Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span> Last-Modified: Sun, <span class="token number">19</span> Mar <span class="token number">2023</span> <span class="token number">19</span>:04:46 GMT
+Last-Modified: Sun, <span class="token number">19</span> Mar <span class="token number">2023</span> <span class="token number">19</span>:04:46 GMT
+<span class="token operator">&lt;</span> ETag: <span class="token string">"1322-5f7457bd64f80"</span>
+ETag: <span class="token string">"1322-5f7457bd64f80"</span>
+<span class="token operator">&lt;</span> Accept-Ranges: bytes
+Accept-Ranges: bytes
+<span class="token operator">&lt;</span> Content-Length: <span class="token number">4898</span>
+Content-Length: <span class="token number">4898</span>
+<span class="token operator">&lt;</span> Content-Type: text/html
+Content-Type: text/html
+
+<span class="token operator">&lt;</span> 
+* Connection <span class="token comment">#0 to host www.redes.unlp.edu.ar left intact</span>
+</pre><p><em><strong>Explicación de los Comandos</strong></em></p>
+<table>
+<tbody><tr><td>Primer Comando</td><td>Segundo Comando</td></tr>
+<tr><td>
+<p><code>-v</code>: Modo detallado (verbose). Muestra información detallada sobre la transferencia.<br>
+<code>-s</code>: Modo silencioso. Oculta el progreso y los mensajes de error.<br>
+<code>&gt; /dev/null</code>: Redirige la salida al “agujero negro” <code>/dev/null</code>, básicamente descartando cualquier dato descargado.</p>
+</td><td>
+<p><code>-I</code>: Recupera solo los encabezados HTTP.<br>
+<code>-v</code>: Modo detallado.<br>
+<code>-s</code>: Modo silencioso.</p>
+</td></tr>
+</tbody></table>
+<p>Observe la salida y luego repita la prueba, pero previamente inicie una nueva captura en wireshark.</p>
+<p><em><strong>Uso de Wireshark</strong></em></p>
+<p>Si usas Wireshark para capturar el tráfico de red mientras ejecutas estos comandos, podrás ver todo el tráfico HTTP entre tu computadora y <code>www.redes.unlp.edu.ar</code>.</p>
+<p><em><strong>Utilice la opción Follow Stream.</strong></em></p>
+<p>Con la opción “Follow Stream” en Wireshark, puedes seguir una única conversación TCP entre tu máquina y el servidor.</p>
+<p><em><strong>¿Qué se transmitió en cada caso?</strong></em></p>
+<table>
+<tbody><tr><td>Primer Comando</td><td>Segundo comando</td></tr>
+<tr><td>
+<p>En el primer comando, se transmitirá todo el contenido HTML de la página, aunque no lo verás en la terminal debido a <code>-s</code> y <code>&gt; /dev/null</code>.</p>
+</td><td>
+<p>En el segundo comando, solo se transmitirán los encabezados HTTP debido a la opción <code>-I</code>.</p>
+</td></tr>
+</tbody></table>
+<p><em><strong>¿A que se debió esta diferencia entre lo que se transmitió y lo que se mostró en pantalla?</strong></em></p>
+<table>
+<tbody><tr><td>Primer Comando</td><td>Segundo Comando</td></tr>
+<tr><td>
+<p>En el primer caso, aunque todo el contenido HTML se transmite, no ves nada en la terminal debido a la redirección a <code>/dev/null</code>.</p>
+</td><td>
+<p>En el segundo caso, aunque estás en modo silencioso y modo detallado al mismo tiempo, el comando está configurado para mostrar solo los encabezados HTTP, así que eso es lo que deberías ver.</p>
+</td></tr>
+</tbody></table>
+<p>Si repites estos comandos mientras capturas el tráfico con Wireshark, verás la evidencia de esta actividad a nivel de paquete, lo cual puede ser muy instructivo para entender cómo funcionan las cosas “bajo el capó”.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-10">Pregunta 10</h4>
+
+<p><em><strong>Investigue cómo define las cabeceras la RFC.</strong></em></p>
+<p>La RFC (Request for Comments) que define las cabeceras HTTP es la RFC 7231 para HTTP/1.1 y es parte de un conjunto de documentos que describen todo el protocolo HTTP. Esta RFC define las cabeceras estándar que se pueden usar en las peticiones y respuestas HTTP.</p>
+<p><em><strong>a. ¿Establece todas las cabeceras posibles?.</strong></em></p>
+<p>No, la RFC 7231 no establece todas las cabeceras posibles. Define un conjunto de cabeceras estándar, pero los desarrolladores y proveedores de servicios web pueden definir sus propias cabeceras personalizadas si es necesario. Las cabeceras personalizadas suelen empezar con “X-”, aunque esta convención se está volviendo menos común.</p>
+<p><em><strong>b. ¿Cuántas cabeceras viajaron en el requerimiento y en la respuesta del ejercicio anterior?</strong></em></p>
+<p>Las siguientes cabeceras viajaron en el requerimiento:</p>
+<ol>
+<li>Host</li>
+<li>User-Agent</li>
+<li>Accept</li>
+</ol>
+<p>Y en la respuesta:</p>
+<ol>
+<li>Date</li>
+<li>Server</li>
+<li>Last-Modified</li>
+<li>ETag</li>
+<li>Accept-Ranges</li>
+<li>Content-Length</li>
+<li>Content-Type</li>
+</ol>
+<p>En el requerimiento viajaron 3 cabeceras y en la respuesta 7 cabeceras.</p>
+<p><em><strong>c. ¿La cabecera Date es una de las definidas en la RFC? ¿Qué indica?</strong></em></p>
+<p>Sí, la cabecera “Date” está definida en la RFC 7231. Esta cabecera representa la fecha y hora en que el mensaje fue enviado. La fecha y hora se presentan en un formato específico, como lo indica la RFC. Este campo es especialmente útil para el control de caché y para comprender cuándo se generó o modificó un recurso específico.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-11">Pregunta 11</h4>
+
+<p>Utilizando curl, realice un requerimiento con el método HEAD al sitio <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a> e indique:</p>
+<p>Tenemos que ejecutar el siguiente comando</p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell"><span class="token function">curl</span> <span class="token parameter variable">-I</span> www.redes.unlp.edu.ar
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell">HTTP/1.1 <span class="token number">200</span> OK
+Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">16</span>:02:57 GMT
+Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+Last-Modified: Sun, <span class="token number">19</span> Mar <span class="token number">2023</span> <span class="token number">19</span>:04:46 GMT
+ETag: <span class="token string">"1322-5f7457bd64f80"</span>
+Accept-Ranges: bytes
+Content-Length: <span class="token number">4898</span>
+Content-Type: text/html
+</pre><p><em><strong>a. ¿Qué información brinda la primer línea de la respuesta?</strong></em></p>
+<p>La primera línea “HTTP/1.1 200 OK” indica que se está utilizando el protocolo HTTP versión 1.1 y que la solicitud fue exitosa, representada por el código de estado 200 (“OK”).</p>
+<p><em><strong>b. ¿Cuántos encabezados muestra la respuesta?</strong></em></p>
+<p>Hay 7 encabezados en la respuesta: Date, Server, Last-Modified, ETag, Accept-Ranges, Content-Length, y Content-Type.</p>
+<p><em><strong>c. ¿Qué servidor web está sirviendo la página?</strong></em></p>
+<p>El servidor web que sirve la página es Apache, versión 2.4.56, corriendo en Unix. Esto se puede ver en el encabezado “Server: Apache/2.4.56 (Unix)”.</p>
+<p><em><strong>d. ¿El acceso a la página solicitada fue exitoso o no?</strong></em></p>
+<p>El acceso fue exitoso, como lo indica el código de estado 200 (“OK”) en la primera línea de la respuesta.</p>
+<p><em><strong>e. ¿Cuándo fue la última vez que se modificó la página?</strong></em></p>
+<p>La última vez que se modificó la página fue el 19 de marzo de 2023, a las 19:04:46 GMT. Esto se puede ver en el encabezado “Last-Modified: Sun, 19 Mar 2023 19:04:46 GMT”.</p>
+<p><em><strong>f. Solicite la página nuevamente con curl usando GET, pero esta vez indique que quiere obtenerla sólo si la misma fue modificada en una fecha posterior a la que efectivamente fue modificada.</strong></em></p>
+<p><em><strong>¿Cómo lo hace?</strong></em></p>
+<p>Para solicitar la página sólo si ha sido modificada después de una fecha específica, puedes utilizar el encabezado <code>If-Modified-Since</code> en tu solicitud <code>GET</code> con <code>curl</code>. Este encabezado le dice al servidor que sólo devuelva el recurso si ha sido modificado después de la fecha especificada.</p>
+<p>Por ejemplo, la última vez que la página fue modificada, según la información que tienes, fue el “Sun, 19 Mar 2023 19:04:46 GMT”. Puedes realizar una solicitud <code>GET</code> utilizando <code>curl</code> como sigue:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-H</span> <span class="token string">"If-Modified-Since: Sun, 19 Mar 2023 20:00:00 GMT"</span> <span class="token parameter variable">-v</span> www.redes.unlp.edu.ar
+</pre><p><em><strong>¿Qué resultado obtuvo?</strong></em></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell">*   Trying <span class="token number">172.28</span>.0.50:80<span class="token punctuation">..</span>.
+* Connected to www.redes.unlp.edu.ar <span class="token punctuation">(</span><span class="token number">172.28</span>.0.50<span class="token punctuation">)</span> port <span class="token number">80</span> <span class="token punctuation">(</span><span class="token comment">#0)</span>
+<span class="token operator">&gt;</span> GET / HTTP/1.1
+<span class="token operator">&gt;</span> Host: www.redes.unlp.edu.ar
+<span class="token operator">&gt;</span> User-Agent: curl/7.74.0
+<span class="token operator">&gt;</span> Accept: */*
+<span class="token operator">&gt;</span> If-Modified-Since: Sun, <span class="token number">19</span> Mar <span class="token number">2023</span> <span class="token number">20</span>:00:00 GMT
+<span class="token operator">&gt;</span> 
+* Mark bundle as not supporting multiuse
+<span class="token operator">&lt;</span> HTTP/1.1 <span class="token number">304</span> Not Modified
+<span class="token operator">&lt;</span> Date: Sun, 03 Sep <span class="token number">2023</span> <span class="token number">16</span>:22:07 GMT
+<span class="token operator">&lt;</span> Server: Apache/2.4.56 <span class="token punctuation">(</span>Unix<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span> Last-Modified: Sun, <span class="token number">19</span> Mar <span class="token number">2023</span> <span class="token number">19</span>:04:46 GMT
+<span class="token operator">&lt;</span> ETag: <span class="token string">"1322-5f7457bd64f80"</span>
+<span class="token operator">&lt;</span> Accept-Ranges: bytes
+<span class="token operator">&lt;</span> 
+* Connection <span class="token comment">#0 to host www.redes.unlp.edu.ar left intact</span>
+</pre><p>La respuesta del servidor fue “HTTP/1.1 304 Not Modified”, lo cual indica que la página no ha sido modificada desde la fecha y hora que especificaste en el encabezado “If-Modified-Since”. Esto es exactamente lo que esperaríamos si estamos usando el encabezado “If-Modified-Since” correctamente.</p>
+<p><em><strong>¿Puede explicar para qué sirve?</strong></em></p>
+<p>El encabezado <strong>If-Modified-Since</strong> es útil para optimizar el ancho de banda y mejorar la velocidad de la carga de la página. Si el recurso no ha sido modificado desde la última vez que fue solicitado, se puede cargar desde la caché del cliente en lugar de descargarse de nuevo desde el servidor, ahorrando tiempo y recursos tanto para el cliente como para el servidor.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-12">Pregunta 12</h4>
+
+<p>En HTTP/1.0, ¿cómo sabe el cliente que ya recibió todo el objeto solicitado completamente? ¿Y en HTTP/1.1?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-13">Pregunta 13</h4>
+
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-14">Pregunta 14</h4>
+
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-15">Pregunta 15</h4>
+
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-16">Pregunta 16</h4>
+
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-17">Pregunta 17</h4>
+
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-18">Pregunta 18</h4>
+
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-19">Pregunta 19</h4>
+
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-20">Pregunta 20</h4>
+
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h4 class="mume-header" id="pregunta-21">Pregunta 21</h4>
+
 
       </div>
-      <div class="md-sidebar-toc"></div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-2" class="md-toc-link">
+            <p>Pregunta 2</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-3" class="md-toc-link">
+            <p>Pregunta 3</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-4" class="md-toc-link">
+            <p>Pregunta 4</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-5" class="md-toc-link">
+            <p>Pregunta 5</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-6" class="md-toc-link">
+            <p>Pregunta 6</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-7" class="md-toc-link">
+            <p>Pregunta 7</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-8" class="md-toc-link">
+            <p>Pregunta 8</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-9" class="md-toc-link">
+            <p>Pregunta 9</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-10" class="md-toc-link">
+            <p>Pregunta 10</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-11" class="md-toc-link">
+            <p>Pregunta 11</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-12" class="md-toc-link">
+            <p>Pregunta 12</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-13" class="md-toc-link">
+            <p>Pregunta 13</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-14" class="md-toc-link">
+            <p>Pregunta 14</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-15" class="md-toc-link">
+            <p>Pregunta 15</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-16" class="md-toc-link">
+            <p>Pregunta 16</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-17" class="md-toc-link">
+            <p>Pregunta 17</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-18" class="md-toc-link">
+            <p>Pregunta 18</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-19" class="md-toc-link">
+            <p>Pregunta 19</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-20" class="md-toc-link">
+            <p>Pregunta 20</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#pregunta-21" class="md-toc-link">
+            <p>Pregunta 21</p>
+
+          </a></div>
+</div>
+</div>
       <a id="sidebar-toc-btn">≡</a>
     
     
