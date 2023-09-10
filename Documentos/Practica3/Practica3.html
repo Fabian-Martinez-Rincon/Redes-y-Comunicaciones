@@ -1059,7 +1059,45 @@ Los valores 10 y 5 son prioridades para los servidores de correo en registros MX
 <span class="token number">18</span> srv01.ejemplo.com.     <span class="token number">240</span>     IN AAAA  <span class="token number">2800</span>:3f0:4003:c00::1a
 <span class="token number">19</span> srv00.ejemplo.com.     <span class="token number">272</span>     IN A     <span class="token number">74.125</span>.133.26
 <span class="token number">20</span> srv00.ejemplo.com.     <span class="token number">240</span>     IN AAAA  2a00:1450:400c:c07::1b
-</pre>
+</pre><h4 class="crossnote-header" id="question-section">QUESTION SECTION:</h4>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><span class="token number">4</span> <span class="token punctuation">;</span>ejemplo.com.                   IN MX
+</pre><ul>
+<li>Aquí, <code>IN</code> representa la clase de Internet (Internet Class), que es la más común.</li>
+<li><code>MX</code> es el tipo de registro DNS que estamos consultando. <code>MX</code> es para los registros del servidor de correo. Otros valores comunes podrían ser <code>A</code> para las direcciones IPv4, <code>AAAA</code> para IPv6, <code>NS</code> para los servidores de nombres, etc.</li>
+</ul>
+<h4 class="crossnote-header" id="answer-section">ANSWER SECTION:</h4>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><span class="token number">7</span> ejemplo.com.           <span class="token number">1634</span>    IN MX    <span class="token number">10</span> srv01.ejemplo.com.
+<span class="token number">8</span> ejemplo.com.           <span class="token number">1634</span>    IN MX    <span class="token number">5</span>  srv00.ejemplo.com.
+</pre><ul>
+<li><code>1634</code> es el tiempo de vida (TTL) en segundos. Este es el tiempo durante el cual esta entrada se almacenará en caché.</li>
+<li><code>IN</code> y <code>MX</code> son similares a los de la sección de consulta.</li>
+<li><code>10</code> y <code>5</code> son las prioridades para los servidores de correo MX. Un número más bajo indica una mayor prioridad.</li>
+<li><code>srv01.ejemplo.com.</code> y <code>srv00.ejemplo.com.</code> son los nombres de los servidores de correo.</li>
+</ul>
+<h4 class="crossnote-header" id="authority-section">AUTHORITY SECTION:</h4>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><span class="token number">11</span> ejemplo.com.           <span class="token number">92354</span>   IN NS    ss00.ejemplo.com.
+<span class="token number">12</span> ejemplo.com.           <span class="token number">92354</span>   IN NS    ss02.ejemplo.com.
+<span class="token number">13</span> ejemplo.com.           <span class="token number">92354</span>   IN NS    ss01.ejemplo.com.
+<span class="token number">14</span> ejemplo.com.           <span class="token number">92354</span>   IN NS    ss03.ejemplo.com.
+</pre><ul>
+<li><code>92354</code> es otro valor de TTL.</li>
+<li><code>NS</code> significa “servidor de nombres”, lo que significa que estas son las autoridades para el dominio <code>ejemplo.com</code>.</li>
+</ul>
+<h4 class="crossnote-header" id="additional-section">ADDITIONAL SECTION:</h4>
+
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><span class="token number">17</span> srv01.ejemplo.com.     <span class="token number">272</span>     IN A     <span class="token number">64.233</span>.186.26
+<span class="token number">18</span> srv01.ejemplo.com.     <span class="token number">240</span>     IN AAAA  <span class="token number">2800</span>:3f0:4003:c00::1a
+<span class="token number">19</span> srv00.ejemplo.com.     <span class="token number">272</span>     IN A     <span class="token number">74.125</span>.133.26
+<span class="token number">20</span> srv00.ejemplo.com.     <span class="token number">240</span>     IN AAAA  2a00:1450:400c:c07::1b
+</pre><ul>
+<li><code>A</code> y <code>AAAA</code> son los registros de dirección para IPv4 e IPv6, respectivamente.</li>
+<li><code>272</code> y <code>240</code> son valores de TTL para estos registros.</li>
+</ul>
+<p>Espero que esta descomposición aclare las diferentes secciones y los tipos de valores que podrías encontrar.</p>
+
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
@@ -1182,11 +1220,32 @@ Los valores 10 y 5 son prioridades para los servidores de correo en registros MX
           <a href="#ejercicio-19" class="md-toc-link">
             <p>Ejercicio 19</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#ejercicio-20-ejercicio-de-parcial" class="md-toc-link">
-            <p>Ejercicio 20 Ejercicio de parcial</p>
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#ejercicio-20-ejercicio-de-parcial" class="md-toc-link"><p>Ejercicio 20 Ejercicio de parcial</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#question-section" class="md-toc-link">
+            <p>QUESTION SECTION:</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#answer-section" class="md-toc-link">
+            <p>ANSWER SECTION:</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#authority-section" class="md-toc-link">
+            <p>AUTHORITY SECTION:</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#additional-section" class="md-toc-link">
+            <p>ADDITIONAL SECTION:</p>
 
           </a></div>
+        </div>
+      </details>
+    
 </div>
 </div>
       <a id="sidebar-toc-btn">≡</a>

@@ -1306,3 +1306,50 @@ Ahora para las preguntas:
 19 srv00.ejemplo.com.     272     IN A     74.125.133.26
 20 srv00.ejemplo.com.     240     IN AAAA  2a00:1450:400c:c07::1b
 ```
+
+#### QUESTION SECTION:
+
+```bash
+4 ;ejemplo.com.                   IN MX
+```
+
+- Aquí, `IN` representa la clase de Internet (Internet Class), que es la más común. 
+- `MX` es el tipo de registro DNS que estamos consultando. `MX` es para los registros del servidor de correo. Otros valores comunes podrían ser `A` para las direcciones IPv4, `AAAA` para IPv6, `NS` para los servidores de nombres, etc.
+
+#### ANSWER SECTION:
+
+```bash
+7 ejemplo.com.           1634    IN MX    10 srv01.ejemplo.com.
+8 ejemplo.com.           1634    IN MX    5  srv00.ejemplo.com.
+```
+
+- `1634` es el tiempo de vida (TTL) en segundos. Este es el tiempo durante el cual esta entrada se almacenará en caché.
+- `IN` y `MX` son similares a los de la sección de consulta.
+- `10` y `5` son las prioridades para los servidores de correo MX. Un número más bajo indica una mayor prioridad.
+- `srv01.ejemplo.com.` y `srv00.ejemplo.com.` son los nombres de los servidores de correo.
+
+#### AUTHORITY SECTION:
+
+```bash
+11 ejemplo.com.           92354   IN NS    ss00.ejemplo.com.
+12 ejemplo.com.           92354   IN NS    ss02.ejemplo.com.
+13 ejemplo.com.           92354   IN NS    ss01.ejemplo.com.
+14 ejemplo.com.           92354   IN NS    ss03.ejemplo.com.
+```
+
+- `92354` es otro valor de TTL.
+- `NS` significa "servidor de nombres", lo que significa que estas son las autoridades para el dominio `ejemplo.com`.
+  
+#### ADDITIONAL SECTION:
+
+```bash
+17 srv01.ejemplo.com.     272     IN A     64.233.186.26
+18 srv01.ejemplo.com.     240     IN AAAA  2800:3f0:4003:c00::1a
+19 srv00.ejemplo.com.     272     IN A     74.125.133.26
+20 srv00.ejemplo.com.     240     IN AAAA  2a00:1450:400c:c07::1b
+```
+
+- `A` y `AAAA` son los registros de dirección para IPv4 e IPv6, respectivamente.
+- `272` y `240` son valores de TTL para estos registros.
+
+Espero que esta descomposición aclare las diferentes secciones y los tipos de valores que podrías encontrar.
