@@ -593,19 +593,232 @@ El valor "HOLA" no ofrece muchas pistas sobre su propósito específico, pero de
 
 **g. Utilizando dig, solicite la transferencia de zona de redes.unlp.edu.ar, analice la salida y responda.**
 
-- **i.** ¿Qué significan los números que aparecen antes de la palabra IN? ¿Cuál es su finalidad?
-- **ii.** ¿Cuántos registros NS observa? Compare la respuesta con los servidores de DNS del dominio redes.unlp.edu.ar que dio anteriormente. ¿Puede explicar a qué se debe la diferencia y qué significa?
+Dado que los servidores DNS autoritativos para `redes.unlp.edu.ar` son `ns-sv-a.redes.unlp.edu.ar` y `ns-sv-b.redes.unlp.edu.ar`, puede intentar realizar una transferencia de zona con uno de ellos usando el comando `dig`.
+
+Por ejemplo, con `ns-sv-a.redes.unlp.edu.ar`, el comando sería:
+
+```bash
+dig @ns-sv-a.redes.unlp.edu.ar redes.unlp.edu.ar AXFR
+```
+
+```shell
+;; Connection to 172.28.0.30#53(172.28.0.30) for redes.unlp.edu.ar failed: host unreachable.
+```
+
+O con `ns-sv-b.redes.unlp.edu.ar`:
+
+```bash
+dig @ns-sv-b.redes.unlp.edu.ar redes.unlp.edu.ar AXFR
+```
+
+```shell
+; <<>> DiG 9.16.27-Debian <<>> @ns-sv-b.redes.unlp.edu.ar redes.unlp.edu.ar AXFR
+; (1 server found)
+;; global options: +cmd
+redes.unlp.edu.ar.	86400	IN	SOA	ns-sv-b.redes.unlp.edu.ar. root.redes.unlp.edu.ar. 2020031700 604800 86400 2419200 86400
+redes.unlp.edu.ar.	86400	IN	NS	ns-sv-a.redes.unlp.edu.ar.
+redes.unlp.edu.ar.	86400	IN	NS	ns-sv-b.redes.unlp.edu.ar.
+redes.unlp.edu.ar.	86400	IN	MX	5 mail.redes.unlp.edu.ar.
+redes.unlp.edu.ar.	86400	IN	MX	10 mail2.redes.unlp.edu.ar.
+ftp.redes.unlp.edu.ar.	86400	IN	CNAME	www.redes.unlp.edu.ar.
+mail.redes.unlp.edu.ar.	86400	IN	A	172.28.0.90
+mail2.redes.unlp.edu.ar. 86400	IN	A	172.28.0.91
+ns-sv-a.redes.unlp.edu.ar. 604800 IN	A	172.28.0.30
+ns-sv-b.redes.unlp.edu.ar. 604800 IN	A	172.28.0.29
+practica.redes.unlp.edu.ar. 86400 IN	NS	ns1.practica.redes.unlp.edu.ar.
+practica.redes.unlp.edu.ar. 86400 IN	NS	ns2.practica.redes.unlp.edu.ar.
+ns1.practica.redes.unlp.edu.ar.	86400 IN A	172.28.0.120
+ns2.practica.redes.unlp.edu.ar.	86400 IN A	172.28.0.121
+saludo.redes.unlp.edu.ar. 86400	IN	TXT	"HOLA"
+www.redes.unlp.edu.ar.	300	IN	A	172.28.0.50
+redes.unlp.edu.ar.	86400	IN	SOA	ns-sv-b.redes.unlp.edu.ar. root.redes.unlp.edu.ar. 2020031700 604800 86400 2419200 86400
+;; Query time: 4 msec
+;; SERVER: 172.28.0.29#53(172.28.0.29)
+;; WHEN: Sun Sep 10 14:09:16 -03 2023
+;; XFR size: 17 records (messages 1, bytes 441)
+```
+
+Tenga en cuenta que la transferencia de zona a menudo está restringida por razones de seguridad. Si usted no tiene acceso permitido, la solicitud será denegada.
+
+**i. ¿Qué significan los números que aparecen antes de la palabra IN? ¿Cuál es su finalidad?**
+
+Los números antes de la palabra "IN" (que significa Internet) son los valores de "Time to Live" (TTL) en segundos. Estos números indican cuánto tiempo se mantendrá ese registro en la caché de un servidor DNS consultor antes de que se descarte y se requiera una nueva consulta para obtener información actualizada.
+
+**ii. ¿Cuántos registros NS observa? Compare la respuesta con los servidores de DNS del dominio redes.unlp.edu.ar que dio anteriormente. ¿Puede explicar a qué se debe la diferencia y qué significa?**
+
+**Hay dos registros NS en la salida:**
+
+- `ns-sv-a.redes.unlp.edu.ar`
+- `ns-sv-b.redes.unlp.edu.ar`
+
+Estos coinciden con los servidores DNS que mencionó anteriormente. No hay diferencia en este caso, lo cual es esperado en una transferencia de zona exitosa.
+
+**Sobre el comando que usó**
+El comando `dig @ns-sv-b.redes.unlp.edu.ar redes.unlp.edu.ar AXFR` pide una transferencia de zona completa del dominio `redes.unlp.edu.ar` al servidor DNS `ns-sv-b.redes.unlp.edu.ar`. La bandera `AXFR` es la que solicita esta transferencia.
+
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 **h. Consulte por el registro A de www.redes.unlp.edu.ar y luego por el registro A de www.practica.redes.unlp.edu.ar.**
-Observe los TTL de ambos. Repita la operación y compare el valor de los TTL de cada uno respecto de la respuesta anterior. ¿Puede explicar qué está ocurriendo? (Pista: observar los flags será de ayuda).
+
+```shell
+dig www.redes.unlp.edu.ar A
+```
+
+```shell
+; <<>> DiG 9.16.27-Debian <<>> www.redes.unlp.edu.ar A
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1740
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: fa9ba4d5a50477c20100000064fdfb9afa2923b4597e3c3a (good)
+;; QUESTION SECTION:
+;www.redes.unlp.edu.ar.		IN	A
+
+;; ANSWER SECTION:
+www.redes.unlp.edu.ar.	300	IN	A	172.28.0.50
+
+;; Query time: 4 msec
+;; SERVER: 172.28.0.29#53(172.28.0.29)
+;; WHEN: Sun Sep 10 14:23:38 -03 2023
+;; MSG SIZE  rcvd: 94
+```
+
+- **TTL (Time to Live)**: El TTL es de 300 segundos, lo que significa que este registro se almacenará en la caché de los servidores DNS que lo consulten durante 300 segundos antes de que se considere "obsoleto" y deba volver a consultarse.
+  
+- **Dirección IP**: El registro A apunta a la dirección IP `172.28.0.50`.
+  
+- **Flags**: 
+  - `qr`: Indica que la respuesta es una consulta.
+  - `aa`: Indica que la respuesta viene de una autoridad en ese dominio.
+  - `rd`: Recursion Desired, indica que el servidor debería intentar resolver la consulta consultando otros servidores si no tiene la información.
+  - `ra`: Recursion Available, indica que el servidor puede realizar consultas recursivas.
+
+Podría ser interesante realizar la misma consulta nuevamente después de un tiempo corto (pero menor a 300 segundos) para ver si el TTL ha disminuido, lo que indicaría que está en la caché.
+
+---
+
+```shell
+dig www.practica.redes.unlp.edu.ar A
+```
+
+```shell
+; <<>> DiG 9.16.27-Debian <<>> www.practica.redes.unlp.edu.ar A
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 31906
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: ace66a200fec22060100000064fdfc53656f8d705f2cb26f (good)
+;; QUESTION SECTION:
+;www.practica.redes.unlp.edu.ar.	IN	A
+
+;; ANSWER SECTION:
+www.practica.redes.unlp.edu.ar.	60 IN	A	172.28.0.10
+
+;; Query time: 1852 msec
+;; SERVER: 172.28.0.29#53(172.28.0.29)
+;; WHEN: Sun Sep 10 14:26:43 -03 2023
+;; MSG SIZE  rcvd: 103
+```
+
+- **TTL (Time to Live)**: En este caso, el TTL es de 60 segundos, mucho menor que los 300 segundos del registro para `www.redes.unlp.edu.ar`. Esto podría indicar una configuración más dinámica para este subdominio, permitiendo actualizaciones más frecuentes.
+
+- **Dirección IP**: El registro A apunta a la dirección IP `172.28.0.10`.
+
+- **Flags**: 
+  - `qr`: Indica que la respuesta es una consulta.
+  - `rd`: Recursion Desired, indica que el servidor debería intentar resolver la consulta consultando otros servidores si no tiene la información.
+  - `ra`: Recursion Available, indica que el servidor puede realizar consultas recursivas.
+  
+  Nota: A diferencia del caso anterior, no vemos la bandera `aa` (Authoritative Answer), lo que significa que la respuesta podría venir de una caché o de otro servidor que no sea el principal para ese dominio.
+
+- **Query Time**: El tiempo de consulta es notablemente más alto (1852 ms) en comparación con la primera consulta. Esto podría deberse a una variedad de factores, incluyendo la posibilidad de que el servidor haya tenido que realizar una búsqueda recursiva para obtener la respuesta.
+
+
+**Observe los TTL de ambos. Repita la operación y compare el valor de los TTL de cada uno respecto de la respuesta anterior. ¿Puede explicar qué está ocurriendo? (Pista: observar los flags será de ayuda).**
+
+
+***Comparación de TTL y Flags***
+
+Si comparas los TTL de ambos registros A:
+
+- `www.redes.unlp.edu.ar` tiene un TTL de 300 segundos.
+- `www.practica.redes.unlp.edu.ar` tiene un TTL de 60 segundos.
+
+Esto sugiere que la información relacionada con `www.practica.redes.unlp.edu.ar` es más volátil o se espera que cambie más frecuentemente que la información para `www.redes.unlp.edu.ar`.
+
+Si repites las consultas antes de que expire el TTL, deberías ver que el TTL disminuye, lo cual es una indicación de que la respuesta está siendo servida desde la caché del servidor DNS.
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 **i. Consulte por el registro A de www.practica2.redes.unlp.edu.ar.**
-¿Obtuvo alguna respuesta? Investigue sobre los codigos de respuesta de DNS. ¿Para qué son utilizados los mensajes NXDOMAIN y NOERROR?
+¿Obtuvo alguna respuesta? Investigue sobre los codigos de respuesta de DNS. 
 
+```bash
+dig www.practica2.redes.unlp.edu.ar A
+```
+
+```shell
+; <<>> DiG 9.16.27-Debian <<>> www.practica2.redes.unlp.edu.ar A
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 41175
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: f1d40d72c26c7c9f0100000064fdfe467d22643c08e6b030 (good)
+;; QUESTION SECTION:
+;www.practica2.redes.unlp.edu.ar. IN	A
+
+;; AUTHORITY SECTION:
+redes.unlp.edu.ar.	86400	IN	SOA	ns-sv-b.redes.unlp.edu.ar. root.redes.unlp.edu.ar. 2020031700 604800 86400 2419200 86400
+
+;; Query time: 0 msec
+;; SERVER: 172.28.0.29#53(172.28.0.29)
+;; WHEN: Sun Sep 10 14:35:02 -03 2023
+;; MSG SIZE  rcvd: 154
+```
+
+Como puedes ver, el código de estado es `NXDOMAIN`, lo que significa que el subdominio `www.practica2.redes.unlp.edu.ar` no existe en el servidor DNS consultado. Esto es confirmado por el hecho de que la sección `ANSWER` está vacía (`ANSWER: 0`).
+
+**Interpretación de la salida:**
+
+- `opcode: QUERY, status: NXDOMAIN, id: 41175`: El estado `NXDOMAIN` indica que el dominio consultado no existe.
+
+- `flags: qr aa rd ra`: Estas son las banderas de la respuesta. En este caso:
+  - `qr` (Query Response): indica que este es un mensaje de respuesta.
+  - `aa` (Authoritative Answer): indica que el servidor tiene una respuesta autorizada para la consulta.
+  - `rd` (Recursion Desired): indica que se solicitó la recursión.
+  - `ra` (Recursion Available): indica que el servidor DNS es capaz de realizar consultas recursivas.
+
+- `QUESTION SECTION`: Muestra la consulta original que hiciste.
+  
+- `AUTHORITY SECTION`: Esta sección muestra información del registro SOA (Start of Authority) para el dominio `redes.unlp.edu.ar`. Esto básicamente indica qué servidor tiene la autoridad final sobre el dominio en cuestión.
+
+Por lo tanto, podemos concluir que el subdominio `www.practica2.redes.unlp.edu.ar` no tiene un registro A, lo que significa que no está configurado para apuntar a ninguna dirección IP.
+
+---
+
+**¿Para qué son utilizados los mensajes NXDOMAIN y NOERROR?**
+
+Si obtuviste una respuesta con un código de estado `NXDOMAIN`, esto significa que el dominio no existe según el servidor DNS consultado. En otras palabras, no hay un registro A (o cualquier otro tipo de registro que hayas solicitado) para `www.practica2.redes.unlp.edu.ar`.
+
+Por otro lado, si recibes un código `NOERROR`, significa que la consulta DNS se realizó correctamente. Esto no necesariamente indica que se encontró un registro; por ejemplo, si consultas un dominio que existe pero no tiene un registro del tipo que buscas, recibirás un `NOERROR` sin un "ANSWER SECTION".
+
+### Códigos de Respuesta de DNS:
+
+- **NXDOMAIN**: Este código significa que el dominio consultado no existe. Es utilizado para informar a los clientes DNS que no hay registros DNS del tipo solicitado.
+
+- **NOERROR**: Este código significa que la consulta DNS se realizó con éxito. Esto puede incluir no recibir un registro en la sección de respuesta si el dominio no tiene registros del tipo consultado pero sí existe.
+
+Ambos códigos son cruciales para el funcionamiento de las aplicaciones de red, ya que permiten distinguir entre un dominio que no existe en absoluto y uno que simplemente no tiene el tipo de registro solicitado. Esto es particularmente importante para las búsquedas de servidores de correo, servidores web y otros servicios.
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
@@ -617,11 +830,132 @@ Investigue los comando nslookup y host. ¿Para qué sirven? Intente con ambos co
 - Servidores de correo del dominio redes.unlp.edu.ar.
 - Servidores de DNS del dominio redes.unlp.edu.ar.
 
+#### nslookup
+
+El comando `nslookup` (Name Server Lookup) es una utilidad para realizar consultas al sistema de nombres de dominio (DNS). Puede obtener información variada, como direcciones IP asociadas a un nombre de dominio, servidores de correo, y mucho más.
+
+**Ejemplos de uso para sus requerimientos:**
+
+Dirección IP de `www.redes.unlp.edu.ar`:
+
+```shell
+nslookup www.redes.unlp.edu.ar
+```
+
+```shell
+Server:		172.28.0.29
+Address:	172.28.0.29#53
+
+Name:	www.redes.unlp.edu.ar
+Address: 172.28.0.50
+```
+
+Servidores de correo del dominio `redes.unlp.edu.ar`:
+
+```shell
+nslookup -query=MX redes.unlp.edu.ar
+```
+
+```shell
+Server:		172.28.0.29
+Address:	172.28.0.29#53
+
+redes.unlp.edu.ar	mail exchanger = 5 mail.redes.unlp.edu.ar.
+redes.unlp.edu.ar	mail exchanger = 10 mail2.redes.unlp.edu.ar.
+```
+
+Servidores de DNS del dominio `redes.unlp.edu.ar`:
+
+```shell
+nslookup -query=NS redes.unlp.edu.ar
+```
+
+```shell
+Server:		172.28.0.29
+Address:	172.28.0.29#53
+
+redes.unlp.edu.ar	nameserver = ns-sv-b.redes.unlp.edu.ar.
+redes.unlp.edu.ar	nameserver = ns-sv-a.redes.unlp.edu.ar.
+```
+
+#### host
+
+El comando `host` es otra utilidad para realizar consultas DNS. Aunque similar a `nslookup`, es más sencillo y está diseñado para convertir nombres de dominio a direcciones IP y viceversa.
+
+**Ejemplos de uso para sus requerimientos:**
+
+Dirección IP de `www.redes.unlp.edu.ar`:
+
+```shell
+host www.redes.unlp.edu.ar
+```
+
+```shell
+www.redes.unlp.edu.ar has address 172.28.0.50
+```
+
+Servidores de correo del dominio `redes.unlp.edu.ar`:
+
+```shell
+host -t MX redes.unlp.edu.ar
+```
+
+```shell
+redes.unlp.edu.ar mail is handled by 5 mail.redes.unlp.edu.ar.
+redes.unlp.edu.ar mail is handled by 10 mail2.redes.unlp.edu.ar.
+```
+
+Servidores de DNS del dominio `redes.unlp.edu.ar`:
+
+```shell
+host -t NS redes.unlp.edu.ar
+```
+
+```shell
+redes.unlp.edu.ar name server ns-sv-b.redes.unlp.edu.ar.
+redes.unlp.edu.ar name server ns-sv-a.redes.unlp.edu.ar.
+```
+
+Ambas utilidades, `nslookup` y `host`, son herramientas poderosas para la resolución de nombres y la depuración de problemas relacionados con DNS. Sin embargo, tenga en cuenta que `nslookup` está considerado como obsoleto por muchos en la comunidad de administración de sistemas, y se recomienda el uso de comandos como `dig` y `host` para nuevas implementaciones.
+
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 13
 
-¿Qué función cumple en Linux/Unix el archivo /etc/hosts o en Windows el archivo \WINDOWS\system32\drivers\etc\hosts?
+**¿Qué función cumple en Linux/Unix el archivo /etc/hosts o en Windows el archivo \WINDOWS\system32\drivers\etc\hosts?**
+
+
+El archivo `/etc/hosts` en sistemas Linux/Unix y el archivo `C:\WINDOWS\system32\drivers\etc\hosts` en sistemas Windows sirven para mapear direcciones IP a nombres de host en una computadora local. Este mapeo permite que el sistema traduzca nombres de host a direcciones IP sin tener que consultar un servidor DNS externo.
+
+#### Usos comunes:
+
+1. **Resolución de nombres local**: Puedes añadir nombres de dominio personalizados y su correspondiente dirección IP para que el sistema resuelva el nombre sin tener que ir a un servidor DNS. Por ejemplo, podrías mapear el dominio `mi-proyecto.local` a `127.0.0.1` para un entorno de desarrollo local.
+
+2. **Bloqueo de sitios web**: Al asignar un nombre de dominio no deseado a la dirección IP `0.0.0.0` o `127.0.0.1`, puedes bloquear el acceso a ese sitio web.
+
+3. **Redirección**: Puedes redirigir el tráfico destinado a un dominio específico a otra dirección IP.
+
+4. **Pruebas y desarrollo**: Si estás desarrollando una aplicación que se conecta a un servidor, puedes redirigir temporalmente el nombre del servidor a una dirección IP local para realizar pruebas.
+
+5. **Solución a problemas de red**: En algunos casos, puedes usar el archivo `hosts` para solucionar problemas temporales de resolución de nombres si el DNS no está disponible.
+
+#### Formato:
+
+El archivo generalmente contiene líneas con una dirección IP seguida de uno o varios nombres de host, separados por espacio o tabulación. Por ejemplo:
+
+```
+127.0.0.1       localhost
+192.168.1.1     mi-router
+203.0.113.10    ejemplo.com www.ejemplo.com
+```
+
+#### Notas:
+
+- Las entradas en el archivo `hosts` tienen prioridad sobre las consultas DNS. Por lo tanto, si un nombre de host está en el archivo `hosts`, cualquier consulta DNS para ese nombre de host se resolverá usando la entrada en el archivo `hosts` en lugar de realizar una consulta DNS.
+- Los cambios en el archivo `hosts` generalmente entran en vigor inmediatamente, pero algunos servicios o aplicaciones pueden requerir un reinicio o limpiar su caché DNS para reconocer los cambios.
+  
+Recuerda que modificar este archivo requiere permisos de administrador o superusuario.
+
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
@@ -638,16 +972,57 @@ Analice la información proporcionada por dig y compárelo con la captura
 ### Ejercicio 15
 
 Dada la siguiente situación: “Una PC en una red determinada, con acceso a Internet, utiliza los servicios de DNS de un servidor de la red”. Analice:
+
 **a. ¿Qué tipo de consultas (iterativas o recursivas) realiza la PC a su servidor de DNS?**
 
+Por lo general, cuando una PC (cliente) necesita resolver un nombre de dominio, realiza una consulta recursiva a su servidor DNS asignado. En una consulta recursiva, el servidor DNS se compromete a proporcionar una respuesta definitiva al cliente. Si el servidor DNS no tiene la información en su caché, buscará la información necesaria consultando otros servidores DNS hasta obtener una respuesta definitiva para devolver al cliente. El cliente simplemente espera hasta recibir una respuesta.
+
 **b. ¿Qué tipo de consultas (iterativas o recursivas) realiza el servidor de DNS para resolver requerimientos de usuario como el anterior? ¿A quién le realiza estas consultas?**
+
+Cuando el servidor de DNS recibe una consulta recursiva de un cliente y no tiene la respuesta en su caché, realiza consultas iterativas a otros servidores DNS para resolver el nombre de dominio. En una consulta iterativa, el servidor DNS pregunta a otro servidor que puede saber más sobre el nombre de dominio. Ese servidor puede responder con una dirección IP si la tiene, o con una referencia a otro servidor DNS que esté más cerca de tener la respuesta.
+
 
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 16
 
-Relacione DNS con HTTP. ¿Se puede navegar si no hay servicio de DNS?
+***Relacione DNS con HTTP.*** 
+
+DNS (Sistema de Nombres de Dominio) y HTTP (Protocolo de Transferencia de Hipertexto) son dos componentes clave de la infraestructura de la web, pero sirven para propósitos muy diferentes:
+
+<table>
+<tr><td>DNS</td><td>HTTP</td></tr>
+<tr><td>
+
+Es el sistema que traduce nombres de dominio legibles por humanos en direcciones IP que las máquinas pueden entender. Cuando escribes un URL en tu navegador, DNS es el primer servicio que se consulta para determinar la dirección IP del servidor web asociado al nombre de dominio.
+
+</td><td>
+
+Es el protocolo utilizado para transferir datos sobre la web. Una vez que se obtiene la dirección IP del servidor mediante DNS, el navegador realiza una solicitud HTTP para recibir la página web que reside en esa dirección IP.
+</td></tr>
+</table>
+
+
+
+
+
+En resumen, DNS se utiliza para resolver la dirección IP del servidor que aloja el contenido, y una vez que se conoce esa dirección IP, HTTP se encarga de la transferencia de ese contenido.
+
+
+***¿Se puede navegar si no hay servicio de DNS?***
+
+Técnicamente, sí, se puede navegar sin un servicio DNS, pero con algunas limitaciones importantes:
+
+1. **Direcciones IP Directas**: Si conoces la dirección IP del servidor al que deseas acceder, puedes introducir esa dirección IP directamente en la barra de direcciones del navegador.
+
+2. **Archivo Hosts**: Tanto en sistemas Windows como en Linux/Unix, puedes editar el archivo `hosts` para mapear nombres de dominio a direcciones IP específicas. Esto permitiría que tu sistema resuelva nombres de dominio sin necesidad de consultar un servidor DNS.
+
+3. **Caché del Navegador o del Sistema**: Si un sitio web ha sido visitado recientemente, la correspondencia entre el nombre de dominio y la dirección IP puede estar almacenada en la caché local, permitiendo el acceso sin necesidad de una consulta DNS.
+
+4. **Limitación en Navegación**: Sería difícil navegar por la web como lo hacemos normalmente, ya que muchos sitios web se alojan en servidores compartidos donde una única dirección IP se asocia con múltiples nombres de dominio, lo que hace necesario un servicio DNS para resolver al nombre correcto.
+
+Por lo tanto, aunque es posible navegar en ciertas condiciones sin un servicio de DNS, la experiencia sería muy limitada y complicada. DNS es fundamental para el funcionamiento eficiente y amigable de la web tal como la conocemos hoy en día.
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
@@ -660,18 +1035,193 @@ Observar el siguiente gráfico y contestar:
 - **a.** Si la PC-A, que usa como servidor de DNS a "DNS Server", desea obtener la IP de www.unlp.edu.ar, cuáles serían, y en qué orden, los pasos que se ejecutarán para obtener la respuesta.
 - **b.** ¿Dónde es recursiva la consulta? ¿Y dónde iterativa?
 
+***Respuesta***
+
+- PC-A se comunica con el switch para preguntarle al DNS por la dirección www.unlp.edu.ar, asumimos rd y ra. (la consulta es recursiva)
+- El switch lleva la request al servidor DNS 192.168.10.2, en caso de no tenerla cacheada el DNS le dice al router que se comunique con el Root-Server mas cercano para empezar a hacer una consulta iterativa
+- Se comunica con el Root-Server mas cercano (ANYCAST), en este caso el de la y este le devuelve la lista de servidores autoritativos para el siguiente nivel (.ar) en este caso 200.108.145.50
+- El DNS se comunica con el servidor a cargo del dominio .ar y este le devuelve la lista de servidores autoritativos para el siguiente nivel (.edu.ar) en este caso 170.210.0.18
+- El DNS se comunica con el que tiene el dominio .edu.ar y este le devuelve la lista de servidores autoritativos para el siguiente nivel (unlp.edu.ar) en este caso 163.10.0.67
+- El DNS por ultimo se comunica con unlp.edu.ar que es el servidor autoritativo de www.unlp.edu.ar, devolviendo su direccion IP 163.10.0.54
+
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 18
 
 ¿A quién debería consultar para que la respuesta sobre www.google.com sea autoritativa?
 
+```shell
+dig google.com NS
+```
+
+```shell
+; <<>> DiG 9.16.27-Debian <<>> google.com NS
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 51209
+;; flags: qr rd ra; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 9
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 2a03d5bc739626bb0100000064fe21338b102d43f42ba191 (good)
+;; QUESTION SECTION:
+;google.com.			IN	NS
+
+;; ANSWER SECTION:
+google.com.		167692	IN	NS	ns3.google.com.
+google.com.		167692	IN	NS	ns1.google.com.
+google.com.		167692	IN	NS	ns2.google.com.
+google.com.		167692	IN	NS	ns4.google.com.
+
+;; ADDITIONAL SECTION:
+ns1.google.com.		167692	IN	A	216.239.32.10
+ns2.google.com.		167692	IN	A	216.239.34.10
+ns3.google.com.		167692	IN	A	216.239.36.10
+ns4.google.com.		167692	IN	A	216.239.38.10
+ns1.google.com.		167692	IN	AAAA	2001:4860:4802:32::a
+ns2.google.com.		167692	IN	AAAA	2001:4860:4802:34::a
+ns3.google.com.		167692	IN	AAAA	2001:4860:4802:36::a
+ns4.google.com.		167692	IN	AAAA	2001:4860:4802:38::a
+
+;; Query time: 40 msec
+;; SERVER: 172.28.0.29#53(172.28.0.29)
+;; WHEN: Sun Sep 10 17:04:03 -03 2023
+;; MSG SIZE  rcvd: 315
+```
+
+La salida del comando `dig` muestra que hay cuatro servidores DNS autoritativos para el dominio `google.com`: `ns1.google.com`, `ns2.google.com`, `ns3.google.com` y `ns4.google.com`. También muestra sus direcciones IP correspondientes en las secciones "A" y "AAAA".
+
+Si quieres obtener una respuesta autoritativa sobre `www.google.com`, puedes dirigir tu consulta a uno de estos servidores DNS autoritativos. Puedes hacerlo con el siguiente comando `dig`:
+
+```bash
+dig @216.239.32.10 www.google.com A
+```
+
+O usando el nombre del servidor:
+
+```bash
+dig @ns1.google.com www.google.com A
+```
+
+```shell
+; <<>> DiG 9.16.27-Debian <<>> @216.239.32.10 www.google.com A
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 54197
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.google.com.			IN	A
+
+;; ANSWER SECTION:
+www.google.com.		300	IN	A	142.251.134.68
+
+;; Query time: 28 msec
+;; SERVER: 216.239.32.10#53(216.239.32.10)
+;; WHEN: Sun Sep 10 19:24:36 -03 2023
+;; MSG SIZE  rcvd: 59
+```
+
+La salida de este comando `dig` muestra que has obtenido una respuesta autoritativa para la consulta del registro A de `www.google.com`. Puedes saber que es autoritativa por la bandera `aa` en la sección de "flags" de la respuesta. El registro A para `www.google.com` apunta a la dirección IP `142.251.134.68` y tiene un tiempo de vida (TTL) de 300 segundos.
+
+La bandera `WARNING: recursion requested but not available` indica que aunque solicitaste una consulta recursiva (`rd` está presente en las banderas), el servidor te devolvió una respuesta sin ejecutar una búsqueda recursiva. Esto es lo que esperaríamos cuando consultamos directamente a un servidor autoritativo para el dominio; no necesita realizar más consultas para responder a la pregunta.
+
+En resumen, has consultado con éxito uno de los servidores DNS autoritativos para `google.com` y has obtenido una respuesta autoritativa.
+
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 19
 
-¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por www.info.unlp.edu.ar? ¿Y si la consulta es al servidor 8.8.8.8?
+***¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por www.info.unlp.edu.ar?***
 
+Para consultar al servidor de Google (autoritativo para google.com) sobre www.info.unlp.edu.ar:
+
+
+```shell
+dig @216.239.32.10 www.info.unlp.edu.ar A
+```
+
+```shell
+; <<>> DiG 9.16.27-Debian <<>> @216.239.32.10 www.info.unlp.edu.ar A
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: REFUSED, id: 23768
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.info.unlp.edu.ar.		IN	A
+
+;; Query time: 36 msec
+;; SERVER: 216.239.32.10#53(216.239.32.10)
+;; WHEN: Sun Sep 10 19:30:27 -03 2023
+;; MSG SIZE  rcvd: 49
+
+```
+
+La respuesta que obtuviste indica un estado de "REFUSED", lo cual significa que el servidor DNS ha rechazado tu consulta. Esto es lo esperado, dado que estás preguntando a un servidor que es autoritativo para el dominio `google.com` acerca de un dominio para el cual no tiene información ni autoridad (`www.info.unlp.edu.ar`).
+
+El mensaje también incluye "WARNING: recursion requested but not available", lo que significa que, aunque solicitaste una consulta recursiva, el servidor DNS no la realizó porque no está configurado para proporcionar ese servicio para dominios para los cuales no es autoritativo.
+
+En resumen, cuando preguntas a un servidor DNS autoritativo sobre un dominio que está fuera de su zona de autoridad, es probable que te encuentres con un rechazo o una falta de respuesta útil, como ha ocurrido en este caso. Este comportamiento destaca la importancia de usar servidores DNS recursivos para consultas generales, ya que están diseñados para manejar este tipo de situaciones y pueden realizar consultas a múltiples servidores DNS autoritativos para resolver una única consulta.
+
+***¿Y si la consulta es al servidor 8.8.8.8?***
+
+Para consultar al servidor DNS de Google (8.8.8.8):
+
+```shell
+dig @8.8.8.8 www.info.unlp.edu.ar A
+```
+
+```shell
+; <<>> DiG 9.16.27-Debian <<>> @8.8.8.8 www.info.unlp.edu.ar A
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 36204
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;www.info.unlp.edu.ar.		IN	A
+
+;; ANSWER SECTION:
+www.info.unlp.edu.ar.	300	IN	A	163.10.5.71
+
+;; Query time: 92 msec
+;; SERVER: 8.8.8.8#53(8.8.8.8)
+;; WHEN: Sun Sep 10 19:30:51 -03 2023
+;; MSG SIZE  rcvd: 65
+```
+
+Cuando utilizas el servidor DNS 8.8.8.8 (que es un servidor DNS público de Google), obtienes una respuesta válida para la consulta sobre `www.info.unlp.edu.ar`. Esto se debe a que el servidor 8.8.8.8 es un servidor DNS recursivo, diseñado para resolver cualquier consulta DNS que se le haga, independientemente de si es autoritativo para ese dominio o no.
+
+Aquí están los elementos clave de la respuesta:
+
+- **Estado: NOERROR**: No hay errores; la consulta se resolvió con éxito.
+  
+- **FLAGS**: 
+  - `qr`: indica que esta es una respuesta a una consulta.
+  - `rd`: recursión deseada.
+  - `ra`: recursión disponible.
+
+- **ANSWER SECTION**: Aquí es donde se muestra la respuesta real a tu consulta. En este caso, la dirección IP para `www.info.unlp.edu.ar` es `163.10.5.71`.
+
+- **TTL (Time to Live)**: Es de 300 segundos, lo que significa que esta información se mantendrá en la caché del servidor DNS durante 300 segundos antes de que se considere obsoleta y se deba volver a consultar.
+
+- **Query time**: El tiempo que tardó en obtener una respuesta es de 92 milisegundos.
+
+- **SERVER**: El servidor que proporcionó la respuesta es 8.8.8.8.
+
+En resumen, el servidor DNS 8.8.8.8 pudo resolver con éxito tu consulta porque es un servidor recursivo que puede hacer consultas a otros servidores DNS hasta obtener la información que necesitas. Este es el comportamiento esperado de un servidor DNS recursivo y es en contraste con el comportamiento del servidor DNS autoritativo para `google.com` que recibió tu primera consulta.
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
@@ -707,3 +1257,52 @@ Complete las líneas donde aparece __ con el registro correcto.
 - ¿Es una respuesta autoritativa? En caso de no serlo, ¿a qué servidor le preguntaría para obtener una respuesta autoritativa?
 - ¿La consulta fue recursiva? ¿Y la respuesta?
 - ¿Qué representan los valores 10 y 5 en las líneas 7 y 8.
+
+Para completar las líneas donde aparece `__`, necesitamos entender qué tipos de registros DNS están siendo consultados y respondidos. Dado el contexto y los valores presentes, podemos hacer algunas suposiciones educadas:
+
+1. La sección de preguntas generalmente especifica el tipo de registro que se está consultando. Aquí parece que se omite, pero dados los registros en la sección de respuestas, es probable que estemos hablando de registros MX (Mail Exchange). Entonces la línea 4 podría ser completada como `;ejemplo.com. IN MX`.
+
+2. En la sección de respuestas, los servidores `srv01.ejemplo.com` y `srv00.ejemplo.com` se enumeran como servidores MX, por lo que las líneas 7 y 8 también deberían especificar el registro MX. Esto resulta en `ejemplo.com. 1634 IN MX 10 srv01.ejemplo.com.` y `ejemplo.com. 1634 IN MX 5 srv00.ejemplo.com.`.
+
+3. En la sección de autoridades, parece que se están listando servidores NS (Name Server), por lo que las líneas 11-14 podrían especificar el registro NS, resultando en `IN NS ss00.ejemplo.com`, `IN NS ss02.ejemplo.com`, etc.
+
+4. En la sección adicional, se proporcionan las direcciones IP para `srv01.ejemplo.com` y `srv00.ejemplo.com`. Aquí los registros son de tipo A para direcciones IPv4 y AAAA para direcciones IPv6. Por lo tanto, las líneas 17 y 19 podrían ser `IN A 64.233.186.26` y `IN A 74.125.133.26`, mientras que las líneas 18 y 20 podrían ser `IN AAAA 2800:3f0:4003:c00::1a` y `IN AAAA 2a00:1450:400c:c07::1b`.
+
+Ahora para las preguntas:
+
+- **¿Es una respuesta autoritativa?**  
+  No, no es una respuesta autoritativa. No vemos el flag `aa` (authoritative answer) en la línea de los flags (`;; flags: qr rd ra`).
+
+- **¿A qué servidor le preguntaría para obtener una respuesta autoritativa?**  
+  Para obtener una respuesta autoritativa, tendrías que preguntarle a uno de los servidores NS listados en la sección de autoridad, como `ss00.ejemplo.com` o `ss01.ejemplo.com`, etc.
+
+- **¿La consulta fue recursiva? ¿Y la respuesta?**  
+  Sí, la consulta fue recursiva, como se indica por el flag `rd` (recursion desired) en la línea de flags. La respuesta también indica que la recursión está disponible, como se muestra por el flag `ra` (recursion available).
+
+- **¿Qué representan los valores 10 y 5 en las líneas 7 y 8?**  
+  Los valores 10 y 5 son prioridades para los servidores de correo en registros MX. Un valor más bajo indica una mayor prioridad. Por lo tanto, el servidor de correo `srv00.ejemplo.com` con una prioridad de 5 se utilizará antes que `srv01.ejemplo.com` con una prioridad de 10.
+
+  
+
+```shell
+1 ;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 4
+2
+3 ;; QUESTION SECTION:
+4 ;ejemplo.com.                   IN MX
+5
+6 ;; ANSWER SECTION:
+7 ejemplo.com.           1634    IN MX    10 srv01.ejemplo.com.
+8 ejemplo.com.           1634    IN MX    5  srv00.ejemplo.com.
+9
+10 ;; AUTHORITY SECTION:
+11 ejemplo.com.           92354   IN NS    ss00.ejemplo.com.
+12 ejemplo.com.           92354   IN NS    ss02.ejemplo.com.
+13 ejemplo.com.           92354   IN NS    ss01.ejemplo.com.
+14 ejemplo.com.           92354   IN NS    ss03.ejemplo.com.
+15
+16 ;; ADDITIONAL SECTION:
+17 srv01.ejemplo.com.     272     IN A     64.233.186.26
+18 srv01.ejemplo.com.     240     IN AAAA  2800:3f0:4003:c00::1a
+19 srv00.ejemplo.com.     272     IN A     74.125.133.26
+20 srv00.ejemplo.com.     240     IN AAAA  2a00:1450:400c:c07::1b
+```
