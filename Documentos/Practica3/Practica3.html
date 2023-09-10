@@ -48,75 +48,456 @@
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-1">Ejercicio 1</h3>
 
-<p>Investigue y describa cómo funciona el DNS. ¿Cuál es su objetivo?</p>
+<p><em><strong>Investigue y describa cómo funciona el DNS. ¿Cuál es su objetivo?</strong></em></p>
+<p>El Sistema de Nombres de Dominio (DNS, por sus siglas en inglés) es un sistema jerárquico y descentralizado que se encarga de traducir nombres de dominio legibles por humanos en direcciones IP, que son legibles por máquinas. Este proceso facilita la navegación en la web, ya que los usuarios no tienen que recordar direcciones IP numéricas para acceder a sitios web y otros recursos en línea.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-2">Ejercicio 2</h3>
 
-<p>¿Qué es un root server? ¿Qué es un generic top-level domain (gtld)?</p>
+<p><em><strong>¿Qué es un root server?</strong></em></p>
+<p>Un servidor raíz (root server) en el contexto de DNS (Sistema de Nombres de Dominio) es un servidor que contiene la información básica y autoritativa necesaria para resolver nombres de dominio de nivel superior (como <code>.com</code>, <code>.org</code>, <code>.net</code>, etc.).</p>
+<p>Estos servidores no contienen toda la información para cada dominio, pero pueden dirigir las consultas del servidor DNS recursivo hacia el servidor de nombres de dominio de nivel superior (TLD) que tenga la información más específica.</p>
+<p><em><strong>¿Qué es un generic top-level domain (gTLD)?</strong></em></p>
+<p>Un dominio de nivel superior genérico (gTLD, por sus siglas en inglés) es una de las categorías de dominios de nivel superior (TLDs) mantenidas por la Corporación de Asignación de Nombres y Números de Internet (ICANN). Los gTLD son una de las varias clases de TLDs, que también incluyen dominios de nivel superior de código de país (ccTLDs), como <code>.uk</code> para el Reino Unido o <code>.de</code> para Alemania.</p>
+<p>Los gTLD incluyen dominios como <code>.com</code>, <code>.org</code>, <code>.net</code>, así como dominios más nuevos y específicos como <code>.app</code>, <code>.blog</code>, <code>.guru</code>, etc. Originalmente, los gTLD se crearon para representar una función o un tipo de organización (por ejemplo, <code>.com</code> para empresas comerciales, <code>.org</code> para organizaciones sin fines de lucro), pero con la expansión del espacio de nombres de dominio, estos se han vuelto mucho más variados y menos restrictivos en su uso.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-3">Ejercicio 3</h3>
 
-<p>¿Qué es una respuesta del tipo autoritativa?</p>
+<p><em><strong>¿Qué es una respuesta del tipo autoritativa?</strong></em></p>
+<p>En el contexto del Sistema de Nombres de Dominio (DNS), una respuesta autoritativa es aquella que proviene de un servidor que tiene autoridad sobre el dominio consultado. En otras palabras, el servidor DNS tiene información directa y precisa sobre el recurso solicitado, y esa información se considera “autoritativa” o definitiva.</p>
+<p>Cuando un servidor DNS recursivo realiza una consulta para resolver un nombre de dominio, puede recibir diferentes tipos de respuestas.</p>
+<table><tbody><tr><td>Autoritativo</td><td>No Autoritativo</td></tr><tr><td>
+<p>Una respuesta autoritativa generalmente viene del servidor DNS que es autoridad para el dominio específico o subdominio en la consulta. Esta respuesta es el resultado final y se considera precisa y fiable. A menudo, el servidor DNS recursivo almacenará esta respuesta en su caché para acelerar futuras consultas del mismo recurso.</p>
+</td><td>
+<p>Por el contrario, una respuesta no autoritativa es aquella que ha sido obtenida de la caché de un servidor DNS o que ha sido reenviada desde otro servidor pero no proviene del servidor autoritativo para ese dominio. Aunque estas respuestas son generalmente precisas y se pueden usar para resolver consultas, no se consideran definitivas en la misma manera que una respuesta autoritativa.</p>
+</td>
+</tr>
+</tbody></table>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-4">Ejercicio 4</h3>
 
-<p>¿Qué diferencia una consulta DNS recursiva de una iterativa?</p>
+<p><strong>¿Qué diferencia una consulta DNS recursiva de una iterativa?</strong></p>
+<p>La diferencia principal entre una consulta DNS recursiva y una consulta DNS iterativa está en cómo se maneja la resolución del nombre de dominio a lo largo de la cadena de servidores DNS. A continuación, se describen ambas:</p>
+<table><tbody><tr><td>Consulta DNS Recursiva</td><td>Consulta DNS Iterativa</td></tr>
+<tr><td>
+<ol>
+<li>
+<p><strong>Cliente → Servidor DNS Recursivo:</strong> El cliente envía una solicitud al servidor DNS recursivo para resolver un nombre de dominio.</p>
+</li>
+<li>
+<p><strong>Servidor DNS Recursivo → Otros servidores DNS:</strong> Si el servidor DNS recursivo no tiene la respuesta en su caché, toma la responsabilidad de consultar a otros servidores DNS (servidor raíz, TLD, servidor autoritativo, etc.) hasta obtener la respuesta.</p>
+</li>
+<li>
+<p><strong>Servidor DNS Recursivo → Cliente:</strong> Una vez que el servidor DNS recursivo tiene la respuesta, la devuelve al cliente.</p>
+</li>
+</ol>
+<p>En una consulta recursiva, el servidor DNS recursivo hace todo el trabajo pesado en nombre del cliente, y el cliente solo interactúa con este servidor.</p>
+</td><td>
+<ol>
+<li>
+<p><strong>Cliente → Servidor DNS:</strong> El cliente envía una solicitud al servidor DNS para resolver un nombre de dominio.</p>
+</li>
+<li>
+<p><strong>Servidor DNS → Cliente:</strong> Si el servidor DNS no tiene la respuesta, devuelve una referencia al servidor DNS que podría tenerla (por ejemplo, un servidor DNS de nivel superior o autoritativo).</p>
+</li>
+<li>
+<p><strong>Cliente → Otro servidor DNS:</strong> El cliente, luego, debe consultar al nuevo servidor DNS y repetir el proceso hasta obtener la respuesta.</p>
+</li>
+</ol>
+<p>En una consulta iterativa, el cliente tiene que hacer múltiples rondas de preguntas a diferentes servidores DNS hasta obtener la respuesta final.</p>
+</td></tr>
+</tbody></table>
+<p><strong>Resumen</strong></p>
+<ul>
+<li><strong>Recursiva:</strong> El servidor DNS recursivo se encarga de todo y devuelve la respuesta final al cliente.</li>
+<li><strong>Iterativa:</strong> El cliente tiene que seguir haciendo consultas a diferentes servidores DNS hasta obtener la respuesta final.</li>
+</ul>
+<p>Ambas consultas tienen sus ventajas y desventajas, y se utilizan en diferentes escenarios según las necesidades.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-5">Ejercicio 5</h3>
 
-<p>¿Qué es el resolver?</p>
+<p><strong>¿Qué es el resolver?</strong></p>
+<p>En el contexto de DNS (Sistema de Nombres de Dominio), el “resolver” o resolutor es una biblioteca de software o componente del sistema que inicia y recibe las consultas para traducir nombres de dominio en direcciones IP. Este es esencialmente el primer paso en el proceso de resolución de nombres DNS y generalmente es parte del sistema operativo de un equipo, aunque también puede ser implementado en aplicaciones específicas.</p>
+<p>Cuando una aplicación necesita resolver un nombre de dominio (por ejemplo, cuando se accede a un sitio web a través de un navegador), la solicitud se envía al resolver del sistema. El resolver luego:</p>
+<ol>
+<li>Verifica si la respuesta ya está almacenada en su caché local.</li>
+<li>Si no se encuentra en la caché, el resolver envía una consulta a un servidor DNS para obtener la información necesaria.</li>
+<li>Una vez que recibe la información, la almacena en la caché para futuras consultas y pasa la información a la aplicación que hizo la solicitud original.</li>
+</ol>
+<p>El resolver es responsable de iniciar las consultas que pueden ser iterativas o recursivas, como se describió en la respuesta anterior. También maneja otros aspectos, como el tiempo de vida (TTL) de la información en la caché para asegurarse de que los datos estén relativamente actualizados.</p>
+<p>En resumen, el resolver actúa como un cliente en el sistema de DNS, iniciando las consultas para obtener la información de resolución de nombres necesaria para las aplicaciones y servicios.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-6">Ejercicio 6</h3>
 
 <p>Describa para qué se utilizan los siguientes tipos de registros de DNS:</p>
-<p>a. A<br>
-f. NS<br>
-b. MX<br>
-g. CNAME<br>
-c. PTR<br>
-h. SOA<br>
-d. AAAA<br>
-i. TXT<br>
-e. SRV</p>
+<p><em><strong>a. A (Address Record)</strong></em><br>
+Este registro se usa para traducir nombres de dominios en direcciones IP versión 4 (IPv4). Por ejemplo, si tienes un dominio como <code>ejemplo.com</code>, el registro A apuntaría a la dirección IPv4 donde se aloja el sitio web.</p>
+<p><em><strong>b. MX (Mail Exchange)</strong></em><br>
+Estos registros son utilizados para definir los servidores de correo que son responsables de recibir mensajes de correo electrónico en nombre de un dominio. Generalmente apuntan a un dominio de un servidor de correo y utilizan una preferencia numérica para indicar el orden de uso.</p>
+<p><em><strong>c. PTR (Pointer Record)</strong></em><br>
+Utilizado para realizar una búsqueda inversa de DNS. Es decir, traduce una dirección IP en un nombre de dominio. Este tipo de registros se utiliza comúnmente para actividades como verificación de correo electrónico para asegurarse de que la dirección IP esté realmente asociada con el dominio en cuestión.</p>
+<p><em><strong>d. AAAA (IPv6 Address Record)</strong></em><br>
+Similar al registro A, pero para direcciones IPv6 en lugar de IPv4. Indica la dirección IPv6 a la que apunta un nombre de dominio.</p>
+<p><em><strong>e. SRV (Service Record)</strong></em><br>
+Este registro especifica datos sobre servicios disponibles, lo que permite un control más detallado sobre el tráfico de red para aplicaciones como SIP y XMPP. Los registros SRV definen el protocolo, el puerto y el dominio de un servicio específico.</p>
+<p><em><strong>f. NS (Name Server)</strong></em><br>
+Define qué servidores DNS son autoritativos para un dominio o subdominio. Estos son los servidores a los que se les pedirá información sobre el dominio en cuestión.</p>
+<p><em><strong>g. CNAME (Canonical Name)</strong></em><br>
+Se utiliza para alias de nombres de dominio. Por ejemplo, <code>www.ejemplo.com</code> podría ser un CNAME que apunta a <code>ejemplo.com</code>.</p>
+<p><em><strong>h. SOA (Start of Authority)</strong></em><br>
+Este registro contiene información administrativa sobre el dominio, incluido el servidor DNS autoritativo principal. También incluye detalles como cuándo se actualizó por última vez el dominio, cuánto tiempo deben esperar los otros servidores para actualizar sus registros en caché, etc.</p>
+<p><em><strong>i. TXT (Text Record)</strong></em><br>
+Utilizado para almacenar información de texto que puede ser utilizada para varios propósitos, como la verificación de propiedad del dominio, registros SPF para correo electrónico y otros metadatos.</p>
+<p>Cada uno de estos registros tiene su propio propósito específico y juega un papel en cómo funciona la red y cómo se resuelven los nombres de dominio.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-7">Ejercicio 7</h3>
 
 <p>En Internet, un dominio suele tener más de un servidor DNS. ¿Por qué cree que esto es así?</p>
+<p>Tener múltiples servidores DNS para un dominio es una práctica común y recomendada por varias razones:</p>
+<p><em><strong>Redundancia y Alta Disponibilidad</strong></em><br>
+Si un servidor DNS falla o se cae por algún motivo, los servidores DNS adicionales pueden continuar resolviendo las solicitudes. Esto garantiza una alta disponibilidad y resistencia contra fallos.</p>
+<p><em><strong>Balanceo de Carga</strong></em><br>
+Distribuir las solicitudes de resolución de nombres entre múltiples servidores puede ayudar a equilibrar la carga, asegurando que ninguno de los servidores DNS se sature de tráfico.</p>
+<p><em><strong>Distribución Geográfica</strong></em><br>
+Los servidores DNS a menudo están distribuidos geográficamente. Esto permite que las solicitudes de los usuarios se dirijan al servidor más cercano, reduciendo la latencia y acelerando el tiempo de resolución.</p>
+<p><em><strong>Mitigación de Ataques DDoS</strong></em><br>
+Tener múltiples servidores puede ayudar a mitigar los efectos de un ataque de Denegación de Servicio Distribuido (DDoS). Si un servidor se ve comprometido, los otros aún pueden continuar funcionando.</p>
+<p><em><strong>Actualizaciones y Mantenimiento</strong></em><br>
+Con múltiples servidores, es más fácil realizar tareas de mantenimiento o actualizaciones en un servidor a la vez sin afectar la disponibilidad del servicio.</p>
+<p><em><strong>Coherencia de Datos</strong></em><br>
+La replicación entre servidores DNS asegura que los datos estén sincronizados. Esto es especialmente importante para los grandes dominios que necesitan garantizar que la información más reciente esté disponible en todos los servidores de manera oportuna.</p>
+<p>En resumen, tener múltiples servidores DNS mejora la resiliencia, el rendimiento y la seguridad del sistema de nombres de dominio.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-8">Ejercicio 8</h3>
 
 <p>Cuando un dominio cuenta con más de un servidor, uno de ellos es el primario (o maestro) y todos los demás son los secundarios (o esclavos). ¿Cuál es la razón de que sea así?</p>
+<p>La distinción entre un servidor DNS primario (o maestro) y servidores secundarios (o esclavos) se hace por diversas razones, principalmente relacionadas con la gestión de datos, la coherencia, la eficiencia y la seguridad. Aquí hay algunas razones por las que se hace esta distinción:</p>
+<p><em><strong>Centralización del Control</strong></em><br>
+Tener un servidor primario permite un punto centralizado de administración. Los cambios en los registros DNS se realizan primero en el servidor primario, lo que facilita la gestión y minimiza la posibilidad de errores o inconsistencias que podrían surgir si se permitieran cambios en múltiples lugares.</p>
+<p><em><strong>Coherencia de Datos</strong></em><br>
+Una vez que los cambios son realizados en el servidor primario, estos se replican a los servidores secundarios. Esto asegura la coherencia y uniformidad de los registros DNS a través de todos los servidores, y garantiza que todos los usuarios obtengan la misma información cuando realicen una consulta DNS.</p>
+<p><em><strong>Carga de Trabajo y Eficiencia</strong></em><br>
+El servidor primario se encarga de gestionar los cambios y actualizaciones, mientras que los servidores secundarios se encargan principalmente de responder a las consultas DNS. Esta división de responsabilidades ayuda a distribuir la carga de trabajo y a hacer más eficiente la resolución de nombres.</p>
+<p><em><strong>Seguridad</strong></em><br>
+Limitar las actualizaciones a un servidor primario puede mejorar la seguridad al restringir los puntos que podrían ser vulnerables a ataques o errores de configuración. Los servidores secundarios pueden ser configurados para que solo acepten actualizaciones del servidor primario, lo que añade una capa adicional de seguridad.</p>
+<p><em><strong>Tolerancia a Fallos</strong></em><br>
+Si el servidor primario falla o necesita ser retirado para mantenimiento, los servidores secundarios pueden continuar proporcionando servicios de resolución de nombres. Además, muchas configuraciones permiten que un servidor secundario sea promovido a primario en caso de fallo del servidor primario original.</p>
+<p><em><strong>Reducción de Latencia y Proximidad Geográfica</strong></em><br>
+Los servidores secundarios suelen estar distribuidos geográficamente y pueden ser optimizados para servir a usuarios en ubicaciones específicas más rápidamente que si todas las solicitudes tuvieran que ser dirigidas al servidor primario.</p>
+<p>En resumen, la arquitectura de tener un servidor DNS primario y varios secundarios ofrece beneficios en términos de administración, coherencia de datos, eficiencia, seguridad y tolerancia a fallos.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-9">Ejercicio 9</h3>
 
 <p>Explique brevemente en qué consiste el mecanismo de transferencia de zona y cuál es su finalidad.</p>
+<p>El mecanismo de transferencia de zona en el sistema DNS (Sistema de Nombres de Dominio) es el proceso mediante el cual un servidor DNS secundario actualiza su base de datos de registros DNS al obtener una copia del servidor DNS primario o maestro. Este proceso asegura que todos los servidores involucrados en la resolución de nombres de un dominio tengan la misma información actualizada.</p>
+<p><em><strong>Finalidad</strong></em></p>
+<ol>
+<li>
+<p><strong>Sincronización de Datos</strong>: Este mecanismo permite que los servidores DNS secundarios tengan siempre la versión más actualizada de los registros, igual que el servidor DNS primario.</p>
+</li>
+<li>
+<p><strong>Redundancia</strong>: Al contar con varios servidores que contienen la misma información, se aumenta la disponibilidad del servicio. Si uno de los servidores falla, otros pueden tomar su lugar.</p>
+</li>
+<li>
+<p><strong>Balanceo de Carga</strong>: Al distribuir las consultas entre varios servidores, se optimiza la utilización de los recursos y se mejora la eficiencia del sistema.</p>
+</li>
+</ol>
+<p>En resumen, la transferencia de zona es esencial para mantener la coherencia de la información en los servidores DNS, mejorar la disponibilidad del servicio y permitir un balanceo de carga efectivo.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-10">Ejercicio 10</h3>
 
-<p>Imagine que usted es el administrador del dominio de DNS de la UNLP (<a href="http://unlp.edu.ar">unlp.edu.ar</a>). A su vez, cada facultad de la UNLP cuenta con un administrador que gestiona su propio dominio (por ejemplo, en el caso de la Facultad de Informática se trata de <a href="http://info.unlp.edu.ar">info.unlp.edu.ar</a>). Suponga que se crea una nueva facultad, Facultad de Redes, cuyo dominio será <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>, y el administrador le indica que quiere poder manejar su propio dominio. ¿Qué debe hacer usted para que el administrador de la Facultad de Redes pueda gestionar el dominio de forma independiente? (Pista: investigue en qué consiste la delegación de dominios).</p>
+<p>Imagine que usted es el administrador del dominio de DNS de la UNLP (<a href="http://unlp.edu.ar">unlp.edu.ar</a>). A su vez, cada facultad de la UNLP cuenta con un administrador que gestiona su propio dominio (por ejemplo, en el caso de la Facultad de Informática se trata de <a href="http://info.unlp.edu.ar">info.unlp.edu.ar</a>). Suponga que se crea una nueva facultad, Facultad de Redes, cuyo dominio será <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>, y el administrador le indica que quiere poder manejar su propio dominio.</p>
+<p><em><strong>¿Qué debe hacer usted para que el administrador de la Facultad de Redes pueda gestionar el dominio de forma independiente?</strong></em></p>
+<blockquote>
+<p>(Pista: investigue en qué consiste la delegación de dominios).</p>
+</blockquote>
+<p>Para permitir que el administrador de la nueva Facultad de Redes pueda gestionar el dominio “<a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>” de forma independiente, lo que tendría que hacer es configurar una “delegación de dominio”. La delegación de dominio en DNS es el proceso mediante el cual se asigna la autoridad para gestionar las configuraciones DNS de un subdominio a un servidor DNS diferente al del dominio principal.</p>
+<h4 class="crossnote-header" id="pasos-a-seguir">Pasos a seguir</h4>
+
+<ol>
+<li>
+<p><strong>Registrar el subdominio</strong>: En primer lugar, debería registrar el subdominio “<a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>” en el servidor DNS maestro (primario) de “<a href="http://unlp.edu.ar">unlp.edu.ar</a>”.</p>
+</li>
+<li>
+<p><strong>Definir servidores autoritativos</strong>: Especificar qué servidores DNS serán los autoritativos para el subdominio “<a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>”. Estos servidores serán administrados por el equipo de IT de la Facultad de Redes.</p>
+</li>
+<li>
+<p><strong>Crear Registros NS</strong>: En el servidor DNS maestro de “<a href="http://unlp.edu.ar">unlp.edu.ar</a>”, debería crear registros NS (Name Server) para el subdominio “<a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>”, apuntando a los servidores DNS que serán autoritativos para este subdominio.</p>
+</li>
+<li>
+<p><strong>Traspaso de autoridad</strong>: Al crear los registros NS, automáticamente se está delegando la autoridad de ese subdominio a los servidores DNS especificados. Ahora, cualquier consulta DNS relacionada con “<a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>” será redirigida a estos servidores.</p>
+</li>
+<li>
+<p><strong>Informar al Administrador</strong>: Una vez que la delegación esté completa, se deberá informar al administrador de la Facultad de Redes para que comience a configurar los registros DNS en su servidor autoritativo.</p>
+</li>
+<li>
+<p><strong>Comprobación</strong>: Finalmente, es recomendable verificar que la delegación se ha realizado correctamente, realizando consultas DNS para asegurarse de que se resuelven según lo esperado.</p>
+</li>
+</ol>
+<p>Siguiendo estos pasos, el administrador de la Facultad de Redes debería ser capaz de gestionar el dominio “<a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>” de manera independiente, sin afectar ni ser afectado por los demás dominios bajo “<a href="http://unlp.edu.ar">unlp.edu.ar</a>”.</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <h3 class="crossnote-header" id="ejercicio-11">Ejercicio 11</h3>
 
 <p>Responda y justifique los siguientes ejercicios</p>
 <p><strong>a. En la VM, utilice el comando dig para obtener la dirección IP del host <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a> y responda:</strong></p>
-<p><strong>b. ¿Cuáles son los servidores de DNS del dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>?</strong></p>
-<p><strong>c. Repita la consulta anterior cuatro veces más. ¿Qué observa? ¿Puede explicar a qué se debe?</strong></p>
-<p><strong>d. Observe la información que obtuvo al consultar por los servidores de DNS del dominio. En base a la salida, ¿es posible indicar cuál de ellos es el primario?</strong></p>
-<p><strong>e. Consulte por el registro SOA del dominio y responda.</strong></p>
-<ul>
-<li><strong>i</strong> ¿Puede ahora determinar cuál es el servidor de DNS primario?</li>
-<li><strong>ii</strong> ¿Cuál es el número de serie, qué convención sigue y en qué casos es importante actualizarlo?</li>
-<li><strong>iii</strong> ¿Qué valor tiene el segundo campo del registro? Investigue para qué se usa y como se interpreta el valor.</li>
-<li><strong>iv</strong> ¿Qué valor tiene el TTL de caché negativa y qué significa?</li>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token function">dig</span> www.redes.unlp.edu.ar
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> DiG <span class="token number">9.16</span>.27-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> www.redes.unlp.edu.ar
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
+<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">&gt;&gt;</span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">36782</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr aa rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">1</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">1</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
+<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">1232</span>
+<span class="token punctuation">;</span> COOKIE: 185dc42f85b63c9d0100000064fdcfac68c835c6fd358cc7 <span class="token punctuation">(</span>good<span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>www.redes.unlp.edu.ar.		IN	A
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+www.redes.unlp.edu.ar.	<span class="token number">300</span>	IN	A	<span class="token number">172.28</span>.0.50
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">0</span> msec
+<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">172.28</span>.0.29<span class="token comment">#53(172.28.0.29)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Sep <span class="token number">10</span> <span class="token number">11</span>:16:12 <span class="token parameter variable">-03</span> <span class="token number">2023</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">94</span>
+</pre><ul>
+<li>El estado de la consulta (<code>status: NOERROR</code>) muestra que la operación se completó con éxito.</li>
+<li>Se realizó una única consulta (<code>QUERY: 1</code>) y se recibió una única respuesta (<code>ANSWER: 1</code>).</li>
+<li>La sección <code>ANSWER SECTION</code> proporciona la información más relevante: el dominio <code>www.redes.unlp.edu.ar</code> tiene asignada la dirección IP <code>172.28.0.50</code>.</li>
+<li>El tiempo de consulta (<code>Query time: 0 msec</code>) muestra que la consulta se completó en 0 milisegundos, lo cual es muy rápido. Este dato puede ser especialmente útil para diagnosticar problemas de rendimiento.</li>
+<li>La información del servidor (<code>SERVER: 172.28.0.29#53</code>) muestra el servidor DNS que proporcionó la respuesta.</li>
 </ul>
+<p>En resumen, ahora sabes que la dirección IP para el dominio <code>www.redes.unlp.edu.ar</code> es <code>172.28.0.50</code>.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<p><strong>b. ¿Cuáles son los servidores de DNS del dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>?</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token function">dig</span> NS redes.unlp.edu.ar
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> DiG <span class="token number">9.16</span>.27-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> NS redes.unlp.edu.ar
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
+<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">&gt;&gt;</span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">65119</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr aa rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">2</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">3</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
+<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">1232</span>
+<span class="token punctuation">;</span> COOKIE: af458ba0aa5ecef00100000064fdd0ee9d21cca65848f141 <span class="token punctuation">(</span>good<span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>redes.unlp.edu.ar.		IN	NS
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-a.redes.unlp.edu.ar.
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-b.redes.unlp.edu.ar.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ADDITIONAL SECTION:
+ns-sv-a.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.30
+ns-sv-b.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.29
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">0</span> msec
+<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">172.28</span>.0.29<span class="token comment">#53(172.28.0.29)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Sep <span class="token number">10</span> <span class="token number">11</span>:21:34 <span class="token parameter variable">-03</span> <span class="token number">2023</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">150</span>
+</pre><p>La salida que obtuviste del comando <code>dig NS redes.unlp.edu.ar</code> indica que el dominio <code>redes.unlp.edu.ar</code> tiene dos servidores DNS:</p>
+<ol>
+<li><code>ns-sv-a.redes.unlp.edu.ar</code> con dirección IP <code>172.28.0.30</code></li>
+<li><code>ns-sv-b.redes.unlp.edu.ar</code> con dirección IP <code>172.28.0.29</code></li>
+</ol>
+<p>Estos son los servidores de nombres (Name Servers, NS) responsables de resolver las consultas DNS para el dominio <code>redes.unlp.edu.ar</code>. Están listados en la sección “ANSWER SECTION” de la salida del comando <code>dig</code>.</p>
+<p>Los números <code>86400</code> en la “ANSWER SECTION” representan el tiempo en segundos que se debe mantener en caché la información sobre estos servidores DNS.</p>
+<p>La sección “ADDITIONAL SECTION” proporciona información adicional como las direcciones IP asociadas a cada uno de estos servidores de nombres.</p>
+<p>Este tipo de configuración, donde hay más de un servidor DNS, es común para garantizar la alta disponibilidad y la tolerancia a fallos del servicio de DNS para el dominio.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<p><strong>c. Repita la consulta anterior cuatro veces más. ¿Qué observa? ¿Puede explicar a qué se debe?</strong></p>
+<table>
+<tbody><tr><td>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> DiG <span class="token number">9.16</span>.27-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> NS redes.unlp.edu.ar
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
+<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">&gt;&gt;</span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">61478</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr aa rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">2</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">3</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
+<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">1232</span>
+<span class="token punctuation">;</span> COOKIE: 03573ddaf69749c70100000064fdd1ca14286dbfd0c51aca <span class="token punctuation">(</span>good<span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>redes.unlp.edu.ar.		IN	NS
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-a.redes.unlp.edu.ar.
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-b.redes.unlp.edu.ar.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ADDITIONAL SECTION:
+ns-sv-a.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.30
+ns-sv-b.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.29
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">4</span> msec
+<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">172.28</span>.0.29<span class="token comment">#53(172.28.0.29)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Sep <span class="token number">10</span> <span class="token number">11</span>:25:14 <span class="token parameter variable">-03</span> <span class="token number">2023</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">150</span>
+</pre></td><td>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> DiG <span class="token number">9.16</span>.27-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> NS redes.unlp.edu.ar
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
+<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">&gt;&gt;</span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">49771</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr aa rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">2</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">3</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
+<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">1232</span>
+<span class="token punctuation">;</span> COOKIE: 974a0db8ffccc0480100000064fdd1cbae941f1844e49f8b <span class="token punctuation">(</span>good<span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>redes.unlp.edu.ar.		IN	NS
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-a.redes.unlp.edu.ar.
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-b.redes.unlp.edu.ar.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ADDITIONAL SECTION:
+ns-sv-a.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.30
+ns-sv-b.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.29
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">0</span> msec
+<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">172.28</span>.0.29<span class="token comment">#53(172.28.0.29)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Sep <span class="token number">10</span> <span class="token number">11</span>:25:15 <span class="token parameter variable">-03</span> <span class="token number">2023</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">150</span>
+</pre></td></tr>
+<tr><td>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> DiG <span class="token number">9.16</span>.27-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> NS redes.unlp.edu.ar
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
+<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">&gt;&gt;</span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">14037</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr aa rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">2</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">3</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
+<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">1232</span>
+<span class="token punctuation">;</span> COOKIE: a0aee5d279f893700100000064fdd1cd531bce7bcec1152f <span class="token punctuation">(</span>good<span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>redes.unlp.edu.ar.		IN	NS
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-a.redes.unlp.edu.ar.
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-b.redes.unlp.edu.ar.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ADDITIONAL SECTION:
+ns-sv-a.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.30
+ns-sv-b.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.29
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">0</span> msec
+<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">172.28</span>.0.29<span class="token comment">#53(172.28.0.29)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Sep <span class="token number">10</span> <span class="token number">11</span>:25:17 <span class="token parameter variable">-03</span> <span class="token number">2023</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">150</span>
+</pre></td><td>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> DiG <span class="token number">9.16</span>.27-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> NS redes.unlp.edu.ar
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
+<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">&gt;&gt;</span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">2317</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr aa rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">2</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">3</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
+<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">1232</span>
+<span class="token punctuation">;</span> COOKIE: 5d27906fc8651c0f0100000064fdd1ce5d03b4ea2b6aeae3 <span class="token punctuation">(</span>good<span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>redes.unlp.edu.ar.		IN	NS
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-b.redes.unlp.edu.ar.
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	NS	ns-sv-a.redes.unlp.edu.ar.
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ADDITIONAL SECTION:
+ns-sv-a.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.30
+ns-sv-b.redes.unlp.edu.ar. <span class="token number">604800</span> IN	A	<span class="token number">172.28</span>.0.29
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">4</span> msec
+<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">172.28</span>.0.29<span class="token comment">#53(172.28.0.29)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Sep <span class="token number">10</span> <span class="token number">11</span>:25:18 <span class="token parameter variable">-03</span> <span class="token number">2023</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">150</span>
+</pre></td></tr>
+</tbody></table>
+<ol>
+<li>
+<p><strong>Consistencia en los Servidores de Nombres</strong>: Los servidores de nombres reportados son consistentes en todas las consultas. Se mantienen como <code>ns-sv-a.redes.unlp.edu.ar</code> y <code>ns-sv-b.redes.unlp.edu.ar</code>.</p>
+</li>
+<li>
+<p><strong>Direcciones IP Adicionales</strong>: La sección “ADDITIONAL SECTION” también muestra las direcciones IP de estos servidores de nombres, y estas también son consistentes (<code>172.28.0.30</code> y <code>172.28.0.29</code>).</p>
+</li>
+<li>
+<p><strong>Tiempo de Consulta (Query time)</strong>: El tiempo de consulta es muy bajo (0-4 msec), lo que indica que la respuesta se obtuvo muy rápidamente. Este tiempo puede variar un poco, como se muestra en los resultados.</p>
+</li>
+<li>
+<p><strong>Flags y TTL</strong>: Los flags y el TTL (Tiempo de vida) se mantienen constantes. Esto es normal para consultas repetidas en un corto periodo de tiempo.</p>
+</li>
+<li>
+<p><strong>Orden de los servidores NS</strong>: En la última consulta, el orden de los servidores NS es diferente al de las consultas anteriores. Esto podría deberse al balanceo de carga DNS o simplemente a cómo el software de DNS elige listar los servidores.</p>
+</li>
+</ol>
+<p>Por lo tanto, lo que observamos aquí es bastante normal y esperado. Las pequeñas diferencias en el tiempo de consulta son normales y podrían atribuirse a variaciones en la carga de la red o del servidor DNS.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<p><strong>d. Observe la información que obtuvo al consultar por los servidores de DNS del dominio. En base a la salida, ¿es posible indicar cuál de ellos es el primario?</strong></p>
+<p>La salida del comando <code>dig</code> para consultar los servidores de nombres (NS) del dominio <code>redes.unlp.edu.ar</code> no incluye información que permita determinar directamente cuál de los servidores es el servidor primario (o maestro) y cuál es el secundario (o esclavo).</p>
+<p>Normalmente, la información sobre cuál es el servidor DNS primario y cuál es el secundario está confinada a la configuración interna de los servidores DNS involucrados y no se expone típicamente a clientes o a consultas DNS externas como las que se realizan con <code>dig</code>.</p>
+<p>Para determinar cuál es el servidor DNS primario de un dominio, generalmente tendría que tener acceso a la configuración del servidor DNS en el dominio en cuestión o recibir esa información del administrador del sistema o de la red.</p>
+<p>Por lo tanto, con la información proporcionada, no es posible indicar cuál de los servidores de DNS es el primario.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<p><strong>e. Consulte por el registro SOA del dominio y responda.</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token function">dig</span> SOA redes.unlp.edu.ar
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> DiG <span class="token number">9.16</span>.27-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> SOA redes.unlp.edu.ar
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
+<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">&gt;&gt;</span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">48401</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr aa rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">1</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">1</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
+<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">1232</span>
+<span class="token punctuation">;</span> COOKIE: 6d457cfb63d145040100000064fdd61531d0de439ebbb74b <span class="token punctuation">(</span>good<span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>redes.unlp.edu.ar.		IN	SOA
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+redes.unlp.edu.ar.	<span class="token number">86400</span>	IN	SOA	ns-sv-b.redes.unlp.edu.ar. root.redes.unlp.edu.ar. <span class="token number">2020031700</span> <span class="token number">604800</span> <span class="token number">86400</span> <span class="token number">2419200</span> <span class="token number">86400</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">0</span> msec
+<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">172.28</span>.0.29<span class="token comment">#53(172.28.0.29)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Sep <span class="token number">10</span> <span class="token number">11</span>:43:33 <span class="token parameter variable">-03</span> <span class="token number">2023</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">123</span>
+</pre><p><em><strong>i. ¿Puede ahora determinar cuál es el servidor de DNS primario?</strong></em></p>
+<p>El servidor de DNS primario para el dominio <code>redes.unlp.edu.ar</code> es <code>ns-sv-b.redes.unlp.edu.ar</code> según la sección “ANSWER” del resultado del comando.</p>
+<p><em><strong>ii. ¿Cuál es el número de serie, qué convención sigue y en qué casos es importante actualizarlo?</strong></em></p>
+<p>El número de serie es <code>2020031700</code>. Este número parece seguir la convención de la fecha, en el formato YYYYMMDDNN, donde “YYYYMMDD” es la fecha del último cambio y “NN” es un número de revisión para ese día. Este número de serie se incrementa cuando hay cambios en el dominio, lo que señala a los servidores DNS secundarios que necesitan actualizar su información.</p>
+<p><em><strong>iii. ¿Qué valor tiene el segundo campo del registro? Investigue para qué se usa y cómo se interpreta el valor.</strong></em></p>
+<p>El segundo campo del registro es <code>root.redes.unlp.edu.ar</code>, que generalmente se interpreta como la dirección de correo electrónico del administrador de DNS para el dominio, aunque el “@” se reemplaza por un punto. En este caso, el correo sería <code>root@redes.unlp.edu.ar</code>. Este campo se usa para saber quién es responsable del dominio.</p>
+<p><em><strong>iv. ¿Qué valor tiene el TTL de caché negativa y qué significa?</strong></em></p>
+<p>El último número en la sección “ANSWER” del registro SOA es <code>86400</code>, que es el TTL de caché negativa en segundos. Esto significa que si se realiza una consulta para un registro que no existe en este dominio, el resultado negativo se almacenará en caché durante 86400 segundos (o 24 horas) antes de que se realice otra consulta al servidor DNS primario.</p>
+<p>Con esta información, debería tener una mejor comprensión del registro SOA y de cómo se configura y administra el dominio <code>redes.unlp.edu.ar</code>.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <p><strong>f. Indique qué valor tiene el registro TXT para el nombre <a href="http://saludo.redes.unlp.edu.ar">saludo.redes.unlp.edu.ar</a>. Investigue para qué es usado este registro.</strong></p>
+<pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token function">dig</span> TXT saludo.redes.unlp.edu.ar
+</pre><pre data-role="codeBlock" data-info="shell" class="language-shell shell"><span class="token punctuation">;</span> <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> DiG <span class="token number">9.16</span>.27-Debian <span class="token operator">&lt;&lt;</span><span class="token operator">&gt;&gt;</span> TXT saludo.redes.unlp.edu.ar
+<span class="token punctuation">;</span><span class="token punctuation">;</span> global options: +cmd
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Got answer:
+<span class="token punctuation">;</span><span class="token punctuation">;</span> -<span class="token operator">&gt;&gt;</span>HEADER<span class="token operator">&lt;&lt;-</span> opcode: QUERY, status: NOERROR, id: <span class="token number">61711</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr aa rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">1</span>, AUTHORITY: <span class="token number">0</span>, ADDITIONAL: <span class="token number">1</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> OPT PSEUDOSECTION:
+<span class="token punctuation">;</span> EDNS: version: <span class="token number">0</span>, flags:<span class="token punctuation">;</span> udp: <span class="token number">1232</span>
+<span class="token punctuation">;</span> COOKIE: 00ce47d146589e5e0100000064fddcede4e3cc53c37fe4ec <span class="token punctuation">(</span>good<span class="token punctuation">)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token punctuation">;</span>saludo.redes.unlp.edu.ar.	IN	TXT
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+saludo.redes.unlp.edu.ar. <span class="token number">86400</span>	IN	TXT	<span class="token string">"HOLA"</span>
+
+<span class="token punctuation">;</span><span class="token punctuation">;</span> Query time: <span class="token number">0</span> msec
+<span class="token punctuation">;</span><span class="token punctuation">;</span> SERVER: <span class="token number">172.28</span>.0.29<span class="token comment">#53(172.28.0.29)</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Sun Sep <span class="token number">10</span> <span class="token number">12</span>:12:45 <span class="token parameter variable">-03</span> <span class="token number">2023</span>
+<span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">98</span>
+</pre><p>Este es un ejemplo muy simple y no está claro inmediatamente para qué se usa este registro en este contexto específico. Generalmente, los registros TXT pueden usarse para una variedad de propósitos, como ya mencioné. En este caso, podría ser simplemente un ejemplo o una forma de demostrar cómo funcionan los registros TXT.</p>
+<p>El valor “HOLA” no ofrece muchas pistas sobre su propósito específico, pero definitivamente es legible y entendible para los seres humanos, lo que a veces es el objetivo de un registro TXT: proporcionar información que pueda ser fácilmente interpretada. Sin embargo, sin un contexto adicional o documentación, es difícil determinar el propósito exacto de este registro en particular.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <p><strong>g. Utilizando dig, solicite la transferencia de zona de <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>, analice la salida y responda.</strong></p>
 <ul>
 <li><strong>i.</strong> ¿Qué significan los números que aparecen antes de la palabra IN? ¿Cuál es su finalidad?</li>
 <li><strong>ii.</strong> ¿Cuántos registros NS observa? Compare la respuesta con los servidores de DNS del dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a> que dio anteriormente. ¿Puede explicar a qué se debe la diferencia y qué significa?</li>
 </ul>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <p><strong>h. Consulte por el registro A de <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a> y luego por el registro A de <a href="http://www.practica.redes.unlp.edu.ar">www.practica.redes.unlp.edu.ar</a>.</strong><br>
 Observe los TTL de ambos. Repita la operación y compare el valor de los TTL de cada uno respecto de la respuesta anterior. ¿Puede explicar qué está ocurriendo? (Pista: observar los flags será de ayuda).</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
 <p><strong>i. Consulte por el registro A de <a href="http://www.practica2.redes.unlp.edu.ar">www.practica2.redes.unlp.edu.ar</a>.</strong><br>
 ¿Obtuvo alguna respuesta? Investigue sobre los codigos de respuesta de DNS. ¿Para qué son utilizados los mensajes NXDOMAIN y NOERROR?</p>
 <img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
@@ -235,11 +616,20 @@ Observe los TTL de ambos. Repita la operación y compare el valor de los TTL de 
           <a href="#ejercicio-9" class="md-toc-link">
             <p>Ejercicio 9</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#ejercicio-10" class="md-toc-link">
-            <p>Ejercicio 10</p>
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#ejercicio-10" class="md-toc-link"><p>Ejercicio 10</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#pasos-a-seguir" class="md-toc-link">
+            <p>Pasos a seguir</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
           <a href="#ejercicio-11" class="md-toc-link">
             <p>Ejercicio 11</p>
 
