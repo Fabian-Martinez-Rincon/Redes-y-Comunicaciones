@@ -1,0 +1,306 @@
+<!DOCTYPE html><html><head>
+      <title>Practica3</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      pre{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;padding:1em;margin:.5em 0;overflow:auto;line-height:1.5;tab-size:4;hyphens:none;color:#c5c8c6;background-color:#27292c!important;border:#43484c;border-radius:3px}pre[class*=language-]{padding:1em}code[class*=language-] .token.cdata,code[class*=language-] .token.comment,code[class*=language-] .token.doctype,code[class*=language-] .token.prolog,pre[class*=language-] .token.cdata,pre[class*=language-] .token.comment,pre[class*=language-] .token.doctype,pre[class*=language-] .token.prolog{color:#7c7c7c}code[class*=language-] .token.punctuation,pre[class*=language-] .token.punctuation{color:#96cbfe}code[class*=language-] .namespace,pre[class*=language-] .namespace{opacity:.7}code[class*=language-] .token.constant,pre[class*=language-] .token.constant{color:#9c9}code[class*=language-] .token.boolean,code[class*=language-] .token.function-name,code[class*=language-] .token.number,pre[class*=language-] .token.boolean,pre[class*=language-] .token.function-name,pre[class*=language-] .token.number{color:#ff73fd}code[class*=language-] .token.tag,pre[class*=language-] .token.tag{color:#96cbfe}code[class*=language-] .token.selector,pre[class*=language-] .token.selector{color:#96cbfe}code[class*=language-] .token.attr-name,pre[class*=language-] .token.attr-name{color:#c6c5fe}code[class*=language-] .token.string,pre[class*=language-] .token.string{color:#a8ff60}code[class*=language-] .token.char,pre[class*=language-] .token.char{color:#ff8000}code[class*=language-] .token.entity,pre[class*=language-] .token.entity{color:#ffd2a7}code[class*=language-] .token.url,pre[class*=language-] .token.url{color:#7c7c7c}code[class*=language-] .token.operator,pre[class*=language-] .token.operator{color:#ededed}code[class*=language-] .token.atrule,code[class*=language-] .token.attr-value,code[class*=language-] .token.keyword,pre[class*=language-] .token.atrule,pre[class*=language-] .token.attr-value,pre[class*=language-] .token.keyword{color:#cfcb90}code[class*=language-] .token.function,pre[class*=language-] .token.function{color:#ffd2a7}code[class*=language-] .token.class-name,pre[class*=language-] .token.class-name{color:#ffd2a7}code[class*=language-] .token.variable,pre[class*=language-] .token.variable{color:#c6c5fe}code[class*=language-] .token.important,code[class*=language-] .token.regex,pre[class*=language-] .token.important,pre[class*=language-] .token.regex{color:#e9c062}code[class*=language-] .token.bold,code[class*=language-] .token.important,pre[class*=language-] .token.bold,pre[class*=language-] .token.important{font-weight:700}code[class*=language-] .token.italic,pre[class*=language-] .token.italic{font-style:italic}code[class*=language-] .token.entity,pre[class*=language-] .token.entity{cursor:help}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#c5c8c6;background-color:#1d1f21;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#fff}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#9ba09d}html body strong{color:#fff}html body del{color:#9ba09d}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#ddd;text-decoration:none}html body a:hover{color:#cecece;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#9ba09d;background-color:#303337;border-left:4px solid #43484c}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#43484c;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#fff}html body table td,html body table th{border:1px solid #43484c;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em!important;color:#fff;background-color:#303337;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em!important;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em!important;line-height:1.45;border:#43484c;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#fff;border:1px solid #43484c;border-bottom:2px solid #35393c;padding:2px 4px;background-color:#303337;border-radius:3px}@media print{html body{background-color:#1d1f21}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#fff;page-break-after:avoid}html body blockquote{color:#9ba09d}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}html body a{text-decoration:underline}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([for=preview]) .code-chunk .btn-group{display:none}.markdown-preview:not([for=preview]) .code-chunk .status{display:none}.markdown-preview:not([for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="crossnote markdown-preview  ">
+      <h1 align="center"> Práctica 3 Capa de Aplicación - DNS</h1>
+<ul>
+<li><a href="https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones">El resto de las practicas</a></li>
+</ul>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<ul>
+<li><a href="#ejercicio-1">Ejercicio 1 Investigue y describa cómo funciona el DNS. ¿Cuál es su objetivo?</a></li>
+<li><a href="#ejercicio-2">Ejercicio 2 ¿Qué es un root server? ¿Qué es un generic top-level domain (gtld)?</a></li>
+<li><a href="#ejercicio-3">Ejercicio 3 ¿Qué es una respuesta del tipo autoritativa?</a></li>
+<li><a href="#ejercicio-4">Ejercicio 4 ¿Qué diferencia una consulta DNS recursiva de una iterativa?</a></li>
+<li><a href="#ejercicio-5">Ejercicio 5 ¿Qué es el resolver?</a></li>
+<li><a href="#ejercicio-6">Ejercicio 6 Describa para qué se utilizan los siguientes tipos de registros de DNS:</a></li>
+<li><a href="#ejercicio-7">Ejercicio 7 En Internet, un dominio suele tener más de un servidor DNS. ¿Por qué cree que esto es así?</a></li>
+<li><a href="#ejercicio-8">Ejercicio 8 Cuando un dominio cuenta con más de un servidor</a></li>
+<li><a href="#ejercicio-9">Ejercicio 9 Explique brevemente en qué consiste el mecanismo de transferencia de zona y cuál es su finalidad.</a></li>
+<li><a href="#ejercicio-10">Ejercicio 10 Imagine que usted es el administrador del dominio de DNS de la UNLP</a></li>
+<li><a href="#ejercicio-11">Ejercicio 11 Responda y justifique los siguientes ejercicios</a></li>
+<li><a href="#ejercicio-12">Ejercicio 12 Investigue los comando nslookup y host. ¿Para qué sirven?</a></li>
+<li><a href="#ejercicio-13">Ejercicio 13 ¿Qué función cumple en Linux/Unix el archivo /etc/hosts</a></li>
+<li><a href="#ejercicio-14">Ejercicio 14 Abra el programa Wireshark para comenzar a capturar el tráfico de red</a></li>
+<li><a href="#ejercicio-15">Ejercicio 15 Dada la siguiente situación</a></li>
+<li><a href="#ejercicio-16">Ejercicio 16 Relacione DNS con HTTP. ¿Se puede navegar si no hay servicio de DNS?</a></li>
+<li><a href="#ejercicio-17">Ejercicio 17 Observar el siguiente gráfico y contestar</a></li>
+<li><a href="#ejercicio-18">Ejercicio 18 ¿A quién debería consultar para que la respuesta sobre www.google.com sea autoritativa?</a></li>
+<li><a href="#ejercicio-19">Ejercicio 19 ¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por www.info.unlp.edu.ar?</a></li>
+<li><a href="#ejercicio-20-ejercicio-de-parcial">Ejercicio 20 En base a la siguiente salida de dig, conteste las consignas.</a></li>
+</ul>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-1">Ejercicio 1</h3>
+
+<p>Investigue y describa cómo funciona el DNS. ¿Cuál es su objetivo?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-2">Ejercicio 2</h3>
+
+<p>¿Qué es un root server? ¿Qué es un generic top-level domain (gtld)?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-3">Ejercicio 3</h3>
+
+<p>¿Qué es una respuesta del tipo autoritativa?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-4">Ejercicio 4</h3>
+
+<p>¿Qué diferencia una consulta DNS recursiva de una iterativa?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-5">Ejercicio 5</h3>
+
+<p>¿Qué es el resolver?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-6">Ejercicio 6</h3>
+
+<p>Describa para qué se utilizan los siguientes tipos de registros de DNS:</p>
+<p>a. A<br>
+f. NS<br>
+b. MX<br>
+g. CNAME<br>
+c. PTR<br>
+h. SOA<br>
+d. AAAA<br>
+i. TXT<br>
+e. SRV</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-7">Ejercicio 7</h3>
+
+<p>En Internet, un dominio suele tener más de un servidor DNS. ¿Por qué cree que esto es así?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-8">Ejercicio 8</h3>
+
+<p>Cuando un dominio cuenta con más de un servidor, uno de ellos es el primario (o maestro) y todos los demás son los secundarios (o esclavos). ¿Cuál es la razón de que sea así?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-9">Ejercicio 9</h3>
+
+<p>Explique brevemente en qué consiste el mecanismo de transferencia de zona y cuál es su finalidad.</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-10">Ejercicio 10</h3>
+
+<p>Imagine que usted es el administrador del dominio de DNS de la UNLP (<a href="http://unlp.edu.ar">unlp.edu.ar</a>). A su vez, cada facultad de la UNLP cuenta con un administrador que gestiona su propio dominio (por ejemplo, en el caso de la Facultad de Informática se trata de <a href="http://info.unlp.edu.ar">info.unlp.edu.ar</a>). Suponga que se crea una nueva facultad, Facultad de Redes, cuyo dominio será <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>, y el administrador le indica que quiere poder manejar su propio dominio. ¿Qué debe hacer usted para que el administrador de la Facultad de Redes pueda gestionar el dominio de forma independiente? (Pista: investigue en qué consiste la delegación de dominios).</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-11">Ejercicio 11</h3>
+
+<p>Responda y justifique los siguientes ejercicios</p>
+<p><strong>a. En la VM, utilice el comando dig para obtener la dirección IP del host <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a> y responda:</strong></p>
+<p><strong>b. ¿Cuáles son los servidores de DNS del dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>?</strong></p>
+<p><strong>c. Repita la consulta anterior cuatro veces más. ¿Qué observa? ¿Puede explicar a qué se debe?</strong></p>
+<p><strong>d. Observe la información que obtuvo al consultar por los servidores de DNS del dominio. En base a la salida, ¿es posible indicar cuál de ellos es el primario?</strong></p>
+<p><strong>e. Consulte por el registro SOA del dominio y responda.</strong></p>
+<ul>
+<li><strong>i</strong> ¿Puede ahora determinar cuál es el servidor de DNS primario?</li>
+<li><strong>ii</strong> ¿Cuál es el número de serie, qué convención sigue y en qué casos es importante actualizarlo?</li>
+<li><strong>iii</strong> ¿Qué valor tiene el segundo campo del registro? Investigue para qué se usa y como se interpreta el valor.</li>
+<li><strong>iv</strong> ¿Qué valor tiene el TTL de caché negativa y qué significa?</li>
+</ul>
+<p><strong>f. Indique qué valor tiene el registro TXT para el nombre <a href="http://saludo.redes.unlp.edu.ar">saludo.redes.unlp.edu.ar</a>. Investigue para qué es usado este registro.</strong></p>
+<p><strong>g. Utilizando dig, solicite la transferencia de zona de <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>, analice la salida y responda.</strong></p>
+<ul>
+<li><strong>i.</strong> ¿Qué significan los números que aparecen antes de la palabra IN? ¿Cuál es su finalidad?</li>
+<li><strong>ii.</strong> ¿Cuántos registros NS observa? Compare la respuesta con los servidores de DNS del dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a> que dio anteriormente. ¿Puede explicar a qué se debe la diferencia y qué significa?</li>
+</ul>
+<p><strong>h. Consulte por el registro A de <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a> y luego por el registro A de <a href="http://www.practica.redes.unlp.edu.ar">www.practica.redes.unlp.edu.ar</a>.</strong><br>
+Observe los TTL de ambos. Repita la operación y compare el valor de los TTL de cada uno respecto de la respuesta anterior. ¿Puede explicar qué está ocurriendo? (Pista: observar los flags será de ayuda).</p>
+<p><strong>i. Consulte por el registro A de <a href="http://www.practica2.redes.unlp.edu.ar">www.practica2.redes.unlp.edu.ar</a>.</strong><br>
+¿Obtuvo alguna respuesta? Investigue sobre los codigos de respuesta de DNS. ¿Para qué son utilizados los mensajes NXDOMAIN y NOERROR?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-12">Ejercicio 12</h3>
+
+<p>Investigue los comando nslookup y host. ¿Para qué sirven? Intente con ambos comandos obtener:</p>
+<ul>
+<li>Dirección IP de <a href="http://www.redes.unlp.edu.ar">www.redes.unlp.edu.ar</a>.</li>
+<li>Servidores de correo del dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>.</li>
+<li>Servidores de DNS del dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>.</li>
+</ul>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-13">Ejercicio 13</h3>
+
+<p>¿Qué función cumple en Linux/Unix el archivo /etc/hosts o en Windows el archivo \WINDOWS\system32\drivers\etc\hosts?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-14">Ejercicio 14</h3>
+
+<p>Abra el programa Wireshark para comenzar a capturar el tráfico de red en la interfaz con IP 172.28.0.1.</p>
+<p>Una vez abierto realice una consulta DNS con el comando dig para averiguar el registro MX de <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a> y luego, otra para averiguar los registros NS correspondientes al dominio <a href="http://redes.unlp.edu.ar">redes.unlp.edu.ar</a>.</p>
+<p>Analice la información proporcionada por dig y compárelo con la captura</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-15">Ejercicio 15</h3>
+
+<p>Dada la siguiente situación: “Una PC en una red determinada, con acceso a Internet, utiliza los servicios de DNS de un servidor de la red”. Analice:<br>
+<strong>a. ¿Qué tipo de consultas (iterativas o recursivas) realiza la PC a su servidor de DNS?</strong></p>
+<p><strong>b. ¿Qué tipo de consultas (iterativas o recursivas) realiza el servidor de DNS para resolver requerimientos de usuario como el anterior? ¿A quién le realiza estas consultas?</strong></p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-16">Ejercicio 16</h3>
+
+<p>Relacione DNS con HTTP. ¿Se puede navegar si no hay servicio de DNS?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-17">Ejercicio 17</h3>
+
+<p>Observar el siguiente gráfico y contestar:</p>
+<p><img src="https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/72b0b1dc-5763-48e5-908f-01fd5549c5b8" alt=""></p>
+<ul>
+<li><strong>a.</strong> Si la PC-A, que usa como servidor de DNS a “DNS Server”, desea obtener la IP de <a href="http://www.unlp.edu.ar">www.unlp.edu.ar</a>, cuáles serían, y en qué orden, los pasos que se ejecutarán para obtener la respuesta.</li>
+<li><strong>b.</strong> ¿Dónde es recursiva la consulta? ¿Y dónde iterativa?</li>
+</ul>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-18">Ejercicio 18</h3>
+
+<p>¿A quién debería consultar para que la respuesta sobre <a href="http://www.google.com">www.google.com</a> sea autoritativa?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-19">Ejercicio 19</h3>
+
+<p>¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por <a href="http://www.info.unlp.edu.ar">www.info.unlp.edu.ar</a>? ¿Y si la consulta es al servidor 8.8.8.8?</p>
+<img src="https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif" height="20" width="100%">
+<h3 class="crossnote-header" id="ejercicio-20-ejercicio-de-parcial">Ejercicio 20 Ejercicio de parcial</h3>
+
+<p>En base a la siguiente salida de dig, conteste las consignas. Justifique en todos los casos.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><span class="token number">1</span> <span class="token punctuation">;</span><span class="token punctuation">;</span> flags: qr rd ra<span class="token punctuation">;</span> QUERY: <span class="token number">1</span>, ANSWER: <span class="token number">2</span>, AUTHORITY: <span class="token number">4</span>, ADDITIONAL: <span class="token number">4</span>
+<span class="token number">2</span>
+<span class="token number">3</span> <span class="token punctuation">;</span><span class="token punctuation">;</span> QUESTION SECTION:
+<span class="token number">4</span> <span class="token punctuation">;</span>ejemplo.com. IN __
+<span class="token number">5</span>
+<span class="token number">6</span> <span class="token punctuation">;</span><span class="token punctuation">;</span> ANSWER SECTION:
+<span class="token number">7</span> ejemplo.com. <span class="token number">1634</span> IN __ <span class="token number">10</span> srv01.ejemplo.com.
+<span class="token number">8</span> ejemplo.com. <span class="token number">1634</span> IN __ <span class="token number">5</span> srv00.ejemplo.com.
+<span class="token number">9</span>
+<span class="token number">10</span> <span class="token punctuation">;</span><span class="token punctuation">;</span> AUTHORITY SECTION:
+<span class="token number">11</span> ejemplo.com. <span class="token number">92354</span> IN __ ss00.ejemplo.com.
+<span class="token number">12</span> ejemplo.com. <span class="token number">92354</span> IN __ ss02.ejemplo.com.
+<span class="token number">13</span> ejemplo.com. <span class="token number">92354</span> IN __ ss01.ejemplo.com.
+<span class="token number">14</span> ejemplo.com. <span class="token number">92354</span> IN __ ss03.ejemplo.com.
+<span class="token number">15</span>
+<span class="token number">16</span> <span class="token punctuation">;</span><span class="token punctuation">;</span> ADDITIONAL SECTION:
+<span class="token number">17</span> srv01.ejemplo.com. <span class="token number">272</span> IN __ <span class="token number">64.233</span>.186.26
+<span class="token number">18</span> srv01.ejemplo.com. <span class="token number">240</span> IN __ <span class="token number">2800</span>:3f0:4003:c00::1a
+<span class="token number">19</span> srv00.ejemplo.com. <span class="token number">272</span> IN __ <span class="token number">74.125</span>.133.26
+<span class="token number">20</span> srv00.ejemplo.com. <span class="token number">240</span> IN __ 2a00:1450:400c:c07::1b
+</pre><p>Complete las líneas donde aparece __ con el registro correcto.</p>
+<ul>
+<li>¿Es una respuesta autoritativa? En caso de no serlo, ¿a qué servidor le preguntaría para obtener una respuesta autoritativa?</li>
+<li>¿La consulta fue recursiva? ¿Y la respuesta?</li>
+<li>¿Qué representan los valores 10 y 5 en las líneas 7 y 8.</li>
+</ul>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-1" class="md-toc-link">
+            <p>Ejercicio 1</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-2" class="md-toc-link">
+            <p>Ejercicio 2</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-3" class="md-toc-link">
+            <p>Ejercicio 3</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-4" class="md-toc-link">
+            <p>Ejercicio 4</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-5" class="md-toc-link">
+            <p>Ejercicio 5</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-6" class="md-toc-link">
+            <p>Ejercicio 6</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-7" class="md-toc-link">
+            <p>Ejercicio 7</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-8" class="md-toc-link">
+            <p>Ejercicio 8</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-9" class="md-toc-link">
+            <p>Ejercicio 9</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-10" class="md-toc-link">
+            <p>Ejercicio 10</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-11" class="md-toc-link">
+            <p>Ejercicio 11</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-12" class="md-toc-link">
+            <p>Ejercicio 12</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-13" class="md-toc-link">
+            <p>Ejercicio 13</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-14" class="md-toc-link">
+            <p>Ejercicio 14</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-15" class="md-toc-link">
+            <p>Ejercicio 15</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-16" class="md-toc-link">
+            <p>Ejercicio 16</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-17" class="md-toc-link">
+            <p>Ejercicio 17</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-18" class="md-toc-link">
+            <p>Ejercicio 18</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-19" class="md-toc-link">
+            <p>Ejercicio 19</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#ejercicio-20-ejercicio-de-parcial" class="md-toc-link">
+            <p>Ejercicio 20 Ejercicio de parcial</p>
+
+          </a></div>
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>
