@@ -2,8 +2,7 @@
 
 - [El resto de las practicas](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones)
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 - [Ejercicio 1 Investigue y describa cómo funciona el DNS. ¿Cuál es su objetivo?](#ejercicio-1)
 - [Ejercicio 2 ¿Qué es un root server? ¿Qué es un generic top-level domain (gtld)?](#ejercicio-2)
 - [Ejercicio 3 ¿Qué es una respuesta del tipo autoritativa?](#ejercicio-3)
@@ -25,8 +24,7 @@
 - [Ejercicio 19 ¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por www.info.unlp.edu.ar?](#ejercicio-19)
 - [Ejercicio 20 En base a la siguiente salida de dig, conteste las consignas.](#ejercicio-20-ejercicio-de-parcial)
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 1
 
 ***Investigue y describa cómo funciona el DNS. ¿Cuál es su objetivo?***
@@ -34,9 +32,10 @@
 El Sistema de Nombres de Dominio (DNS, por sus siglas en inglés) es un sistema jerárquico y descentralizado que se encarga de traducir nombres de dominio legibles por humanos en direcciones IP, que son legibles por máquinas. Este proceso facilita la navegación en la web, ya que los usuarios no tienen que recordar direcciones IP numéricas para acceder a sitios web y otros recursos en línea.
 
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
+---
 
 ### Ejercicio 2
+
 ***¿Qué es un root server?***
 
 Un servidor raíz (root server) en el contexto de DNS (Sistema de Nombres de Dominio) es un servidor que contiene la información básica y autoritativa necesaria para resolver nombres de dominio de nivel superior (como `.com`, `.org`, `.net`, etc.). 
@@ -50,8 +49,7 @@ Un dominio de nivel superior genérico (gTLD, por sus siglas en inglés) es una 
 Los gTLD incluyen dominios como `.com`, `.org`, `.net`, así como dominios más nuevos y específicos como `.app`, `.blog`, `.guru`, etc. Originalmente, los gTLD se crearon para representar una función o un tipo de organización (por ejemplo, `.com` para empresas comerciales, `.org` para organizaciones sin fines de lucro), pero con la expansión del espacio de nombres de dominio, estos se han vuelto mucho más variados y menos restrictivos en su uso.
 
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 3
 
 ***¿Qué es una respuesta del tipo autoritativa?***
@@ -70,8 +68,7 @@ Por el contrario, una respuesta no autoritativa es aquella que ha sido obtenida 
 </tr>
 </table>
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 4
 
 **¿Qué diferencia una consulta DNS recursiva de una iterativa?**
@@ -107,8 +104,7 @@ En una consulta iterativa, el cliente tiene que hacer múltiples rondas de pregu
 
 Ambas consultas tienen sus ventajas y desventajas, y se utilizan en diferentes escenarios según las necesidades.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 5
 
 **¿Qué es el resolver?**
@@ -127,8 +123,7 @@ En resumen, el resolver actúa como un cliente en el sistema de DNS, iniciando l
 
 
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 6
 
 Describa para qué se utilizan los siguientes tipos de registros de DNS:
@@ -164,8 +159,7 @@ Utilizado para almacenar información de texto que puede ser utilizada para vari
 
 Cada uno de estos registros tiene su propio propósito específico y juega un papel en cómo funciona la red y cómo se resuelven los nombres de dominio.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 7
 
 En Internet, un dominio suele tener más de un servidor DNS. ¿Por qué cree que esto es así?
@@ -192,8 +186,7 @@ La replicación entre servidores DNS asegura que los datos estén sincronizados.
 
 En resumen, tener múltiples servidores DNS mejora la resiliencia, el rendimiento y la seguridad del sistema de nombres de dominio.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 8
 
 Cuando un dominio cuenta con más de un servidor, uno de ellos es el primario (o maestro) y todos los demás son los secundarios (o esclavos). ¿Cuál es la razón de que sea así?
@@ -220,8 +213,7 @@ Los servidores secundarios suelen estar distribuidos geográficamente y pueden s
 
 En resumen, la arquitectura de tener un servidor DNS primario y varios secundarios ofrece beneficios en términos de administración, coherencia de datos, eficiencia, seguridad y tolerancia a fallos.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 9
 
 Explique brevemente en qué consiste el mecanismo de transferencia de zona y cuál es su finalidad.
@@ -238,8 +230,7 @@ El mecanismo de transferencia de zona en el sistema DNS (Sistema de Nombres de D
 
 En resumen, la transferencia de zona es esencial para mantener la coherencia de la información en los servidores DNS, mejorar la disponibilidad del servicio y permitir un balanceo de carga efectivo.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 10
 
 Imagine que usted es el administrador del dominio de DNS de la UNLP (unlp.edu.ar). A su vez, cada facultad de la UNLP cuenta con un administrador que gestiona su propio dominio (por ejemplo, en el caso de la Facultad de Informática se trata de info.unlp.edu.ar). Suponga que se crea una nueva facultad, Facultad de Redes, cuyo dominio será redes.unlp.edu.ar, y el administrador le indica que quiere poder manejar su propio dominio. 
@@ -266,8 +257,7 @@ Para permitir que el administrador de la nueva Facultad de Redes pueda gestionar
 
 Siguiendo estos pasos, el administrador de la Facultad de Redes debería ser capaz de gestionar el dominio "redes.unlp.edu.ar" de manera independiente, sin afectar ni ser afectado por los demás dominios bajo "unlp.edu.ar".
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 11
 
 Responda y justifique los siguientes ejercicios
@@ -309,8 +299,7 @@ www.redes.unlp.edu.ar.	300	IN	A	172.28.0.50
 
 En resumen, ahora sabes que la dirección IP para el dominio `www.redes.unlp.edu.ar` es `172.28.0.50`.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 **b. ¿Cuáles son los servidores de DNS del dominio redes.unlp.edu.ar?**
 
 ```shell
@@ -357,8 +346,7 @@ La sección "ADDITIONAL SECTION" proporciona información adicional como las dir
 
 Este tipo de configuración, donde hay más de un servidor DNS, es común para garantizar la alta disponibilidad y la tolerancia a fallos del servicio de DNS para el dominio.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 **c. Repita la consulta anterior cuatro veces más. ¿Qué observa? ¿Puede explicar a qué se debe?**
 
 <table>
@@ -495,8 +483,7 @@ ns-sv-b.redes.unlp.edu.ar. 604800 IN	A	172.28.0.29
 
 Por lo tanto, lo que observamos aquí es bastante normal y esperado. Las pequeñas diferencias en el tiempo de consulta son normales y podrían atribuirse a variaciones en la carga de la red o del servidor DNS.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 **d. Observe la información que obtuvo al consultar por los servidores de DNS del dominio. En base a la salida, ¿es posible indicar cuál de ellos es el primario?**
 
 La salida del comando `dig` para consultar los servidores de nombres (NS) del dominio `redes.unlp.edu.ar` no incluye información que permita determinar directamente cuál de los servidores es el servidor primario (o maestro) y cuál es el secundario (o esclavo).
@@ -507,8 +494,7 @@ Para determinar cuál es el servidor DNS primario de un dominio, generalmente te
 
 Por lo tanto, con la información proporcionada, no es posible indicar cuál de los servidores de DNS es el primario.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 **e. Consulte por el registro SOA del dominio y responda.**
 
 ```shell
@@ -555,8 +541,7 @@ El último número en la sección "ANSWER" del registro SOA es `86400`, que es e
 
 Con esta información, debería tener una mejor comprensión del registro SOA y de cómo se configura y administra el dominio `redes.unlp.edu.ar`.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 **f. Indique qué valor tiene el registro TXT para el nombre saludo.redes.unlp.edu.ar. Investigue para qué es usado este registro.**
 
 ```shell
@@ -589,8 +574,7 @@ Este es un ejemplo muy simple y no está claro inmediatamente para qué se usa e
 
 El valor "HOLA" no ofrece muchas pistas sobre su propósito específico, pero definitivamente es legible y entendible para los seres humanos, lo que a veces es el objetivo de un registro TXT: proporcionar información que pueda ser fácilmente interpretada. Sin embargo, sin un contexto adicional o documentación, es difícil determinar el propósito exacto de este registro en particular.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 **g. Utilizando dig, solicite la transferencia de zona de redes.unlp.edu.ar, analice la salida y responda.**
 
 Dado que los servidores DNS autoritativos para `redes.unlp.edu.ar` son `ns-sv-a.redes.unlp.edu.ar` y `ns-sv-b.redes.unlp.edu.ar`, puede intentar realizar una transferencia de zona con uno de ellos usando el comando `dig`.
@@ -657,8 +641,7 @@ Estos coinciden con los servidores DNS que mencionó anteriormente. No hay difer
 El comando `dig @ns-sv-b.redes.unlp.edu.ar redes.unlp.edu.ar AXFR` pide una transferencia de zona completa del dominio `redes.unlp.edu.ar` al servidor DNS `ns-sv-b.redes.unlp.edu.ar`. La bandera `AXFR` es la que solicita esta transferencia.
 
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 **h. Consulte por el registro A de www.redes.unlp.edu.ar y luego por el registro A de www.practica.redes.unlp.edu.ar.**
 
 ```shell
@@ -755,8 +738,7 @@ Esto sugiere que la información relacionada con `www.practica.redes.unlp.edu.ar
 
 Si repites las consultas antes de que expire el TTL, deberías ver que el TTL disminuye, lo cual es una indicación de que la respuesta está siendo servida desde la caché del servidor DNS.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 **i. Consulte por el registro A de www.practica2.redes.unlp.edu.ar.**
 ¿Obtuvo alguna respuesta? Investigue sobre los codigos de respuesta de DNS. 
 
@@ -820,8 +802,7 @@ Por otro lado, si recibes un código `NOERROR`, significa que la consulta DNS se
 
 Ambos códigos son cruciales para el funcionamiento de las aplicaciones de red, ya que permiten distinguir entre un dominio que no existe en absoluto y uno que simplemente no tiene el tipo de registro solicitado. Esto es particularmente importante para las búsquedas de servidores de correo, servidores web y otros servicios.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 12
 
 Investigue los comando nslookup y host. ¿Para qué sirven? Intente con ambos comandos obtener:
@@ -918,8 +899,7 @@ redes.unlp.edu.ar name server ns-sv-a.redes.unlp.edu.ar.
 
 Ambas utilidades, `nslookup` y `host`, son herramientas poderosas para la resolución de nombres y la depuración de problemas relacionados con DNS. Sin embargo, tenga en cuenta que `nslookup` está considerado como obsoleto por muchos en la comunidad de administración de sistemas, y se recomienda el uso de comandos como `dig` y `host` para nuevas implementaciones.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 13
 
 **¿Qué función cumple en Linux/Unix el archivo /etc/hosts o en Windows el archivo \WINDOWS\system32\drivers\etc\hosts?**
@@ -957,8 +937,7 @@ El archivo generalmente contiene líneas con una dirección IP seguida de uno o 
 Recuerda que modificar este archivo requiere permisos de administrador o superusuario.
 
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 14
 
 Abra el programa Wireshark para comenzar a capturar el tráfico de red en la interfaz con IP 172.28.0.1.
@@ -967,8 +946,7 @@ Una vez abierto realice una consulta DNS con el comando dig para averiguar el re
 
 Analice la información proporcionada por dig y compárelo con la captura
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 15
 
 Dada la siguiente situación: “Una PC en una red determinada, con acceso a Internet, utiliza los servicios de DNS de un servidor de la red”. Analice:
@@ -983,8 +961,7 @@ Cuando el servidor de DNS recibe una consulta recursiva de un cliente y no tiene
 
 
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 16
 
 ***Relacione DNS con HTTP.*** 
@@ -1024,8 +1001,7 @@ Técnicamente, sí, se puede navegar sin un servicio DNS, pero con algunas limit
 
 Por lo tanto, aunque es posible navegar en ciertas condiciones sin un servicio de DNS, la experiencia sería muy limitada y complicada. DNS es fundamental para el funcionamiento eficiente y amigable de la web tal como la conocemos hoy en día.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 17
 
 Observar el siguiente gráfico y contestar:
@@ -1044,8 +1020,7 @@ Observar el siguiente gráfico y contestar:
 - El DNS se comunica con el que tiene el dominio .edu.ar y este le devuelve la lista de servidores autoritativos para el siguiente nivel (unlp.edu.ar) en este caso 163.10.0.67
 - El DNS por ultimo se comunica con unlp.edu.ar que es el servidor autoritativo de www.unlp.edu.ar, devolviendo su direccion IP 163.10.0.54
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 18
 
 ¿A quién debería consultar para que la respuesta sobre www.google.com sea autoritativa?
@@ -1132,8 +1107,7 @@ La bandera `WARNING: recursion requested but not available` indica que aunque so
 
 En resumen, has consultado con éxito uno de los servidores DNS autoritativos para `google.com` y has obtenido una respuesta autoritativa.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 19
 
 ***¿Qué sucede si al servidor elegido en el paso anterior se lo consulta por www.info.unlp.edu.ar?***
@@ -1223,8 +1197,7 @@ Aquí están los elementos clave de la respuesta:
 
 En resumen, el servidor DNS 8.8.8.8 pudo resolver con éxito tu consulta porque es un servidor recursivo que puede hacer consultas a otros servidores DNS hasta obtener la información que necesitas. Este es el comportamiento esperado de un servidor DNS recursivo y es en contraste con el comportamiento del servidor DNS autoritativo para `google.com` que recibió tu primera consulta.
 
-<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
+---
 ### Ejercicio 20 Ejercicio de parcial
 
 En base a la siguiente salida de dig, conteste las consignas. Justifique en todos los casos.
