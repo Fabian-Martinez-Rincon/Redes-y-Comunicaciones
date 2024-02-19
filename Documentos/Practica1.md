@@ -1,4 +1,4 @@
-# Practica 1 Introducción
+## Practica 1 Introducción
 
 - [Ejercicio 1) ¿Qué es una red? ¿Cuál es el principal objetivo para construir una red?](#ejercicio-1)
 - [Ejercicio 2) ¿Qué es Internet? Describa los principales componentes que permiten su funcionamiento.](#ejercicio-2)
