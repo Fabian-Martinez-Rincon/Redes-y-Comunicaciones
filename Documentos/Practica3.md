@@ -1,7 +1,5 @@
 ## Practica 3 Capa de Aplicación DNS
 
-
-
 ### DNS
 
 - [Ejercicio 1 Investigue y describa cómo funciona el DNS. ¿Cuál es su objetivo?](#ejercicio-1)
@@ -131,14 +129,23 @@ Imagine que usted es el administrador del dominio de DNS de la UNLP (unlp.edu.ar
 
 Responda y justifique los siguientes ejercicios.
 
+#### Parte a
+
 En la VM, utilice el comando dig para obtener la dirección IP del host www.redes.unlp.edu.ar y responda:
 
+#### Parte b
 
 ¿Cuáles son los servidores de DNS del dominio redes.unlp.edu.ar?
 
+#### Parte c
+
 Repita la consulta anterior cuatro veces más. ¿Qué observa? ¿Puede explicar a qué se debe?
 
+#### Parte d
+
 Observe la información que obtuvo al consultar por los servidores de DNS del dominio. En base a la salida, ¿es posible indicar cuál de ellos es el primario?
+
+#### Parte e
 
 **Consulte por el registro SOA del dominio y responda.**
 
@@ -153,13 +160,17 @@ iv. ¿Qué valor tiene el TTL de caché negativa y qué significa?
 
 Indique qué valor tiene el registro TXT para el nombre saludo.redes.unlp.edu.ar. Investigue para qué es usado este registro.
 
+#### Parte g
+
 **Utilizando dig, solicite la transferencia de zona de redes.unlp.edu.ar, analice la salida y responda.**
 
 i. ¿Qué significan los números que aparecen antes de la palabra IN? ¿Cuál es su finalidad?
 
 ii. ¿Cuántos registros NS observa? Compare la respuesta con los servidores de DNS del dominio redes.unlp.edu.ar que dio anteriormente. ¿Puede explicar a qué se debe la diferencia y qué significa?
 
-h. Consulte por el registro A de www.redes.unlp.edu.ar y luego por el registro A de www.practica.redes.unlp.edu.ar. Observe los TTL de ambos. Repita la operación y compare el valor de los TTL de cada uno respecto de la respuesta anterior. ¿Puede explicar qué está ocurriendo? (Pista: observar los flags será de ayuda).
+#### Parte h
+
+Consulte por el registro A de www.redes.unlp.edu.ar y luego por el registro A de www.practica.redes.unlp.edu.ar. Observe los TTL de ambos. Repita la operación y compare el valor de los TTL de cada uno respecto de la respuesta anterior. ¿Puede explicar qué está ocurriendo? (Pista: observar los flags será de ayuda).
 
 i. Consulte por el registro A de www.practica2.redes.unlp.edu.ar. ¿Obtuvo alguna respuesta? Investigue sobre los codigos de respuesta de DNS. ¿Para qué son utilizados los mensajes NXDOMAIN y NOERROR?
 
@@ -198,7 +209,11 @@ Analice la información proporcionada por dig y compárelo con la captura.
 
 Dada la siguiente situación: “Una PC en una red determinada, con acceso a Internet, utiliza los servicios de DNSdeunservidor de la red”. Analice
 
+#### Parte a
+
 ¿Qué tipo de consultas (iterativas o recursivas) realiza la PC a su servidor de DNS?
+
+#### Parte b
 
 ¿Qué tipo de consultas (iterativas o recursivas) realiza el servidor de DNS para resolver requerimientos de usuario como el anterior? ¿A quién le realiza estas consultas?
 
