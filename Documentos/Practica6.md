@@ -23,8 +23,6 @@
 - [Ejercicio 15 ](#ejercicio-15)
 - [Ejercicio 16 ](#ejercicio-16)
 
-
-
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 1
@@ -249,17 +247,3 @@ Complete en la columna Orden, el orden de aparición de los paquetes representad
 ![image](https://github.com/Fabo-University/Redes-y-Comunicaciones/assets/55964635/66e99eff-0818-4127-8f80-1c4f5cd041e2)
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
