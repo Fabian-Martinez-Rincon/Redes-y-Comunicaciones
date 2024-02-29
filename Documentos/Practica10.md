@@ -90,22 +90,88 @@ Suponiendo que las tablas de los switches están llenas con la información corr
 
 ### Ejercicio 9
 
-En la siguiente topología de red indique
+En la siguiente topología de red indique:
 
+![image](https://github.com/Fabo-University/ISO/assets/55964635/32dab107-59fe-4d7c-a3ae-5207f3863f6c)
 
+#### Parte a
+
+¿Cuántos dominios de colisión hay?
+
+#### Parte b
+
+¿Cuántos dominios de broadcast hay?
+
+#### Parte c
+
+Indique cómo se va llenando la tabla de asociaciones MAC->PORT de los switches SW1 y SW2 durante el siguiente caso:
+
+i. A envía una solicitud ARP consultando la MAC de C.
+
+ii. C responde esta solicitud ARP.
+
+iii. A envía una solicitud ARP consultando la MAC de B.
+
+iv. B responde esta solicitud ARP.
+
+#### Parte d
+
+Si la PC E y la PC D hubiesen estado realizando un tcpdump para escuchar todo lo que pasa por su interfaz de red, ¿cuáles de los requerimientos/respuestas anteriores hubiesen escuchado cada una?
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 10
 
+En la siguiente topología:
+
+![image](https://github.com/Fabo-University/ISO/assets/55964635/0bb25465-13ba-4377-a8b5-a896bbf2bd8d)
+
+Suponiendo que todas las tablas ARP están vacías, tanto de PCs como de Routers. Si la PC_A le hace un ping a la PC_C, indique:
+
+¿En qué dominios de broadcast hay tráfico ARP? ¿Con qué direcciones de origen y destino?
+
+¿En qué dominios de broadcast hay tráfico ICMP?
+
+- ¿Con qué direcciones de origen y destino de capa 2?
+- ¿Con qué direcciones de origen y destino de capa 3?
+
+¿Cuál es la secuencia correcta en la que se suceden los anteriores?
+
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 11
+
+¿Existe ARP en IPv6? ¿Por qué? ¿Quién cumple esa función?
 
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 12
 
+¿Qué es la IEEE 802.3? ¿Existen diferencias con Ethernet?
+
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 ### Ejercicio 13
+
+Nombre cinco protocolos de capa de enlace. ¿Todos los protocolos en esta capa proveen los mismos servicios?
+
+<img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
+
+### Ejercicio de parcial
+
+Si la PC A está en una red y se quiere comunicar con la PC B que está en otra red:
+
+¿Como se da cuenta la PC A de esto?
+
+Si la tabla ARP de la PCAestavacía, ¿que dirección MAC necesita la PC A para poder comunicarse con la PC B?
+
+En base a lo anterior, ¿que dirección IP destino tiene el requerimiento ARP? ¿Es la dirección IP del default gateway o es la dirección IP de la PC B? De ser necesario, ejecute de nuevo el experimento de ser necesario y complete los campos:
+
+```bash
+ Trama Ethernet:    (mac origen: _________________ mac destino: _________________)
+ Solicitud ARP:     (mac origen: _________________ ip origen: _________________)
+                    (mac destino: _________________ ip destino: _________________)
+```
+
+En base a lo anterior, indique la información de capa 2 y 3 del ICMP ECHO REQUEST que la PC A le envía a la PC B cuando ejecuta un ping, en el segmento de LAN de la PC B.
+
