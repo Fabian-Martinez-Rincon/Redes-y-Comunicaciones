@@ -50,6 +50,7 @@ Una red, en el contexto de las redes de computadoras, es un grupo de computadora
 El principal objetivo de construir una red es compartir recursos, como dispositivos, información y servicios. Al conectar computadoras y dispositivos, los usuarios pueden compartir archivos, software, hardware (como impresoras y escáneres), y datos de manera eficiente y económica. Además, las redes permiten la comunicación y colaboración entre usuarios, independientemente de su ubicación geográfica.
 
 https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/eddd2f9c-d8c1-425f-9d08-6e554f119569
+
 ---
 
 ### Ejercicio 2
