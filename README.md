@@ -20,10 +20,6 @@
 <img src= 'https://i.gifer.com/origin/8c/8cd3f1898255c045143e1da97fbabf10_w200.gif' height="20" width="100%">
 
 
-
-- [Practica 1 Introducción](#practica-1-introducción)
-- [Practica 2 Capa de Aplicación](#practica-2-capa-de-aplicación---http)
-
 ## Practica 1 Introducción
 
 - [Ejercicio 1) ¿Qué es una red? ¿Cuál es el principal objetivo para construir una red?](#ejercicio-1)
