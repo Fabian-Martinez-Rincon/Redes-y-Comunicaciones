@@ -49,12 +49,13 @@ Una red, en el contexto de las redes de computadoras, es un grupo de computadora
 
 El principal objetivo de construir una red es compartir recursos, como dispositivos, información y servicios. Al conectar computadoras y dispositivos, los usuarios pueden compartir archivos, software, hardware (como impresoras y escáneres), y datos de manera eficiente y económica. Además, las redes permiten la comunicación y colaboración entre usuarios, independientemente de su ubicación geográfica.
 
+https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/0b8abc03-88c8-4a34-bdd7-4effe9639ded
+
 ---
 
 ### Ejercicio 2
 
 `¿Qué es Internet?`
-
 
 Internet es una red de redes de computadoras descentralizada y pública que utiliza el conjunto abierto de protocolos conocido como suite TCP/IP (Protocolo de Control de Transmisión/Protocolo de Internet). Permite la integración de diferentes tecnologías de red y protocolos de comunicación de nivel más bajo, facilitando la interconexión mundial de redes de computadoras de todo tipo.
 
@@ -411,18 +412,33 @@ El modelo Cliente/Servidor es una arquitectura de red donde el servidor es una m
 
 `¿Conoce algún otro modelo de comunicación?`
 
-1. **Peer-to-Peer (P2P)**: En este modelo, cada nodo o participante actúa tanto como cliente como servidor. Los nodos se comunican directamente entre sí sin la necesidad de un servidor central. Esto se utiliza comúnmente en la compartición de archivos y redes de comunicación descentralizadas.
-   
-2. **Modelo Híbrido**: Combina elementos del modelo Cliente/Servidor y P2P. Por ejemplo, en las redes de mensajería instantánea, la detección y localización de presencia de los usuarios puede ser centralizada (cliente/servidor), pero la conversación puede ocurrir directamente entre los usuarios (P2P).
-
-3. **Modelo de Publicación/Suscripción**: En este modelo, los clientes se suscriben a un tema y reciben actualizaciones automáticamente de un servidor cuando hay nuevos contenidos o mensajes relacionados con ese tema. Esto es común en sistemas de mensajería y notificaciones en tiempo real.El modelo Cliente/Servidor es una arquitectura de red donde el servidor es una máquina que proporciona servicios o recursos, mientras que el cliente es una máquina o proceso que solicita esos servicios o recursos. En este modelo, el servidor está siempre activo, escuchando las solicitudes de los clientes. Cuando recibe una solicitud, el servidor la procesa y luego envía una respuesta de vuelta al cliente. Los clientes pueden conectarse o desconectarse de la red en cualquier momento y pueden tener direcciones IP dinámicas. En esta arquitectura, los clientes no se comunican directamente entre sí.
+- **Peer-to-Peer (P2P)**: En este modelo, cada nodo o participante actúa tanto como cliente como servidor. Los nodos se comunican directamente entre sí sin la necesidad de un servidor central. Esto se utiliza comúnmente en la compartición de archivos y redes de comunicación descentralizadas.  
+- **Modelo Híbrido**: Combina elementos del modelo Cliente/Servidor y P2P. Por ejemplo, en las redes de mensajería instantánea, la detección y localización de presencia de los usuarios puede ser centralizada (cliente/servidor), pero la conversación puede ocurrir directamente entre los usuarios (P2P).
+- **Modelo de Publicación/Suscripción**: En este modelo, los clientes se suscriben a un tema y reciben actualizaciones automáticamente de un servidor cuando hay nuevos contenidos o mensajes relacionados con ese tema. Esto es común en sistemas de mensajería y notificaciones en tiempo real.El modelo Cliente/Servidor es una arquitectura de red donde el servidor es una máquina que proporciona servicios o recursos, mientras que el cliente es una máquina o proceso que solicita esos servicios o recursos. En este modelo, el servidor está siempre activo, escuchando las solicitudes de los clientes. Cuando recibe una solicitud, el servidor la procesa y luego envía una respuesta de vuelta al cliente. Los clientes pueden conectarse o desconectarse de la red en cualquier momento y pueden tener direcciones IP dinámicas. En esta arquitectura, los clientes no se comunican directamente entre sí.
 
 ---
 
 ### Ejercicio 5
 
-Describa la funcionalidad de la entidad genérica “Agente de usuario” o “User agent”
+`Describa la funcionalidad de la entidad genérica “Agente de usuario” o “User agent”`
 
+Un "Agente de Usuario" o "User Agent" se refiere a cualquier software que actúa en nombre de un usuario. La función principal de un agente de usuario es servir como intermediario entre el usuario y las aplicaciones de red, facilitando la interacción del usuario con la red o los servicios de Internet.
+
+Las funcionalidades de un agente de usuario incluyen:
+
+1. **Interfaz de Usuario**: Proporciona una interfaz a través de la cual los usuarios pueden interactuar con las aplicaciones de la red. Por ejemplo, un navegador web ofrece una interfaz gráfica donde los usuarios pueden ingresar URLs, ver páginas web y interactuar con elementos en línea.
+
+2. **Comunicación de Red**: Maneja la comunicación entre el dispositivo del usuario y la red. Esto incluye la creación de solicitudes de red según las acciones del usuario, el envío de estas solicitudes al servidor correspondiente, y la recepción y procesamiento de las respuestas.
+
+3. **Interpretación de Contenidos**: Interpreta y presenta los datos recibidos de la red al usuario de una manera entendible y utilizable. Por ejemplo, un navegador web interpreta el HTML, CSS y JavaScript de una página web y los presenta visualmente al usuario.
+
+4. **Gestión de Sesiones**: Mantiene la información de estado durante la interacción del usuario con las aplicaciones de red. Esto puede incluir la gestión de cookies, autenticaciones y otras informaciones de sesión.
+
+5. **Seguridad**: Implementa medidas de seguridad para proteger la información del usuario durante la comunicación en la red. Esto puede incluir el cifrado de datos, la verificación de la autenticidad de los sitios web y la protección contra malware.
+
+6. **Almacenamiento y Caché**: Almacena datos localmente para mejorar el rendimiento y la eficiencia de las solicitudes de red, utilizando técnicas como el almacenamiento en caché de páginas web previamente visitadas.
+
+Ejemplos de agentes de usuario incluyen navegadores web, clientes de correo electrónico, y aplicaciones de mensajería instantánea. En la práctica, el término "user agent" se utiliza a menudo específicamente para referirse al navegador web del usuario.
 
 ---
 
@@ -430,19 +446,38 @@ Describa la funcionalidad de la entidad genérica “Agente de usuario” o “U
 
 Observe el indice de la RFC2616, busque el apartado donde se describe el requerimiento y la respuesta.
 
-**¿Qué son y en qué se diferencian HTML y HTTP?**
+`¿Qué son y en qué se diferencian HTML y HTTP?`
 
-**¿En que entidad ubicaría a HTML?**
+HTML (Hypertext Markup Language) y HTTP (Hypertext Transfer Protocol) son dos conceptos fundamentales en la web, pero sirven para propósitos diferentes:
+
+1. **HTML**: Es un lenguaje de marcado utilizado para crear y estructurar páginas web. HTML utiliza etiquetas y atributos para definir cómo se muestra el contenido en un navegador web, como textos, imágenes, enlaces, tablas, listas, etc. HTML se ocupa de la presentación y la estructura del contenido en la web.
+
+2. **HTTP**: Es un protocolo de la capa de aplicación utilizado para la transmisión de documentos hipermedia, como HTML. Es el fundamento de cualquier intercambio de datos en la Web y es un protocolo basado en solicitudes y respuestas entre clientes (por ejemplo, un navegador web) y servidores (el lugar donde se aloja la página web). HTTP define cómo se deben transmitir los mensajes y los datos entre cliente y servidor.
+
+`¿En que entidad ubicaría a HTML`
+
+En cuanto a la entidad donde se ubicaría HTML, este se sitúa en la capa de aplicación del modelo TCP/IP o en las capas de presentación y aplicación del modelo OSI, ya que está directamente relacionado con la forma en que se presentan los datos al usuario final en aplicaciones de red, específicamente en navegadores web .
 
 
 ---
 
 ### Ejercicio 7
 
-**Utilizando la VM, abra una terminal e investigue sobre el comando curl.**
+`Utilizando la VM, abra una terminal e investigue sobre el comando curl.`
 
+El comando `curl` es una herramienta de línea de comandos utilizada para transferir datos desde o hacia un servidor. Se utiliza para trabajar con diversos protocolos, incluidos HTTP, HTTPS, FTP, SMTP, entre otros. `curl` es útil para probar, depurar y trabajar con API web o servicios de red.
 
-**Analice para qué sirven los siguientes parámetros (-I, -H, -X, -s).**
+`Analice para qué sirven los siguientes parámetros (-I, -H, -X, -s).`
+
+1. **-I** (o --head): Este parámetro se utiliza para hacer una solicitud HTTP HEAD, lo que significa que `curl` recuperará solo los encabezados de una respuesta HTTP. Es útil para ver metadatos de la respuesta como el tipo de contenido, estado, cookies, y otros encabezados de respuesta sin descargar todo el cuerpo del documento.
+
+2. **-H** (o --header): Este parámetro permite al usuario pasar encabezados adicionales en la solicitud HTTP. Por ejemplo, puede ser utilizado para incluir encabezados de autenticación, indicar el tipo de contenido que se está enviando o cualquier otro encabezado HTTP personalizado necesario para la solicitud.
+
+3. **-X** (o --request): Este parámetro se utiliza para especificar un método de solicitud HTTP personalizado cuando se comunica con el servidor HTTP. Los valores comunes incluyen GET, POST, PUT, DELETE, etc. Por defecto, `curl` realiza una solicitud GET, pero con -X puedes cambiar el tipo de solicitud según sea necesario.
+
+4. **-s** (o --silent): Este parámetro se usa para hacer que `curl` sea silencioso o discreto durante su operación. Cuando se utiliza, `curl` no mostrará la barra de progreso, pero aún proporcionará el resultado final. Es útil para scripts o para cuando se desea un resultado limpio sin información adicional de progreso o errores.
+
+Estos parámetros permiten a los usuarios de `curl` personalizar sus solicitudes HTTP de diversas maneras para satisfacer diferentes necesidades de prueba y comunicación con servidores web y servicios en línea.
 
 ---
 
