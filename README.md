@@ -104,6 +104,8 @@ Las categorías de las RFCs pueden incluir:
 
 Las RFCs son fundamentales para el desarrollo y funcionamiento de Internet, proporcionando una base documentada y abierta para la evolución de sus tecnologías y protocolos.
 
+https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/e12a7d33-ebe1-4e18-af59-029cc88363b7
+
 ---
 
 ### Ejercicio 4
