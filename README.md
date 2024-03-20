@@ -80,6 +80,8 @@ Los principales componentes que permiten el funcionamiento de Internet incluyen:
 
 Estos componentes trabajan en conjunto para permitir la comunicación y transferencia de datos a través de la vasta red global que es Internet.
 
+https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/30768c72-7e21-4a76-ac87-830945d358dc
+
 ---
 
 ### Ejercicio 3
