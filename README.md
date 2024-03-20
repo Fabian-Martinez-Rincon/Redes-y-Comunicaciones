@@ -49,8 +49,7 @@ Una red, en el contexto de las redes de computadoras, es un grupo de computadora
 
 El principal objetivo de construir una red es compartir recursos, como dispositivos, información y servicios. Al conectar computadoras y dispositivos, los usuarios pueden compartir archivos, software, hardware (como impresoras y escáneres), y datos de manera eficiente y económica. Además, las redes permiten la comunicación y colaboración entre usuarios, independientemente de su ubicación geográfica.
 
-https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/0b8abc03-88c8-4a34-bdd7-4effe9639ded
-
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/eddd2f9c-d8c1-425f-9d08-6e554f119569
 ---
 
 ### Ejercicio 2
@@ -80,7 +79,7 @@ Los principales componentes que permiten el funcionamiento de Internet incluyen:
 
 Estos componentes trabajan en conjunto para permitir la comunicación y transferencia de datos a través de la vasta red global que es Internet.
 
-https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/30768c72-7e21-4a76-ac87-830945d358dc
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/6b365366-9fd5-40b5-99da-df6ce68aa258
 
 ---
 
@@ -104,7 +103,7 @@ Las categorías de las RFCs pueden incluir:
 
 Las RFCs son fundamentales para el desarrollo y funcionamiento de Internet, proporcionando una base documentada y abierta para la evolución de sus tecnologías y protocolos.
 
-https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/e12a7d33-ebe1-4e18-af59-029cc88363b7
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/ceee3621-f24a-42da-8c63-a619b773f29c
 
 ---
 
@@ -120,6 +119,8 @@ Por ejemplo, el Protocolo de Control de Transmisión (TCP) es un protocolo que p
 
 Los protocolos son fundamentales para el funcionamiento de las redes de computadoras e Internet, ya que permiten la interoperabilidad entre diferentes sistemas y dispositivos, asegurando que la comunicación pueda ocurrir de manera efectiva y eficiente.
 
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/d1d822da-2fd8-4a88-9bc2-37f3eca91bb1
+
 ---
 
 ### Ejercicio 5
@@ -131,6 +132,8 @@ Dos máquinas con distintos sistemas operativos pueden formar parte de la misma 
 Cuando los dispositivos en una red se comunican entre sí, no interactúan directamente con los sistemas operativos del otro dispositivo, sino a través de la capa de red, utilizando estos protocolos estandarizados. Estos protocolos aseguran que la información se pueda enviar y recibir de manera coherente y comprensible, sin importar las diferencias subyacentes en el software o el hardware.
 
 Los sistemas operativos están diseñados para implementar estos protocolos de red, lo que permite a las máquinas configurar conexiones de red, enviar y recibir datos, y realizar otras funciones de red necesarias para la comunicación y el intercambio de recursos. Esto hace posible que dispositivos con sistemas operativos diferentes, como Windows, macOS, Linux, etc., puedan conectarse y comunicarse entre sí en la misma red, compartiendo recursos como archivos, impresoras, y acceso a Internet.
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/49dae641-cef1-44d5-b040-3e087bf69280
 
 ---
 
@@ -147,6 +150,8 @@ Los sistemas finales, también conocidos como end systems, se pueden clasificar 
 2. **Servidores**: Son los sistemas finales que atienden las solicitudes de los clientes y les proporcionan los recursos o servicios solicitados. Los servidores están configurados para escuchar y responder a las solicitudes entrantes de los clientes. Siguiendo con el ejemplo anterior, en la navegación web, el servidor web es el que alberga los sitios web y envía las páginas web solicitadas de vuelta al navegador del cliente en respuesta a sus solicitudes.
 
 Esta clasificación en clientes y servidores facilita el diseño, la implementación y el mantenimiento de aplicaciones distribuidas y permite una clara distinción de roles en la comunicación de red, lo que a su vez soporta una gran variedad de servicios y aplicaciones en Internet.
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/88c032f2-2ed0-445c-90fd-a4144cb9b67d
 
 ---
 
