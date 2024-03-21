@@ -506,6 +506,190 @@ El comando `curl` es una herramienta de línea de comandos utilizada para transf
 
 Estos parámetros permiten a los usuarios de `curl` personalizar sus solicitudes HTTP de diversas maneras para satisfacer diferentes necesidades de prueba y comunicación con servidores web y servicios en línea.
 
+Lo vamos a estar probando sobre la siguiente url `www.redes.unlp.edu.ar`
+
+![image](https://github.com/Fabian-Martinez-Rincon/Fabian-Martinez-Rincon/assets/55964635/0d5e86f7-42e3-4226-9f7f-19082c84df0b)
+
+```bash
+curl -I www.redes.unlp.edu.ar
+```
+
+Resultado:
+
+![image](https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/1e02f34f-a888-44d1-821d-4cf622f6b24c)
+
+```bash
+curl -H "User-Agent: Mozilla/5.0" www.redes.unlp.edu.ar
+```
+
+Parametros:
+
+El parámetro `-H` o `--header` en `curl` se utiliza para incluir encabezados adicionales en la solicitud HTTP o HTTPS. Puedes especificar cualquier encabezado HTTP estándar o personalizado que necesites para tu solicitud. Aquí hay algunos ejemplos de encabezados que podrías incluir con `curl -H`:
+
+1. **Accept**: Especifica los tipos de medios que el cliente está dispuesto a recibir del servidor. Ejemplo: `-H "Accept: application/json"` indica que el cliente prefiere datos en formato JSON.
+
+2. **Content-Type**: Indica el tipo de medio del cuerpo de la solicitud, utilizado cuando se envían datos en el cuerpo de la solicitud, como en las solicitudes POST o PUT. Ejemplo: `-H "Content-Type: application/x-www-form-urlencoded"` para datos de formulario o `-H "Content-Type: application/json"` para JSON.
+
+3. **Authorization**: Utilizado para la autenticación, como cuando se accede a una API que requiere tokens de acceso o credenciales básicas. Ejemplo: `-H "Authorization: Bearer YOUR_ACCESS_TOKEN"` o `-H "Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ="` (donde el valor después de Basic es un base64 codificado de `username:password`).
+
+4. **User-Agent**: Define la cadena de agente de usuario que se envía al servidor. Ejemplo: `-H "User-Agent: Mozilla/5.0"`.
+
+5. **Referer**: Indica la dirección de la página web anterior desde la que se siguió un enlace al hacer la solicitud. Ejemplo: `-H "Referer: https://example.com"`.
+
+6. **Cache-Control**: Directivas de caché para la solicitud, como no permitir almacenamiento en caché o especificar la edad máxima de la caché aceptable. Ejemplo: `-H "Cache-Control: no-cache"` o `-H "Cache-Control: max-age=0"`.
+
+7. **Cookie**: Envía cookies al servidor. Ejemplo: `-H "Cookie: name=value"`.
+
+8. **Accept-Language**: Especifica el idioma preferido para la respuesta. Ejemplo: `-H "Accept-Language: en-US,en;q=0.5"`.
+
+9. **If-None-Match**: Permite que una solicitud se procese solo si el contenido no se ha actualizado. Ejemplo: `-H "If-None-Match: \"e34d4c30f:\""`.
+
+10. **Custom-Headers**: También puedes definir tus propios encabezados personalizados según lo necesite la API o el servidor al que estás haciendo la solicitud. Ejemplo: `-H "X-Custom-Header: valor"`.
+
+Recuerda que puedes utilizar múltiples `-H` flags en un solo comando `curl` para incluir varios encabezados en tu solicitud.
+
+
+```bash
+curl www.redes.unlp.edu.ar
+```
+
+Resultado:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>.::.Redes y Comunicaciones.::.Facultad de Inform&aacute;tica.::.UNLP.::.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="./bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+      
+    <div id="wrap">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="./index.html"><i class="icon-home icon-white"></i></a>
+          <a class="brand" href="https://catedras.info.unlp.edu.ar" target="_blank">Redes y Comunicaciones</a>
+          <a class="brand" href="http://www.info.unlp.edu.ar" target="_blank">Facultad de Inform&aacute;tica</a>
+          <a class="brand" href="http://www.unlp.edu.ar" target="_blank">UNLP</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h2>Bienvenidos a Redes y Comunicaciones!</h2>
+        <p>Este CD es parte de los enunciados pr&aacute;cticos de la materia Redes y Comunicaciones de la carrera de Licenciatura en Inform&aacute;tica de la UNLP para la cursada del presente a&ntilde;o y servir&aacute; como herramienta para la realizaci&oacute;n de los trabajos pr&aacute;cticos.</p>
+      </div>
+
+       <div class="row">
+           <div class="span12">
+                <h3>Acerca de la VM</h3>
+                <p>Esta m&aacute;quina virtual est&aacute; basada en Debian GNU/Linux y fue creada por la c&aacute;tedra de Redes y Comunicaciones de la carrera de Licenciatura en Inform&aacute;tica de la UNLP para incluir las herramientas y configuraciones que se utilizar&aacute;n a lo largo de la cursada.</p>
+                <p>Se ha configurado al usuario <em><strong>root</strong></em> y al usuario <em><strong>redes</strong></em> con la misma contrase&ntilde;a: <strong>redes</strong>.</p>
+            </div>
+       </div>
+       <div class="row">
+           <div class="span12">
+             <h3>Ejercicios Pr&aacute;cticos</h3>
+             <p>Todo el material se va a encontrar publicado en el sitio de la c&aacute;tedra en <a href="https://catedras.info.unlp.edu.ar/" target="_blank">https://catedras.info.unlp.edu.ar/</a>.</p>
+            </div>
+       </div>
+      <div class="row">
+          
+        <div class="span2">
+          <h4>Introducci&oacute;n</h4>
+          <p>
+             <ul>
+                <li>Nociones b&aacute;sicas</li>
+            </ul>
+          </p>
+        </div>
+        <div class="span3">
+          <h4>Capa de Aplicaci&oacute;n</h4>
+          <p>
+            <ul>
+                <li><a href="http/protocolos.html">Protocolos HTTP</a></li>
+                <li><a href="http/metodos.html">M&eacute;todos HTTP</a></li>
+            </ul>
+          </p>
+       </div>
+        <div class="span3">
+          <h4>Capa de Transporte</h4>
+          <p>
+            <ul>
+                <li>TCP</li>
+                <li>UDP</li>
+            </ul>
+          </p>
+        </div>
+        <div class="span2">
+          <h4>Capa de Red</h4>
+          <p>
+            <ul>
+                <li>IP</li>
+                <li>
+                    Algoritmos de ruteo:<br/>
+                    Topolog&iacute;as CORE:
+                    <ul>
+                        <li><a href="./core/1-ruteo-estatico.xml" target="_blank">Est&aacute;tico</a></li>
+                        <li><a href="./core/2-ruteo-RIP.xml" target="_blank">RIP</a></li>
+                        <li><a href="./core/3-ruteo-OSPF.xml" target="_blank">OSPF</a></li>
+                    </ul>
+                </li>
+                <li>ICMP</li>
+            </ul>
+          </p>
+        </div>
+        <div class="span2">
+          <h4>Capa de Enlace</h4>
+            <p>
+            <ul>
+                <li>ARP</li>
+                <li>
+                    Switch - Hub
+                </li>
+            </ul>
+            </p>
+        </div>
+      </div>
+
+      <div class="row">
+      <hr>
+         <p>Desarrollado originalmente por Christian Rodriguez y Paula Venosa en el año 2007, modificado en 2013 por el grupo de desarrollo de Lihuen GNU/Linux y en 2016 y 2020 por Leandro Di Tommaso.</p>
+        <br/>
+      </div>
+    </div> 
+    
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Redes y Comunicaciones</p>
+      </div>
+    </div>
+
+
+  </body>
+</html>
+```
+
 ---
 
 ### Ejercicio 8
