@@ -267,6 +267,8 @@ En el contexto de los modelos de red, como el Modelo OSI (Open Systems Interconn
 
 Cada una de estas PDUs contiene información específica necesaria para la funcionalidad de su respectiva capa, permitiendo la comunicación y el intercambio de datos a través de la red de manera estructurada y eficiente.
 
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/62f7e3b0-2221-46a1-aaef-ffa8b086f3a1
+
 ---
 
 ### Ejercicio 12
@@ -287,6 +289,8 @@ Si una capa de un nodo transmisor realiza la encapsulación de datos, el proceso
 - Si la capa de Enlace de Datos en el transmisor encapsula los datos, la capa de Enlace de Datos en el receptor los desencapsulará.
 
 El proceso de desencapsulación implica quitar las cabeceras (y colas si las hay) puestas por el nodo transmisor para acceder a los datos originales o a la información de la cabecera de la siguiente capa. Este proceso asegura que cada nivel del modelo de red en el nodo receptor pueda interpretar y procesar correctamente los datos recibidos antes de pasarlos a la capa superior.
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/c5ebf511-7c56-4f54-9191-a84735f935e7
 
 ---
 
@@ -317,6 +321,8 @@ El stack TCP/IP, también conocido como el modelo de protocolo de Internet, cons
    - Ejemplo de trabajo: Esta capa toma los paquetes IP y los prepara para su transmisión a través de medios físicos como cables de Ethernet, Wi-Fi o fibra óptica, utilizando protocolos como Ethernet, Wi-Fi (IEEE 802.11) y otros protocolos de enlace de datos.
 
 Cada capa del modelo TCP/IP proporciona un conjunto de funciones específicas que permiten la comunicación efectiva a través de una red de computadoras, desde la aplicación que origina los datos hasta la red física que transporta los datos.
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/aeb1541a-1d76-499b-9e19-6e53140160b1
 
 ### Ejercicio 14
 
@@ -349,6 +355,8 @@ El Modelo OSI (Open Systems Interconnection) y el Modelo TCP/IP (Transmission Co
    - **Modelo TCP/IP**: Ha logrado una amplia adopción e interoperabilidad gracias a Internet, con sus protocolos que se utilizan prácticamente en todas las redes informáticas.
 
 En resumen, mientras que el modelo OSI proporciona una estructura teórica detallada para la comunicación en red, el modelo TCP/IP ofrece un enfoque más pragmático basado en la implementación real y las necesidades de Internet.
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/a6e15fa4-d92a-4016-adf4-384280e13160
 
 ---
 
