@@ -174,6 +174,9 @@ Las redes conmutadas de paquetes y las redes conmutadas de circuitos son dos tec
 
 La elección entre una red conmutada de paquetes y una red conmutada de circuitos depende de las necesidades específicas de la comunicación. Las redes conmutadas de paquetes son más versátiles y eficientes para el tráfico de datos variable, mientras que las redes conmutadas de circuitos son preferibles para servicios que necesitan garantías de ancho de banda y tiempo de transmisión.
 
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/a20e14cd-9c6f-4a8b-adc6-c3e2856dd4b9
+
 ---
 
 ### Ejercicio 8
@@ -189,6 +192,8 @@ En resumen:
 - **Red de telefonía (PSTN)**: Es una red conmutada de circuitos, ideal para comunicaciones de voz en tiempo real, proporcionando un canal de comunicación constante y de calidad garantizada.
   
 - **Internet**: Es una red conmutada de paquetes, diseñada para transmitir datos de manera eficiente y flexible, soportando una amplia variedad de aplicaciones y servicios al compartir la infraestructura entre múltiples usuarios.
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/a184df3d-26d0-4ba8-995d-c62aee7ab57f
 
 ---
 
@@ -213,6 +218,8 @@ Existen varias alternativas para acceder a Internet en el hogar, y la disponibil
 7. **Banda ancha inalámbrica municipal**: Algunas ciudades ofrecen su propia red de acceso a Internet, que puede ser gratuita o de bajo costo para los residentes.
 
 Al elegir el tipo de conexión, considera factores como la velocidad de conexión necesaria, el presupuesto, la disponibilidad en tu área y el tipo de uso que le darás a tu conexión a Internet.
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/abf374ca-d0fd-4ece-b8cf-ff8f0869fabf
 
 ---
 
@@ -239,6 +246,8 @@ La implementación basada en capas o niveles en sistemas de redes y software tie
 8. **Escalabilidad**: Los sistemas basados en capas pueden escalarse más fácilmente, ya que es posible aumentar la capacidad de una capa específica (por ejemplo, añadiendo más recursos o mejorando el rendimiento) sin alterar el resto del sistema.
 
 En resumen, la implementación basada en capas ofrece una estructura organizada y flexible que mejora la mantenibilidad, extensibilidad y robustez de los sistemas de redes y software.
+
+https://github.com/Fabian-Martinez-Rincon/Redes-y-Comunicaciones/assets/55964635/f950cf87-9ee0-443f-9ac2-8cf685c75c56
 
 ---
 
